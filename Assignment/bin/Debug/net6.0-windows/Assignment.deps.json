@@ -8,6 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "Assignment/1.0.0": {
         "dependencies": {
+          "BUS": "1.0.0",
+          "DTO": "1.0.0",
           "FontAwesome.Sharp": "6.3.0"
         },
         "runtime": {
@@ -20,6 +22,16 @@
             "assemblyVersion": "6.3.0.0",
             "fileVersion": "6.3.0.0"
           }
+        }
+      },
+      "BUS/1.0.0": {
+        "runtime": {
+          "BUS.dll": {}
+        }
+      },
+      "DTO/1.0.0": {
+        "runtime": {
+          "DTO.dll": {}
         }
       }
     }
@@ -36,6 +48,16 @@
       "sha512": "sha512-3/Fb0N04yYK8An07oox5ISlUyNgsnWildHfoP69uqTEOsemQemRyciphMkXZOcdBupjUD+lVsRE3FqG41/dzPA==",
       "path": "fontawesome.sharp/6.3.0",
       "hashPath": "fontawesome.sharp.6.3.0.nupkg.sha512"
+    },
+    "BUS/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DTO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Configuration;
 
 #nullable disable
 
@@ -30,20 +29,10 @@ namespace DAO.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(this.GetConnectionString());
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=(local);Database=CoffeeManagement;User Id=sa;Password=12345;");
             }
         }
-
-        private string GetConnectionString()
-        {
-            IConfiguration config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", true, true)
-                .Build();
-            var strConn = config["ConnectionStrings:CoffeeManagement"];
-            return strConn;
-        }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -52,7 +41,7 @@ namespace DAO.Models
             modelBuilder.Entity<Account>(entity =>
             {
                 entity.HasKey(e => e.UserName)
-                    .HasName("PK__Account__C9F2845704E5F93D");
+                    .HasName("PK__Account__C9F28457AF433C9A");
 
                 entity.ToTable("Account");
 
@@ -71,7 +60,10 @@ namespace DAO.Models
                     .IsUnicode(false)
                     .HasDefaultValueSql("((0))");
 
-                entity.Property(e => e.TypeId).HasColumnName("TypeID");
+                entity.Property(e => e.TypeId)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("TypeID");
 
                 entity.HasOne(d => d.Type)
                     .WithMany(p => p.Accounts)
@@ -84,7 +76,9 @@ namespace DAO.Models
             {
                 entity.ToTable("AccountType");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Id)
+                    .HasMaxLength(50)
+                    .HasColumnName("ID");
 
                 entity.Property(e => e.TypeName)
                     .IsRequired()
@@ -95,7 +89,9 @@ namespace DAO.Models
             {
                 entity.ToTable("Bill");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Id)
+                    .HasMaxLength(50)
+                    .HasColumnName("ID");
 
                 entity.Property(e => e.CheckIn)
                     .HasColumnType("date")
@@ -103,7 +99,10 @@ namespace DAO.Models
 
                 entity.Property(e => e.CheckOut).HasColumnType("date");
 
-                entity.Property(e => e.TableId).HasColumnName("TableID");
+                entity.Property(e => e.TableId)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("TableID");
 
                 entity.Property(e => e.TotalPrice).HasDefaultValueSql("((0))");
 
@@ -120,9 +119,15 @@ namespace DAO.Models
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.BillId).HasColumnName("BillID");
+                entity.Property(e => e.BillId)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("BillID");
 
-                entity.Property(e => e.FoodId).HasColumnName("FoodID");
+                entity.Property(e => e.FoodId)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("FoodID");
 
                 entity.HasOne(d => d.Bill)
                     .WithMany(p => p.BillInfos)
@@ -141,7 +146,9 @@ namespace DAO.Models
             {
                 entity.ToTable("CategoryFood");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Id)
+                    .HasMaxLength(50)
+                    .HasColumnName("ID");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -153,9 +160,14 @@ namespace DAO.Models
             {
                 entity.ToTable("Food");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Id)
+                    .HasMaxLength(50)
+                    .HasColumnName("ID");
 
-                entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
+                entity.Property(e => e.CategoryId)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("CategoryID");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -173,7 +185,9 @@ namespace DAO.Models
             {
                 entity.ToTable("TableCoffee");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Id)
+                    .HasMaxLength(50)
+                    .HasColumnName("ID");
 
                 entity.Property(e => e.Name)
                     .IsRequired()

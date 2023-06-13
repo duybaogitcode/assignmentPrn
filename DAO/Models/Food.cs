@@ -12,9 +12,9 @@ namespace DAO.Models
             BillInfos = new HashSet<BillInfo>();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
-        public int CategoryId { get; set; }
+        public string CategoryId { get; set; }
         public int Price { get; set; }
 
         public virtual CategoryFood Category { get; set; }

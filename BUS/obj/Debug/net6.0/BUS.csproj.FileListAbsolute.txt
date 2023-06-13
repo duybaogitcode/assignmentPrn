@@ -1,0 +1,12 @@
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\BUS\bin\Debug\net6.0\BUS.deps.json
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\BUS\bin\Debug\net6.0\BUS.dll
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\BUS\bin\Debug\net6.0\BUS.pdb
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\BUS\obj\Debug\net6.0\BUS.csproj.AssemblyReference.cache
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\BUS\obj\Debug\net6.0\BUS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\BUS\obj\Debug\net6.0\BUS.AssemblyInfoInputs.cache
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\BUS\obj\Debug\net6.0\BUS.AssemblyInfo.cs
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\BUS\obj\Debug\net6.0\BUS.csproj.CoreCompileInputs.cache
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\BUS\obj\Debug\net6.0\BUS.dll
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\BUS\obj\Debug\net6.0\refint\BUS.dll
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\BUS\obj\Debug\net6.0\BUS.pdb
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\BUS\obj\Debug\net6.0\ref\BUS.dll

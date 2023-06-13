@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             pnlMenu = new Panel();
-            iconButton4 = new FontAwesome.Sharp.IconButton();
+            ibtnSetting = new FontAwesome.Sharp.IconButton();
+            icon = new FontAwesome.Sharp.IconButton();
             ibtnProducts = new FontAwesome.Sharp.IconButton();
             ibtnEmp = new FontAwesome.Sharp.IconButton();
             ibtnHome = new FontAwesome.Sharp.IconButton();
@@ -45,7 +46,8 @@
             // pnlMenu
             // 
             pnlMenu.BackColor = Color.FromArgb(35, 38, 46);
-            pnlMenu.Controls.Add(iconButton4);
+            pnlMenu.Controls.Add(ibtnSetting);
+            pnlMenu.Controls.Add(icon);
             pnlMenu.Controls.Add(ibtnProducts);
             pnlMenu.Controls.Add(ibtnEmp);
             pnlMenu.Controls.Add(ibtnHome);
@@ -53,27 +55,46 @@
             pnlMenu.Dock = DockStyle.Left;
             pnlMenu.Location = new Point(0, 0);
             pnlMenu.Name = "pnlMenu";
-            pnlMenu.Size = new Size(222, 565);
+            pnlMenu.Size = new Size(222, 663);
             pnlMenu.TabIndex = 0;
             // 
-            // iconButton4
+            // ibtnSetting
             // 
-            iconButton4.FlatAppearance.BorderSize = 0;
-            iconButton4.FlatStyle = FlatStyle.Flat;
-            iconButton4.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            iconButton4.ForeColor = Color.Gainsboro;
-            iconButton4.IconChar = FontAwesome.Sharp.IconChar.ChartArea;
-            iconButton4.IconColor = Color.Gainsboro;
-            iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton4.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton4.Location = new Point(-3, 459);
-            iconButton4.Name = "iconButton4";
-            iconButton4.Size = new Size(222, 60);
-            iconButton4.TabIndex = 4;
-            iconButton4.Text = "Doanh thu";
-            iconButton4.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton4.UseVisualStyleBackColor = true;
-            iconButton4.Click += iconButton4_Click;
+            ibtnSetting.FlatAppearance.BorderSize = 0;
+            ibtnSetting.FlatStyle = FlatStyle.Flat;
+            ibtnSetting.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            ibtnSetting.ForeColor = Color.Gainsboro;
+            ibtnSetting.IconChar = FontAwesome.Sharp.IconChar.Gear;
+            ibtnSetting.IconColor = Color.Gainsboro;
+            ibtnSetting.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ibtnSetting.ImageAlign = ContentAlignment.MiddleLeft;
+            ibtnSetting.Location = new Point(0, 566);
+            ibtnSetting.Name = "ibtnSetting";
+            ibtnSetting.Size = new Size(222, 60);
+            ibtnSetting.TabIndex = 5;
+            ibtnSetting.Text = "Cài đặt";
+            ibtnSetting.TextImageRelation = TextImageRelation.ImageBeforeText;
+            ibtnSetting.UseVisualStyleBackColor = true;
+            ibtnSetting.Click += ibtnSetting_Click;
+            // 
+            // icon
+            // 
+            icon.FlatAppearance.BorderSize = 0;
+            icon.FlatStyle = FlatStyle.Flat;
+            icon.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            icon.ForeColor = Color.Gainsboro;
+            icon.IconChar = FontAwesome.Sharp.IconChar.ChartArea;
+            icon.IconColor = Color.Gainsboro;
+            icon.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            icon.ImageAlign = ContentAlignment.MiddleLeft;
+            icon.Location = new Point(-3, 459);
+            icon.Name = "icon";
+            icon.Size = new Size(222, 60);
+            icon.TabIndex = 4;
+            icon.Text = "Doanh thu";
+            icon.TextImageRelation = TextImageRelation.ImageBeforeText;
+            icon.UseVisualStyleBackColor = true;
+            icon.Click += iconButton4_Click;
             // 
             // ibtnProducts
             // 
@@ -157,7 +178,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(222, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(875, 51);
+            panel1.Size = new Size(1075, 51);
             panel1.TabIndex = 1;
             // 
             // pnlMain
@@ -166,7 +187,7 @@
             pnlMain.Dock = DockStyle.Fill;
             pnlMain.Location = new Point(222, 51);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(875, 514);
+            pnlMain.Size = new Size(1075, 612);
             pnlMain.TabIndex = 2;
             // 
             // Form1
@@ -174,7 +195,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1097, 565);
+            ClientSize = new Size(1297, 663);
             Controls.Add(pnlMain);
             Controls.Add(panel1);
             Controls.Add(pnlMenu);
@@ -195,11 +216,12 @@
         private System.CodeDom.CodeTypeReference faPicker1;
         private System.CodeDom.CodeTypeReference faProvider1;
         private FontAwesome.Sharp.IconButton ibtnHome;
-        private FontAwesome.Sharp.IconButton iconButton4;
+        private FontAwesome.Sharp.IconButton icon;
         private FontAwesome.Sharp.IconButton ibtnProducts;
         private FontAwesome.Sharp.IconButton ibtnEmp;
         private PictureBox picLogo;
         private Panel panel1;
         private Panel pnlMain;
+        private FontAwesome.Sharp.IconButton ibtnSetting;
     }
 }

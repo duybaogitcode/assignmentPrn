@@ -25,8 +25,9 @@ namespace Assignment
         }
 
 
-        private void openChildForm(Form childForm) { 
-            if(currentChildForm!= null)
+        private void openChildForm(Form childForm)
+        {
+            if (currentChildForm != null)
             {
                 currentChildForm.Close();
             }
@@ -132,6 +133,12 @@ namespace Assignment
                 FormBorderStyle = FormBorderStyle.None;
             else
                 FormBorderStyle = FormBorderStyle.Sizable;
+        }
+
+        private void ibtnSetting_Click(object sender, EventArgs e)
+        {
+            this.AcctiveBtn(sender, RGBColors.color);
+
         }
 
         private struct RGBColors

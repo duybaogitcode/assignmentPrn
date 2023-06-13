@@ -12,10 +12,10 @@ namespace DAO.Models
             BillInfos = new HashSet<BillInfo>();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
         public DateTime CheckIn { get; set; }
         public DateTime? CheckOut { get; set; }
-        public int TableId { get; set; }
+        public string TableId { get; set; }
         public int Discount { get; set; }
         public int? TotalPrice { get; set; }
         public int Status { get; set; }

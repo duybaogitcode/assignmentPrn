@@ -12,7 +12,7 @@ namespace DAO.Models
             Accounts = new HashSet<Account>();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string TypeName { get; set; }
 
         public virtual ICollection<Account> Accounts { get; set; }

@@ -8,8 +8,8 @@ namespace DAO.Models
     public partial class BillInfo
     {
         public int Id { get; set; }
-        public int BillId { get; set; }
-        public int FoodId { get; set; }
+        public string BillId { get; set; }
+        public string FoodId { get; set; }
         public int Amount { get; set; }
 
         public virtual Bill Bill { get; set; }
