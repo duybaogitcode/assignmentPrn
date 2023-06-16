@@ -30,7 +30,7 @@
         {
             pnlMenu = new Panel();
             ibtnSetting = new FontAwesome.Sharp.IconButton();
-            icon = new FontAwesome.Sharp.IconButton();
+            ibtnDashboard = new FontAwesome.Sharp.IconButton();
             ibtnProducts = new FontAwesome.Sharp.IconButton();
             ibtnEmp = new FontAwesome.Sharp.IconButton();
             ibtnHome = new FontAwesome.Sharp.IconButton();
@@ -47,7 +47,7 @@
             // 
             pnlMenu.BackColor = Color.FromArgb(35, 38, 46);
             pnlMenu.Controls.Add(ibtnSetting);
-            pnlMenu.Controls.Add(icon);
+            pnlMenu.Controls.Add(ibtnDashboard);
             pnlMenu.Controls.Add(ibtnProducts);
             pnlMenu.Controls.Add(ibtnEmp);
             pnlMenu.Controls.Add(ibtnHome);
@@ -77,24 +77,24 @@
             ibtnSetting.UseVisualStyleBackColor = true;
             ibtnSetting.Click += ibtnSetting_Click;
             // 
-            // icon
+            // ibtnDashboard
             // 
-            icon.FlatAppearance.BorderSize = 0;
-            icon.FlatStyle = FlatStyle.Flat;
-            icon.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            icon.ForeColor = Color.Gainsboro;
-            icon.IconChar = FontAwesome.Sharp.IconChar.ChartArea;
-            icon.IconColor = Color.Gainsboro;
-            icon.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            icon.ImageAlign = ContentAlignment.MiddleLeft;
-            icon.Location = new Point(-3, 459);
-            icon.Name = "icon";
-            icon.Size = new Size(222, 60);
-            icon.TabIndex = 4;
-            icon.Text = "Doanh thu";
-            icon.TextImageRelation = TextImageRelation.ImageBeforeText;
-            icon.UseVisualStyleBackColor = true;
-            icon.Click += iconButton4_Click;
+            ibtnDashboard.FlatAppearance.BorderSize = 0;
+            ibtnDashboard.FlatStyle = FlatStyle.Flat;
+            ibtnDashboard.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            ibtnDashboard.ForeColor = Color.Gainsboro;
+            ibtnDashboard.IconChar = FontAwesome.Sharp.IconChar.ChartArea;
+            ibtnDashboard.IconColor = Color.Gainsboro;
+            ibtnDashboard.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ibtnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
+            ibtnDashboard.Location = new Point(-3, 459);
+            ibtnDashboard.Name = "ibtnDashboard";
+            ibtnDashboard.Size = new Size(222, 60);
+            ibtnDashboard.TabIndex = 4;
+            ibtnDashboard.Text = "Doanh thu";
+            ibtnDashboard.TextImageRelation = TextImageRelation.ImageBeforeText;
+            ibtnDashboard.UseVisualStyleBackColor = true;
+            ibtnDashboard.Click += ibtnDashboard_Click;
             // 
             // ibtnProducts
             // 
@@ -216,7 +216,7 @@
         private System.CodeDom.CodeTypeReference faPicker1;
         private System.CodeDom.CodeTypeReference faProvider1;
         private FontAwesome.Sharp.IconButton ibtnHome;
-        private FontAwesome.Sharp.IconButton icon;
+        private FontAwesome.Sharp.IconButton ibtnDashboard;
         private FontAwesome.Sharp.IconButton ibtnProducts;
         private FontAwesome.Sharp.IconButton ibtnEmp;
         private PictureBox picLogo;

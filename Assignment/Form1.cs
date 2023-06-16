@@ -94,10 +94,6 @@ namespace Assignment
             this.AcctiveBtn(sender, RGBColors.color);
         }
 
-        private void iconButton4_Click(object sender, EventArgs e)
-        {
-            this.AcctiveBtn(sender, RGBColors.color);
-        }
 
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -139,6 +135,12 @@ namespace Assignment
         {
             this.AcctiveBtn(sender, RGBColors.color);
 
+        }
+
+        private void ibtnDashboard_Click(object sender, EventArgs e)
+        {
+            this.AcctiveBtn(sender, RGBColors.color);
+            this.openChildForm(new dashboardForm());
         }
 
         private struct RGBColors

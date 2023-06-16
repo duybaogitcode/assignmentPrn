@@ -24,3 +24,6 @@ C:\Users\duyba\OneDrive\Desktop\c#\Assignment\Assignment\bin\Debug\net6.0-window
 C:\Users\duyba\OneDrive\Desktop\c#\Assignment\Assignment\bin\Debug\net6.0-windows\DTO.dll
 C:\Users\duyba\OneDrive\Desktop\c#\Assignment\Assignment\bin\Debug\net6.0-windows\BUS.pdb
 C:\Users\duyba\OneDrive\Desktop\c#\Assignment\Assignment\bin\Debug\net6.0-windows\DTO.pdb
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\Assignment\obj\Debug\net6.0-windows\Assignment.dashboardForm.resources
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\Assignment\bin\Debug\net6.0-windows\WinForms.DataVisualization.Utilities.dll
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\Assignment\bin\Debug\net6.0-windows\WinForms.DataVisualization.dll
