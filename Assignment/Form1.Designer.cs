@@ -55,7 +55,7 @@
             pnlMenu.Dock = DockStyle.Left;
             pnlMenu.Location = new Point(0, 0);
             pnlMenu.Name = "pnlMenu";
-            pnlMenu.Size = new Size(222, 663);
+            pnlMenu.Size = new Size(222, 742);
             pnlMenu.TabIndex = 0;
             // 
             // ibtnSetting
@@ -68,7 +68,7 @@
             ibtnSetting.IconColor = Color.Gainsboro;
             ibtnSetting.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnSetting.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnSetting.Location = new Point(0, 566);
+            ibtnSetting.Location = new Point(0, 612);
             ibtnSetting.Name = "ibtnSetting";
             ibtnSetting.Size = new Size(222, 60);
             ibtnSetting.TabIndex = 5;
@@ -87,7 +87,7 @@
             ibtnDashboard.IconColor = Color.Gainsboro;
             ibtnDashboard.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnDashboard.Location = new Point(-3, 459);
+            ibtnDashboard.Location = new Point(-3, 504);
             ibtnDashboard.Name = "ibtnDashboard";
             ibtnDashboard.Size = new Size(222, 60);
             ibtnDashboard.TabIndex = 4;
@@ -106,7 +106,7 @@
             ibtnProducts.IconColor = Color.GhostWhite;
             ibtnProducts.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnProducts.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnProducts.Location = new Point(-3, 339);
+            ibtnProducts.Location = new Point(3, 389);
             ibtnProducts.Name = "ibtnProducts";
             ibtnProducts.Size = new Size(222, 60);
             ibtnProducts.TabIndex = 3;
@@ -125,7 +125,7 @@
             ibtnEmp.IconColor = Color.Gainsboro;
             ibtnEmp.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnEmp.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnEmp.Location = new Point(-3, 229);
+            ibtnEmp.Location = new Point(-3, 282);
             ibtnEmp.Name = "ibtnEmp";
             ibtnEmp.Size = new Size(222, 60);
             ibtnEmp.TabIndex = 2;
@@ -145,7 +145,7 @@
             ibtnHome.IconColor = Color.Gainsboro;
             ibtnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnHome.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnHome.Location = new Point(0, 126);
+            ibtnHome.Location = new Point(0, 186);
             ibtnHome.Name = "ibtnHome";
             ibtnHome.Size = new Size(222, 60);
             ibtnHome.TabIndex = 1;
@@ -161,14 +161,14 @@
             pnlLogo.Dock = DockStyle.Top;
             pnlLogo.Location = new Point(0, 0);
             pnlLogo.Name = "pnlLogo";
-            pnlLogo.Size = new Size(222, 126);
+            pnlLogo.Size = new Size(222, 186);
             pnlLogo.TabIndex = 0;
             // 
             // picLogo
             // 
-            picLogo.Location = new Point(12, 12);
+            picLogo.Location = new Point(12, 30);
             picLogo.Name = "picLogo";
-            picLogo.Size = new Size(193, 98);
+            picLogo.Size = new Size(193, 127);
             picLogo.TabIndex = 0;
             picLogo.TabStop = false;
             // 
@@ -178,16 +178,16 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(222, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1075, 51);
+            panel1.Size = new Size(1140, 79);
             panel1.TabIndex = 1;
             // 
             // pnlMain
             // 
             pnlMain.BackColor = Color.FromArgb(34, 37, 45);
             pnlMain.Dock = DockStyle.Fill;
-            pnlMain.Location = new Point(222, 51);
+            pnlMain.Location = new Point(222, 79);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(1075, 612);
+            pnlMain.Size = new Size(1140, 663);
             pnlMain.TabIndex = 2;
             // 
             // Form1
@@ -195,7 +195,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1297, 663);
+            ClientSize = new Size(1362, 742);
             Controls.Add(pnlMain);
             Controls.Add(panel1);
             Controls.Add(pnlMenu);
@@ -219,9 +219,9 @@
         private FontAwesome.Sharp.IconButton ibtnDashboard;
         private FontAwesome.Sharp.IconButton ibtnProducts;
         private FontAwesome.Sharp.IconButton ibtnEmp;
-        private PictureBox picLogo;
         private Panel panel1;
         private Panel pnlMain;
         private FontAwesome.Sharp.IconButton ibtnSetting;
+        private PictureBox picLogo;
     }
 }

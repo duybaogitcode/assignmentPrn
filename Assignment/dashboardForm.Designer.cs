@@ -35,9 +35,11 @@
             iconButton1 = new FontAwesome.Sharp.IconButton();
             iconButton2 = new FontAwesome.Sharp.IconButton();
             iconButton3 = new FontAwesome.Sharp.IconButton();
-            panel1 = new Panel();
             pnlColunnChart = new Panel();
             pnlPieChart = new Panel();
+            panel1 = new Panel();
+            label3 = new Label();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -111,34 +113,46 @@
             iconButton3.Text = "iconButton3";
             iconButton3.UseVisualStyleBackColor = true;
             // 
-            // panel1
-            // 
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1074, 64);
-            panel1.TabIndex = 7;
-            // 
             // pnlColunnChart
             // 
             pnlColunnChart.Location = new Point(2, 90);
             pnlColunnChart.Name = "pnlColunnChart";
-            pnlColunnChart.Size = new Size(648, 450);
+            pnlColunnChart.Size = new Size(663, 450);
             pnlColunnChart.TabIndex = 9;
             // 
             // pnlPieChart
             // 
-            pnlPieChart.Location = new Point(682, 90);
+            pnlPieChart.Location = new Point(722, 90);
             pnlPieChart.Name = "pnlPieChart";
-            pnlPieChart.Size = new Size(362, 446);
+            pnlPieChart.Size = new Size(386, 446);
             pnlPieChart.TabIndex = 10;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(label3);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1140, 64);
+            panel1.TabIndex = 7;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(3, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(104, 28);
+            label3.TabIndex = 0;
+            label3.Text = "Doanh thu";
             // 
             // dashboardForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 52, 60);
-            ClientSize = new Size(1074, 562);
+            ClientSize = new Size(1140, 614);
             Controls.Add(pnlPieChart);
             Controls.Add(iconButton3);
             Controls.Add(iconButton2);
@@ -152,6 +166,8 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "dashboardForm";
             Text = "dashboardForm";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -165,9 +181,10 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton3;
-        private Panel panel1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private Panel pnlColunnChart;
         private Panel pnlPieChart;
+        private Panel panel1;
+        private Label label3;
     }
 }

@@ -8,7 +8,7 @@ create table TableCoffee
 (
 	ID nvarchar(50) primary key,
 	Name nvarchar(100) not null default N'Chưa đặt tên',
-	Status nvarchar(100) not null default N'Trống'
+	Status bit not null default 0
 )
 
 create table AccountType

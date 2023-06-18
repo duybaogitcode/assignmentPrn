@@ -41,11 +41,14 @@
             colType = new DataGridViewTextBoxColumn();
             colPrice = new DataGridViewTextBoxColumn();
             label2 = new Label();
+            panel3 = new Panel();
+            panel4 = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -63,7 +66,7 @@
             // 
             pnlHome.BackColor = Color.White;
             pnlHome.BorderStyle = BorderStyle.FixedSingle;
-            pnlHome.Location = new Point(12, 240);
+            pnlHome.Location = new Point(12, 277);
             pnlHome.Name = "pnlHome";
             pnlHome.Size = new Size(659, 347);
             pnlHome.TabIndex = 1;
@@ -75,22 +78,22 @@
             panel1.Controls.Add(iconPictureBox1);
             panel1.Location = new Point(23, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(292, 76);
+            panel1.Size = new Size(336, 76);
             panel1.TabIndex = 3;
             // 
             // textBox1
             // 
             textBox1.Location = new Point(41, 32);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(138, 23);
+            textBox1.Size = new Size(175, 23);
             textBox1.TabIndex = 1;
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(198, 32);
+            comboBox1.Location = new Point(242, 32);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(64, 23);
+            comboBox1.Size = new Size(70, 23);
             comboBox1.TabIndex = 2;
             // 
             // iconPictureBox1
@@ -111,19 +114,19 @@
             // 
             dataGridView2.BackgroundColor = Color.White;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(12, 57);
+            dataGridView2.Location = new Point(9, 17);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(659, 101);
+            dataGridView2.Size = new Size(659, 156);
             dataGridView2.TabIndex = 4;
             // 
             // panel2
             // 
             panel2.Controls.Add(dataGridView1);
             panel2.Controls.Add(panel1);
-            panel2.Location = new Point(725, 57);
+            panel2.Location = new Point(744, 57);
             panel2.Name = "panel2";
-            panel2.Size = new Size(329, 543);
+            panel2.Size = new Size(369, 543);
             panel2.TabIndex = 5;
             // 
             // dataGridView1
@@ -134,13 +137,14 @@
             dataGridView1.Location = new Point(30, 85);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(272, 455);
+            dataGridView1.Size = new Size(323, 455);
             dataGridView1.TabIndex = 2;
             // 
             // colName
             // 
-            colName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            colName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             colName.HeaderText = "Tên đồ uống";
+            colName.MinimumWidth = 10;
             colName.Name = "colName";
             colName.Width = 98;
             // 
@@ -153,33 +157,48 @@
             // 
             // colPrice
             // 
-            colPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            colPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             colPrice.HeaderText = "Giá";
             colPrice.Name = "colPrice";
-            colPrice.Width = 49;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(12, 197);
+            label2.Location = new Point(12, 230);
             label2.Name = "label2";
             label2.Size = new Size(44, 28);
             label2.TabIndex = 6;
             label2.Text = "Bàn";
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(dataGridView2);
+            panel3.Location = new Point(3, 57);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(684, 170);
+            panel3.TabIndex = 7;
+            // 
+            // panel4
+            // 
+            panel4.Location = new Point(6, 257);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(706, 392);
+            panel4.TabIndex = 8;
             // 
             // shopForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 52, 60);
-            ClientSize = new Size(1056, 612);
+            ClientSize = new Size(1135, 652);
+            Controls.Add(panel3);
             Controls.Add(label2);
-            Controls.Add(dataGridView2);
             Controls.Add(pnlHome);
             Controls.Add(label1);
             Controls.Add(panel2);
+            Controls.Add(panel4);
             FormBorderStyle = FormBorderStyle.None;
             Name = "shopForm";
             Text = "shopForm";
@@ -189,6 +208,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -209,5 +229,7 @@
         private DataGridViewTextBoxColumn colName;
         private DataGridViewTextBoxColumn colType;
         private DataGridViewTextBoxColumn colPrice;
+        private Panel panel3;
+        private Panel panel4;
     }
 }
