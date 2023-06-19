@@ -1,3 +1,4 @@
+using AutoMapper;
 using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -10,9 +11,10 @@ namespace Assignment
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm;
+        private readonly IMapper _mapper;
 
 
-        public Form1()
+        public Form1(IMapper mapper)
         {
 
             InitializeComponent();
@@ -22,6 +24,12 @@ namespace Assignment
             leftBorderBtn.Size = new Size(7, 60);
             pnlMenu.Controls.Add(leftBorderBtn);
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
+            this.FormBorderStyle = FormBorderStyle.None;
+            _mapper = mapper;
+
         }
 
 
@@ -86,6 +94,7 @@ namespace Assignment
         private void ibtnEmp_Click(object sender, EventArgs e)
         {
             this.AcctiveBtn(sender, RGBColors.color);
+            this.openChildForm(new accountForm(_mapper));
 
         }
 
@@ -143,9 +152,12 @@ namespace Assignment
             this.openChildForm(new dashboardForm());
         }
 
+
         private struct RGBColors
         {
             public static Color color = Color.FromArgb(172, 126, 241);
         }
+
+
     }
 }

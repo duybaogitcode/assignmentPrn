@@ -1,3 +1,5 @@
+using AutoMapper;
+using BUS;
 namespace Assignment
 {
     internal static class Program
@@ -11,7 +13,14 @@ namespace Assignment
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+
+            MapperConfiguration config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<MappingProfile>();
+            });
+
+            IMapper mapper = config.CreateMapper();
+            Application.Run(new Form1(mapper));
         }
     }
 }

@@ -27,6 +27,7 @@ namespace Assignment
 
         private void CreateColumnChart()
         {
+            Color backgroundColor = Color.FromArgb(32, 35, 43);
             // Tạo một Chart control mới
             Chart columnChart = new Chart();
             columnChart.Size = new System.Drawing.Size(400, 300);
@@ -40,6 +41,13 @@ namespace Assignment
             // Tạo một Series mới cho biểu đồ dạng cột
             Series series = new Series("ColumnSeries");
             series.ChartType = SeriesChartType.Column;
+            series.Color = RGBColors.color;
+            // Đặt màu nền cho ChartArea
+            chartArea.BackColor = backgroundColor;
+
+            // Đặt màu nền cho trục X và trục Y
+            chartArea.AxisX.LineColor = backgroundColor;
+            chartArea.AxisY.LineColor = backgroundColor;
 
             // Thêm các điểm dữ liệu cho biểu đồ dạng cột
             series.Points.AddXY("Category1", 10);
@@ -59,6 +67,7 @@ namespace Assignment
         }
         private void CreatePieChart()
         {
+            Color backgroundColor = Color.FromArgb(32, 35, 43);
             // Tạo một Chart control mới
             Chart pieChart = new Chart();
             pieChart.Size = new System.Drawing.Size(400, 300);
@@ -68,6 +77,7 @@ namespace Assignment
             // Tạo một ChartArea mới cho biểu đồ hình tròn
             ChartArea chartArea = new ChartArea("PieChartArea");
             pieChart.ChartAreas.Add(chartArea);
+
 
             // Tạo một Series mới cho biểu đồ hình tròn
             Series series = new Series("PieSeries");
@@ -88,6 +98,11 @@ namespace Assignment
             // Hiển thị biểu đồ hình tròn trên form
             pnlPieChart.Controls.Add(pieChart);
             pnlPieChart.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        private struct RGBColors
+        {
+            public static Color color = Color.FromArgb(172, 126, 241);
         }
     }
 }
