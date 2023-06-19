@@ -8,19 +8,24 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\duyba\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\duyba\\OneDrive\\Desktop\\c#\\Assignment\\BUS\\BUS.csproj",
+      "projectUniqueName": "C:\\WorkSpace\\PRN211_Project\\assignmentPrn\\BUS\\BUS.csproj",
       "projectName": "BUS",
-      "projectPath": "C:\\Users\\duyba\\OneDrive\\Desktop\\c#\\Assignment\\BUS\\BUS.csproj",
-      "packagesPath": "C:\\Users\\duyba\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\duyba\\OneDrive\\Desktop\\c#\\Assignment\\BUS\\obj\\",
+      "projectPath": "C:\\WorkSpace\\PRN211_Project\\assignmentPrn\\BUS\\BUS.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\WorkSpace\\PRN211_Project\\assignmentPrn\\BUS\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\duyba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,6 +33,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

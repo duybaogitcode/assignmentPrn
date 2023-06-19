@@ -10,3 +10,15 @@ C:\Users\duyba\OneDrive\Desktop\c#\Assignment\DTO\obj\Debug\net6.0\DTO.dll
 C:\Users\duyba\OneDrive\Desktop\c#\Assignment\DTO\obj\Debug\net6.0\refint\DTO.dll
 C:\Users\duyba\OneDrive\Desktop\c#\Assignment\DTO\obj\Debug\net6.0\DTO.pdb
 C:\Users\duyba\OneDrive\Desktop\c#\Assignment\DTO\obj\Debug\net6.0\ref\DTO.dll
+C:\WorkSpace\PRN211_Project\assignmentPrn\DTO\bin\Debug\net6.0\DTO.deps.json
+C:\WorkSpace\PRN211_Project\assignmentPrn\DTO\bin\Debug\net6.0\DTO.dll
+C:\WorkSpace\PRN211_Project\assignmentPrn\DTO\bin\Debug\net6.0\DTO.pdb
+C:\WorkSpace\PRN211_Project\assignmentPrn\DTO\obj\Debug\net6.0\DTO.csproj.AssemblyReference.cache
+C:\WorkSpace\PRN211_Project\assignmentPrn\DTO\obj\Debug\net6.0\DTO.GeneratedMSBuildEditorConfig.editorconfig
+C:\WorkSpace\PRN211_Project\assignmentPrn\DTO\obj\Debug\net6.0\DTO.AssemblyInfoInputs.cache
+C:\WorkSpace\PRN211_Project\assignmentPrn\DTO\obj\Debug\net6.0\DTO.AssemblyInfo.cs
+C:\WorkSpace\PRN211_Project\assignmentPrn\DTO\obj\Debug\net6.0\DTO.csproj.CoreCompileInputs.cache
+C:\WorkSpace\PRN211_Project\assignmentPrn\DTO\obj\Debug\net6.0\DTO.dll
+C:\WorkSpace\PRN211_Project\assignmentPrn\DTO\obj\Debug\net6.0\refint\DTO.dll
+C:\WorkSpace\PRN211_Project\assignmentPrn\DTO\obj\Debug\net6.0\DTO.pdb
+C:\WorkSpace\PRN211_Project\assignmentPrn\DTO\obj\Debug\net6.0\ref\DTO.dll

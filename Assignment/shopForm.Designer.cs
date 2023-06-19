@@ -32,20 +32,20 @@
             pnlHome = new Panel();
             panel1 = new Panel();
             textBox1 = new TextBox();
-            comboBox1 = new ComboBox();
+            cbType = new ComboBox();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             dataGridView2 = new DataGridView();
             panel2 = new Panel();
-            dataGridView1 = new DataGridView();
-            colName = new DataGridViewTextBoxColumn();
-            colType = new DataGridViewTextBoxColumn();
-            colPrice = new DataGridViewTextBoxColumn();
+            foodDgv = new DataGridView();
+            colName1 = new DataGridViewTextBoxColumn();
+            colType1 = new DataGridViewTextBoxColumn();
+            colPrice1 = new DataGridViewTextBoxColumn();
             label2 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)foodDgv).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -71,7 +71,7 @@
             // panel1
             // 
             panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(comboBox1);
+            panel1.Controls.Add(cbType);
             panel1.Controls.Add(iconPictureBox1);
             panel1.Location = new Point(23, 3);
             panel1.Name = "panel1";
@@ -85,13 +85,14 @@
             textBox1.Size = new Size(138, 23);
             textBox1.TabIndex = 1;
             // 
-            // comboBox1
+            // cbType
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(198, 32);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(64, 23);
-            comboBox1.TabIndex = 2;
+            cbType.FormattingEnabled = true;
+            cbType.Location = new Point(185, 32);
+            cbType.Name = "cbType";
+            cbType.Size = new Size(91, 23);
+            cbType.TabIndex = 2;
+            cbType.SelectedIndexChanged += cbType_SelectedIndexChanged;
             // 
             // iconPictureBox1
             // 
@@ -119,44 +120,40 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(dataGridView1);
+            panel2.Controls.Add(foodDgv);
             panel2.Controls.Add(panel1);
             panel2.Location = new Point(725, 57);
             panel2.Name = "panel2";
             panel2.Size = new Size(329, 543);
             panel2.TabIndex = 5;
             // 
-            // dataGridView1
+            // foodDgv
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colName, colType, colPrice });
-            dataGridView1.Location = new Point(30, 85);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(272, 455);
-            dataGridView1.TabIndex = 2;
+            foodDgv.BackgroundColor = Color.White;
+            foodDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            foodDgv.Columns.AddRange(new DataGridViewColumn[] { colName1, colType1, colPrice1 });
+            foodDgv.Location = new Point(23, 97);
+            foodDgv.Name = "foodDgv";
+            foodDgv.RowTemplate.Height = 25;
+            foodDgv.Size = new Size(292, 433);
+            foodDgv.TabIndex = 0;
             // 
-            // colName
+            // colName1
             // 
-            colName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            colName.HeaderText = "Tên đồ uống";
-            colName.Name = "colName";
-            colName.Width = 98;
+            colName1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            colName1.HeaderText = "Tên đồ uống";
+            colName1.Name = "colName1";
+            colName1.Width = 98;
             // 
-            // colType
+            // colType1
             // 
-            colType.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            colType.HeaderText = "Phân loại";
-            colType.Name = "colType";
-            colType.Width = 81;
+            colType1.HeaderText = "Phân loại";
+            colType1.Name = "colType1";
             // 
-            // colPrice
+            // colPrice1
             // 
-            colPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            colPrice.HeaderText = "Giá";
-            colPrice.Name = "colPrice";
-            colPrice.Width = 49;
+            colPrice1.HeaderText = "Giá";
+            colPrice1.Name = "colPrice1";
             // 
             // label2
             // 
@@ -188,7 +185,7 @@
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)foodDgv).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -200,14 +197,14 @@
         private PictureBox picTable;
         private Panel panel1;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
-        private ComboBox comboBox1;
+        private ComboBox cbType;
         private TextBox textBox1;
         private DataGridView dataGridView2;
         private Panel panel2;
-        private DataGridView dataGridView1;
         private Label label2;
-        private DataGridViewTextBoxColumn colName;
-        private DataGridViewTextBoxColumn colType;
-        private DataGridViewTextBoxColumn colPrice;
+        private DataGridView foodDgv;
+        private DataGridViewTextBoxColumn colName1;
+        private DataGridViewTextBoxColumn colType1;
+        private DataGridViewTextBoxColumn colPrice1;
     }
 }

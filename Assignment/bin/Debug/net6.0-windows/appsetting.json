@@ -1,5 +1,5 @@
 {
   "ConnectionStrings": {
-    "CoffeeManagement": "server =(local); database=CoffeeManagemente;uid=sa;pwd=12345;TrustServerCertificate=True"
+    "CoffeeManagement": "server =(local); database=CoffeeManagement;uid=sa;pwd=12345;TrustServerCertificate=True"
   }
 }
