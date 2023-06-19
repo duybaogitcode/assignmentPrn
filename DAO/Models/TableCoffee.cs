@@ -14,7 +14,7 @@ namespace DAO.Models
 
         public string Id { get; set; }
         public string Name { get; set; }
-        public string Status { get; set; }
+        public bool Status { get; set; }
 
         public virtual ICollection<Bill> Bills { get; set; }
     }

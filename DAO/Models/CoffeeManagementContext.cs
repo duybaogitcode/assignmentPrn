@@ -41,7 +41,7 @@ namespace DAO.Models
             modelBuilder.Entity<Account>(entity =>
             {
                 entity.HasKey(e => e.UserName)
-                    .HasName("PK__Account__C9F28457AF433C9A");
+                    .HasName("PK__Account__C9F284576FD11F42");
 
                 entity.ToTable("Account");
 
@@ -193,11 +193,6 @@ namespace DAO.Models
                     .IsRequired()
                     .HasMaxLength(100)
                     .HasDefaultValueSql("(N'Chưa đặt tên')");
-
-                entity.Property(e => e.Status)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .HasDefaultValueSql("(N'Trống')");
             });
 
             OnModelCreatingPartial(modelBuilder);
