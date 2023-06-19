@@ -68,10 +68,6 @@ namespace Assignment
             return tablePanel;
         }
 
-        private void iconPictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 
 }

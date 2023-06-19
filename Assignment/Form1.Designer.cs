@@ -36,11 +36,16 @@
             ibtnHome = new FontAwesome.Sharp.IconButton();
             pnlLogo = new Panel();
             picLogo = new PictureBox();
+            panelTitleBar = new Panel();
             panel1 = new Panel();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
+            iconButton2 = new FontAwesome.Sharp.IconButton();
             pnlMain = new Panel();
             pnlMenu.SuspendLayout();
             pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
+            panelTitleBar.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // pnlMenu
@@ -168,22 +173,71 @@
             // 
             picLogo.Location = new Point(12, 30);
             picLogo.Name = "picLogo";
-            picLogo.Size = new Size(193, 127);
+            picLogo.Size = new Size(193, 102);
             picLogo.TabIndex = 0;
             picLogo.TabStop = false;
             // 
+            // panelTitleBar
+            // 
+            panelTitleBar.BackColor = Color.FromArgb(32, 35, 43);
+            panelTitleBar.Controls.Add(panel1);
+            panelTitleBar.Dock = DockStyle.Top;
+            panelTitleBar.Location = new Point(222, 0);
+            panelTitleBar.Name = "panelTitleBar";
+            panelTitleBar.Size = new Size(1140, 79);
+            panelTitleBar.TabIndex = 1;
+            panelTitleBar.MouseDown += panelTitleBar_MouseDown;
+            // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(32, 35, 43);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(222, 0);
+            panel1.BackColor = Color.FromArgb(34, 37, 45);
+            panel1.Controls.Add(iconButton1);
+            panel1.Controls.Add(iconButton2);
+            panel1.Location = new Point(1017, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1140, 79);
-            panel1.TabIndex = 1;
+            panel1.Size = new Size(120, 26);
+            panel1.TabIndex = 0;
+            // 
+            // iconButton1
+            // 
+            iconButton1.BackColor = Color.FromArgb(34, 37, 45);
+            iconButton1.Cursor = Cursors.Hand;
+            iconButton1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButton1.ForeColor = Color.White;
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconButton1.IconColor = Color.White;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton1.Location = new Point(64, 2);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Size = new Size(56, 21);
+            iconButton1.TabIndex = 1;
+            iconButton1.Text = "X";
+            iconButton1.UseVisualStyleBackColor = false;
+            iconButton1.UseWaitCursor = true;
+            iconButton1.Click += btnExit_Click;
+            // 
+            // iconButton2
+            // 
+            iconButton2.BackColor = Color.FromArgb(34, 37, 45);
+            iconButton2.Cursor = Cursors.Hand;
+            iconButton2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButton2.ForeColor = Color.White;
+            iconButton2.IconChar = FontAwesome.Sharp.IconChar.Minus;
+            iconButton2.IconColor = Color.White;
+            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton2.IconSize = 20;
+            iconButton2.Location = new Point(3, 2);
+            iconButton2.Name = "iconButton2";
+            iconButton2.Size = new Size(56, 21);
+            iconButton2.TabIndex = 2;
+            iconButton2.UseVisualStyleBackColor = false;
+            iconButton2.UseWaitCursor = true;
+            iconButton2.Click += btnMinimize_Click;
             // 
             // pnlMain
             // 
             pnlMain.BackColor = Color.FromArgb(34, 37, 45);
+            pnlMain.BorderStyle = BorderStyle.FixedSingle;
             pnlMain.Dock = DockStyle.Fill;
             pnlMain.Location = new Point(222, 79);
             pnlMain.Name = "pnlMain";
@@ -197,15 +251,18 @@
             BackColor = SystemColors.Control;
             ClientSize = new Size(1362, 742);
             Controls.Add(pnlMain);
-            Controls.Add(panel1);
+            Controls.Add(panelTitleBar);
             Controls.Add(pnlMenu);
             ForeColor = SystemColors.ActiveCaptionText;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
             Text = "Form1";
             TransparencyKey = Color.Black;
             pnlMenu.ResumeLayout(false);
             pnlLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
+            panelTitleBar.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -219,9 +276,12 @@
         private FontAwesome.Sharp.IconButton ibtnDashboard;
         private FontAwesome.Sharp.IconButton ibtnProducts;
         private FontAwesome.Sharp.IconButton ibtnEmp;
-        private Panel panel1;
+        private Panel panelTitleBar;
         private Panel pnlMain;
         private FontAwesome.Sharp.IconButton ibtnSetting;
         private PictureBox picLogo;
+        private Panel panel1;
+        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton iconButton2;
     }
 }

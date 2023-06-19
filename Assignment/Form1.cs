@@ -11,9 +11,10 @@ namespace Assignment
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm;
+        private readonly IMapper _mapper;
 
 
-        public Form1()
+        public Form1(IMapper mapper)
         {
 
             InitializeComponent();
@@ -26,6 +27,8 @@ namespace Assignment
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
+            this.FormBorderStyle = FormBorderStyle.None;
+            _mapper = mapper;
 
         }
 
@@ -91,7 +94,7 @@ namespace Assignment
         private void ibtnEmp_Click(object sender, EventArgs e)
         {
             this.AcctiveBtn(sender, RGBColors.color);
-            this.openChildForm(new accountForm());
+            this.openChildForm(new accountForm(_mapper));
 
         }
 
@@ -148,6 +151,7 @@ namespace Assignment
             this.AcctiveBtn(sender, RGBColors.color);
             this.openChildForm(new dashboardForm());
         }
+
 
         private struct RGBColors
         {

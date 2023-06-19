@@ -1,4 +1,5 @@
-﻿using BUS;
+﻿using AutoMapper;
+using BUS;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -14,22 +15,32 @@ namespace Assignment
 {
     public partial class accountForm : Form
     {
-        public accountForm()
+        private readonly IMapper _mapper;
+        public accountForm(IMapper mapper)
         {
             InitializeComponent();
+            _mapper = mapper;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AccountTypeBus bus = new AccountTypeBus();
+            AccountTypeBus bus = new AccountTypeBus(_mapper);
             string id = Guid.NewGuid().ToString();
-            string typeName = "Quản lí";
+            string typeName = "Nhân viên";
 
             AccountTypeDTO accountType = new AccountTypeDTO();
             accountType.Id = id;
             accountType.TypeName = typeName;
 
-            bus.addNewAccountType(accountType);
+            try
+            {
+                bus.addNewAccountType(accountType);
+                MessageBox.Show("Thêm mới thành công");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Thêm mới thất bại");
+            }
         }
     }
 }

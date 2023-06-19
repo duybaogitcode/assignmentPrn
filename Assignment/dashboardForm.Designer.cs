@@ -115,6 +115,7 @@
             // 
             // pnlColunnChart
             // 
+            pnlColunnChart.BackColor = Color.FromArgb(46, 52, 60);
             pnlColunnChart.Location = new Point(2, 90);
             pnlColunnChart.Name = "pnlColunnChart";
             pnlColunnChart.Size = new Size(663, 450);
@@ -122,9 +123,10 @@
             // 
             // pnlPieChart
             // 
-            pnlPieChart.Location = new Point(722, 90);
+            pnlPieChart.BackColor = Color.FromArgb(46, 52, 60);
+            pnlPieChart.Location = new Point(723, 90);
             pnlPieChart.Name = "pnlPieChart";
-            pnlPieChart.Size = new Size(386, 446);
+            pnlPieChart.Size = new Size(385, 446);
             pnlPieChart.TabIndex = 10;
             // 
             // panel1

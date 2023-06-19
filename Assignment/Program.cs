@@ -20,7 +20,7 @@ namespace Assignment
             });
 
             IMapper mapper = config.CreateMapper();
-            Application.Run(new Form1());
+            Application.Run(new Form1(mapper));
         }
     }
 }

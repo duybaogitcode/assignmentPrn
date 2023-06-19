@@ -1,4 +1,5 @@
-﻿using DAO.Models;
+﻿using AutoMapper;
+using DAO.Models;
 using DAO.Services;
 using DTO;
 using System;
@@ -12,15 +13,18 @@ namespace BUS
 
     public class AccountTypeBus
     {
+        private IMapper mapper;
+        private AccountTypesServices accountTypesServices;
 
-        AccountTypesServices accountTypesServices = new AccountTypesServices();
-        AccountType accountType = new AccountType();
+        public AccountTypeBus(IMapper mapper)
+        {
+            this.mapper = mapper;
+            this.accountTypesServices = new AccountTypesServices();
+        }
 
         public AccountType addNewAccountType(AccountTypeDTO accountTypeDTO)
         {
-
-            accountType.Id = accountTypeDTO.Id;
-            accountType.TypeName = accountTypeDTO.TypeName;
+            AccountType accountType = mapper.Map<AccountType>(accountTypeDTO);
 
             accountTypesServices.Create(accountType);
             return accountType;
