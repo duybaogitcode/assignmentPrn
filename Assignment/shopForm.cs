@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,11 +15,12 @@ namespace Assignment
     {
 
 
-        int tableCount = 12;
-
-        public shopForm()
+        int tableCount = 20;
+        private readonly IMapper _mapper;
+        public shopForm(IMapper mapper)
         {
             InitializeComponent();
+            this._mapper = mapper;
             FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
             flowLayoutPanel.Dock = DockStyle.Fill;
             flowLayoutPanel.AutoScroll = true;

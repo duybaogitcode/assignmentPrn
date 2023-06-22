@@ -14,6 +14,17 @@ namespace BUS
         public MappingProfile()
         {
             CreateMap<AccountTypeDTO, AccountType>();
+            CreateMap<AccountType, AccountTypeDTO>();
+            CreateMap<AccountDTO, Account>();
+            CreateMap<Account, AccountDTO>();
+            CreateMap<BillDTO, Bill>();
+            CreateMap<Bill, BillDTO>();
+            CreateMap<BillInfoDTO, BillInfo>();
+            CreateMap<BillInfo, BillInfoDTO>();
+            CreateMap<CategoryFoodDTO, CategoryFood>();
+            CreateMap<CategoryFood, CategoryFoodDTO>();
+            CreateMap<TableCoffeeDTO, TableCoffee>();
+            CreateMap<TableCoffee, TableCoffeeDTO>();
         }
     }
 }

@@ -28,22 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            accountDataG = new DataGridView();
+            UserName = new DataGridViewTextBoxColumn();
+            DisplayName = new DataGridViewTextBoxColumn();
+            Type = new DataGridViewTextBoxColumn();
+            Edit = new DataGridViewButtonColumn();
+            Delete = new DataGridViewButtonColumn();
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            lbCRUD = new Label();
+            ibtnReload = new FontAwesome.Sharp.IconButton();
+            ibtnCancel = new FontAwesome.Sharp.IconButton();
+            ibtnConfirm = new FontAwesome.Sharp.IconButton();
             panel6 = new Panel();
             label2 = new Label();
-            textBox3 = new TextBox();
+            txtDisplayname = new TextBox();
             panel5 = new Panel();
             label1 = new Label();
-            textBox2 = new TextBox();
+            txtPassword = new TextBox();
             panel4 = new Panel();
             lbUsername = new Label();
-            textBox1 = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            txtUsername = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)accountDataG).BeginInit();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             panel6.SuspendLayout();
@@ -51,19 +58,50 @@
             panel4.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridView1
+            // accountDataG
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(39, 57);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(703, 521);
-            dataGridView1.TabIndex = 0;
+            accountDataG.BackgroundColor = Color.White;
+            accountDataG.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            accountDataG.Columns.AddRange(new DataGridViewColumn[] { UserName, DisplayName, Type, Edit, Delete });
+            accountDataG.Location = new Point(39, 57);
+            accountDataG.Name = "accountDataG";
+            accountDataG.RowTemplate.Height = 25;
+            accountDataG.Size = new Size(703, 521);
+            accountDataG.TabIndex = 0;
+            accountDataG.CellContentClick += accountDataG_CellContentClick;
+            // 
+            // UserName
+            // 
+            UserName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            UserName.HeaderText = "Tài khoản";
+            UserName.Name = "UserName";
+            // 
+            // DisplayName
+            // 
+            DisplayName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DisplayName.HeaderText = "Tên hiển thị";
+            DisplayName.Name = "DisplayName";
+            // 
+            // Type
+            // 
+            Type.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Type.HeaderText = "Chức vụ";
+            Type.Name = "Type";
+            // 
+            // Edit
+            // 
+            Edit.HeaderText = "Chỉnh sửa";
+            Edit.Name = "Edit";
+            Edit.Resizable = DataGridViewTriState.True;
+            // 
+            // Delete
+            // 
+            Delete.HeaderText = "Xóa";
+            Delete.Name = "Delete";
             // 
             // panel1
             // 
-            panel1.BackColor = Color.White;
+            panel1.BackColor = Color.Black;
             panel1.Location = new Point(323, 50);
             panel1.Name = "panel1";
             panel1.Size = new Size(10, 550);
@@ -71,16 +109,18 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(dataGridView1);
-            panel2.Location = new Point(348, 22);
+            panel2.Controls.Add(accountDataG);
+            panel2.Location = new Point(350, 22);
             panel2.Name = "panel2";
             panel2.Size = new Size(771, 593);
             panel2.TabIndex = 2;
             // 
             // panel3
             // 
-            panel3.Controls.Add(iconButton2);
-            panel3.Controls.Add(iconButton1);
+            panel3.Controls.Add(lbCRUD);
+            panel3.Controls.Add(ibtnReload);
+            panel3.Controls.Add(ibtnCancel);
+            panel3.Controls.Add(ibtnConfirm);
             panel3.Controls.Add(panel6);
             panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel4);
@@ -89,37 +129,67 @@
             panel3.Size = new Size(279, 625);
             panel3.TabIndex = 3;
             // 
-            // iconButton2
+            // lbCRUD
             // 
-            iconButton2.BackColor = Color.FromArgb(225, 0, 125);
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton2.IconColor = Color.Black;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.Location = new Point(169, 417);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(103, 44);
-            iconButton2.TabIndex = 7;
-            iconButton2.Text = "Hủy bỏ";
-            iconButton2.UseVisualStyleBackColor = false;
+            lbCRUD.AutoSize = true;
+            lbCRUD.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            lbCRUD.ForeColor = Color.Black;
+            lbCRUD.Location = new Point(0, 3);
+            lbCRUD.Name = "lbCRUD";
+            lbCRUD.Size = new Size(92, 25);
+            lbCRUD.TabIndex = 8;
+            lbCRUD.Text = "Thêm mới";
             // 
-            // iconButton1
+            // ibtnReload
             // 
-            iconButton1.BackColor = Color.FromArgb(5, 201, 204);
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.Location = new Point(60, 417);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(103, 44);
-            iconButton1.TabIndex = 6;
-            iconButton1.Text = "Xác nhận";
-            iconButton1.UseVisualStyleBackColor = false;
+            ibtnReload.BackColor = Color.FromArgb(182, 205, 84);
+            ibtnReload.IconChar = FontAwesome.Sharp.IconChar.Rotate;
+            ibtnReload.IconColor = Color.Black;
+            ibtnReload.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ibtnReload.IconSize = 30;
+            ibtnReload.ImageAlign = ContentAlignment.MiddleLeft;
+            ibtnReload.Location = new Point(234, 3);
+            ibtnReload.Name = "ibtnReload";
+            ibtnReload.Size = new Size(38, 34);
+            ibtnReload.TabIndex = 1;
+            ibtnReload.TextAlign = ContentAlignment.MiddleRight;
+            ibtnReload.TextImageRelation = TextImageRelation.ImageBeforeText;
+            ibtnReload.UseVisualStyleBackColor = false;
+            ibtnReload.Click += ibtnReload_Click;
+            // 
+            // ibtnCancel
+            // 
+            ibtnCancel.BackColor = Color.FromArgb(225, 0, 125);
+            ibtnCancel.IconChar = FontAwesome.Sharp.IconChar.None;
+            ibtnCancel.IconColor = Color.Black;
+            ibtnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ibtnCancel.Location = new Point(169, 417);
+            ibtnCancel.Name = "ibtnCancel";
+            ibtnCancel.Size = new Size(103, 44);
+            ibtnCancel.TabIndex = 7;
+            ibtnCancel.Text = "Hủy bỏ";
+            ibtnCancel.UseVisualStyleBackColor = false;
+            ibtnCancel.Click += ibtnCancel_Click;
+            // 
+            // ibtnConfirm
+            // 
+            ibtnConfirm.BackColor = Color.FromArgb(5, 201, 204);
+            ibtnConfirm.IconChar = FontAwesome.Sharp.IconChar.None;
+            ibtnConfirm.IconColor = Color.Black;
+            ibtnConfirm.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ibtnConfirm.Location = new Point(60, 417);
+            ibtnConfirm.Name = "ibtnConfirm";
+            ibtnConfirm.Size = new Size(103, 44);
+            ibtnConfirm.TabIndex = 6;
+            ibtnConfirm.Text = "Xác nhận";
+            ibtnConfirm.UseVisualStyleBackColor = false;
+            ibtnConfirm.Click += ibtnConfirm_Click;
             // 
             // panel6
             // 
             panel6.Controls.Add(label2);
-            panel6.Controls.Add(textBox3);
-            panel6.Location = new Point(3, 259);
+            panel6.Controls.Add(txtDisplayname);
+            panel6.Location = new Point(4, 151);
             panel6.Name = "panel6";
             panel6.Size = new Size(272, 45);
             panel6.TabIndex = 5;
@@ -128,25 +198,26 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = Color.White;
+            label2.ForeColor = Color.Black;
             label2.Location = new Point(0, 11);
             label2.Name = "label2";
             label2.Size = new Size(89, 21);
             label2.TabIndex = 1;
             label2.Text = "Tên hiển thị";
             // 
-            // textBox3
+            // txtDisplayname
             // 
-            textBox3.Location = new Point(89, 9);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(180, 23);
-            textBox3.TabIndex = 0;
+            txtDisplayname.BackColor = Color.White;
+            txtDisplayname.Location = new Point(89, 9);
+            txtDisplayname.Name = "txtDisplayname";
+            txtDisplayname.Size = new Size(180, 23);
+            txtDisplayname.TabIndex = 0;
             // 
             // panel5
             // 
             panel5.Controls.Add(label1);
-            panel5.Controls.Add(textBox2);
-            panel5.Location = new Point(3, 153);
+            panel5.Controls.Add(txtPassword);
+            panel5.Location = new Point(3, 252);
             panel5.Name = "panel5";
             panel5.Size = new Size(272, 45);
             panel5.TabIndex = 5;
@@ -155,24 +226,25 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
+            label1.ForeColor = Color.Black;
             label1.Location = new Point(8, 11);
             label1.Name = "label1";
             label1.Size = new Size(75, 21);
             label1.TabIndex = 1;
             label1.Text = "Mật khẩu";
             // 
-            // textBox2
+            // txtPassword
             // 
-            textBox2.Location = new Point(89, 9);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(180, 23);
-            textBox2.TabIndex = 0;
+            txtPassword.BackColor = SystemColors.InactiveCaption;
+            txtPassword.Location = new Point(89, 9);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(180, 23);
+            txtPassword.TabIndex = 0;
             // 
             // panel4
             // 
             panel4.Controls.Add(lbUsername);
-            panel4.Controls.Add(textBox1);
+            panel4.Controls.Add(txtUsername);
             panel4.Location = new Point(3, 54);
             panel4.Name = "panel4";
             panel4.Size = new Size(272, 45);
@@ -182,25 +254,26 @@
             // 
             lbUsername.AutoSize = true;
             lbUsername.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbUsername.ForeColor = Color.White;
+            lbUsername.ForeColor = Color.Black;
             lbUsername.Location = new Point(8, 11);
             lbUsername.Name = "lbUsername";
             lbUsername.Size = new Size(75, 21);
             lbUsername.TabIndex = 1;
             lbUsername.Text = "Tài khoản";
             // 
-            // textBox1
+            // txtUsername
             // 
-            textBox1.Location = new Point(89, 9);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(180, 23);
-            textBox1.TabIndex = 0;
+            txtUsername.BackColor = Color.White;
+            txtUsername.Location = new Point(89, 9);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(180, 23);
+            txtUsername.TabIndex = 0;
             // 
             // accountForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(46, 52, 60);
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1144, 623);
             Controls.Add(panel3);
             Controls.Add(panel2);
@@ -208,9 +281,11 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "accountForm";
             Text = "accountForm";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += accountForm_Load;
+            ((System.ComponentModel.ISupportInitialize)accountDataG).EndInit();
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel5.ResumeLayout(false);
@@ -222,20 +297,27 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView accountDataG;
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
-        private TextBox textBox1;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private TextBox txtUsername;
+        private FontAwesome.Sharp.IconButton ibtnConfirm;
         private Panel panel6;
         private Label label2;
-        private TextBox textBox3;
+        private TextBox txtDisplayname;
         private Panel panel5;
         private Label label1;
-        private TextBox textBox2;
+        private TextBox txtPassword;
         private Panel panel4;
         private Label lbUsername;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton ibtnCancel;
+        private FontAwesome.Sharp.IconButton ibtnReload;
+        private Label lbCRUD;
+        private DataGridViewTextBoxColumn UserName;
+        private DataGridViewTextBoxColumn DisplayName;
+        private DataGridViewTextBoxColumn Type;
+        private DataGridViewButtonColumn Edit;
+        private DataGridViewButtonColumn Delete;
     }
 }

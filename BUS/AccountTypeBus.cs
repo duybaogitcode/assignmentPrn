@@ -19,11 +19,11 @@ namespace BUS
         public AccountTypeBus(IMapper mapper)
         {
             this.mapper = mapper;
-            this.accountTypesServices = new AccountTypesServices();
         }
 
         public AccountType addNewAccountType(AccountTypeDTO accountTypeDTO)
         {
+            accountTypesServices = new AccountTypesServices();
             AccountType accountType = mapper.Map<AccountType>(accountTypeDTO);
 
             accountTypesServices.Create(accountType);

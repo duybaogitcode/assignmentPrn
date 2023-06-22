@@ -60,7 +60,7 @@
             pnlMenu.Dock = DockStyle.Left;
             pnlMenu.Location = new Point(0, 0);
             pnlMenu.Name = "pnlMenu";
-            pnlMenu.Size = new Size(222, 742);
+            pnlMenu.Size = new Size(222, 693);
             pnlMenu.TabIndex = 0;
             // 
             // ibtnSetting
@@ -241,7 +241,7 @@
             pnlMain.Dock = DockStyle.Fill;
             pnlMain.Location = new Point(222, 79);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(1140, 663);
+            pnlMain.Size = new Size(1140, 614);
             pnlMain.TabIndex = 2;
             // 
             // Form1
@@ -249,7 +249,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1362, 742);
+            ClientSize = new Size(1362, 693);
             Controls.Add(pnlMain);
             Controls.Add(panelTitleBar);
             Controls.Add(pnlMenu);
