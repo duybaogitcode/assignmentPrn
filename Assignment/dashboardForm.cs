@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,9 +15,11 @@ namespace Assignment
 {
     public partial class dashboardForm : Form
     {
-        public dashboardForm()
+        private readonly IMapper _mapper;
+        public dashboardForm(IMapper mapper)
         {
             InitializeComponent();
+            this._mapper = mapper;
 
             // Tạo biểu đồ dạng cột
             CreateColumnChart();

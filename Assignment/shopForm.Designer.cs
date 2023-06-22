@@ -57,7 +57,7 @@
             pnlHome.BorderStyle = BorderStyle.FixedSingle;
             pnlHome.Location = new Point(14, 15);
             pnlHome.Name = "pnlHome";
-            pnlHome.Size = new Size(675, 347);
+            pnlHome.Size = new Size(675, 334);
             pnlHome.TabIndex = 1;
             // 
             // panel1
@@ -87,7 +87,7 @@
             // 
             // iconPictureBox1
             // 
-            iconPictureBox1.BackColor = Color.FromArgb(46, 52, 60);
+            iconPictureBox1.BackColor = Color.WhiteSmoke;
             iconPictureBox1.ForeColor = SystemColors.ControlText;
             iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Searchengin;
             iconPictureBox1.IconColor = SystemColors.ControlText;
@@ -114,7 +114,7 @@
             panel2.Controls.Add(panel1);
             panel2.Location = new Point(733, 30);
             panel2.Name = "panel2";
-            panel2.Size = new Size(379, 660);
+            panel2.Size = new Size(379, 624);
             panel2.TabIndex = 5;
             // 
             // dataGridView1
@@ -125,7 +125,7 @@
             dataGridView1.Location = new Point(30, 85);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(323, 572);
+            dataGridView1.Size = new Size(323, 526);
             dataGridView1.TabIndex = 2;
             // 
             // colName
@@ -153,7 +153,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = Color.White;
+            label2.ForeColor = Color.Black;
             label2.Location = new Point(12, 9);
             label2.Name = "label2";
             label2.Size = new Size(44, 28);
@@ -163,9 +163,9 @@
             // panel3
             // 
             panel3.Controls.Add(dataGridView2);
-            panel3.Location = new Point(12, 460);
+            panel3.Location = new Point(12, 414);
             panel3.Name = "panel3";
-            panel3.Size = new Size(706, 230);
+            panel3.Size = new Size(706, 240);
             panel3.TabIndex = 7;
             // 
             // panel4
@@ -173,14 +173,14 @@
             panel4.Controls.Add(pnlHome);
             panel4.Location = new Point(12, 47);
             panel4.Name = "panel4";
-            panel4.Size = new Size(706, 380);
+            panel4.Size = new Size(706, 352);
             panel4.TabIndex = 8;
             // 
             // shopForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(46, 52, 60);
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1135, 702);
             Controls.Add(panel3);
             Controls.Add(label2);

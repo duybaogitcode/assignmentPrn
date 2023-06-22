@@ -88,7 +88,7 @@ namespace Assignment
         private void ibtnHome_Click(object sender, EventArgs e)
         {
             this.AcctiveBtn(sender, RGBColors.color);
-            this.openChildForm(new shopForm());
+            this.openChildForm(new shopForm(_mapper));
         }
 
         private void ibtnEmp_Click(object sender, EventArgs e)
@@ -101,6 +101,7 @@ namespace Assignment
         private void ibtnProducts_Click(object sender, EventArgs e)
         {
             this.AcctiveBtn(sender, RGBColors.color);
+            this.openChildForm(new productForm(_mapper));
         }
 
 
@@ -149,7 +150,7 @@ namespace Assignment
         private void ibtnDashboard_Click(object sender, EventArgs e)
         {
             this.AcctiveBtn(sender, RGBColors.color);
-            this.openChildForm(new dashboardForm());
+            this.openChildForm(new dashboardForm(_mapper));
         }
 
 

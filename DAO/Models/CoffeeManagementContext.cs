@@ -30,7 +30,7 @@ namespace DAO.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(this.GetConnectionString());
+                optionsBuilder.UseSqlServer(GetConnectionString());
             }
         }
 
@@ -40,7 +40,7 @@ namespace DAO.Models
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsetting.json", true, true)
                 .Build();
-            var strConn = config["ConnectionStrings:CoffeeManagement"];
+            var strConn = config["ConnectionStrings:CoffeeManagementDB"];
             return strConn;
         }
 

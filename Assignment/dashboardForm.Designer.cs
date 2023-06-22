@@ -46,7 +46,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
+            label1.ForeColor = Color.Black;
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
             label1.Size = new Size(107, 28);
@@ -115,7 +115,7 @@
             // 
             // pnlColunnChart
             // 
-            pnlColunnChart.BackColor = Color.FromArgb(46, 52, 60);
+            pnlColunnChart.BackColor = Color.WhiteSmoke;
             pnlColunnChart.Location = new Point(2, 90);
             pnlColunnChart.Name = "pnlColunnChart";
             pnlColunnChart.Size = new Size(663, 450);
@@ -123,7 +123,7 @@
             // 
             // pnlPieChart
             // 
-            pnlPieChart.BackColor = Color.FromArgb(46, 52, 60);
+            pnlPieChart.BackColor = Color.WhiteSmoke;
             pnlPieChart.Location = new Point(723, 90);
             pnlPieChart.Name = "pnlPieChart";
             pnlPieChart.Size = new Size(385, 446);
@@ -153,7 +153,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(46, 52, 60);
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1140, 614);
             Controls.Add(pnlPieChart);
             Controls.Add(iconButton3);
