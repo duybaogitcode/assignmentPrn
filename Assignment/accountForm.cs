@@ -25,6 +25,10 @@ namespace Assignment
             _mapper = mapper;
             this.bus = new AccountBUS(_mapper);
             this.loadListAccount();
+            pictureBox1.ImageLocation =
+                "C:\\Users\\duyba\\OneDrive\\Desktop\\video\\" +
+                "pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg";
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
 
@@ -47,23 +51,32 @@ namespace Assignment
             accountDataG.Columns["Edit"].DataPropertyName = "Edit";
             accountDataG.Columns["Delete"].DataPropertyName = "Delete";
 
-            //DataGridViewButtonColumn editButtonColumn = new DataGridViewButtonColumn();
-            //editButtonColumn.Name = "Edit";
-            //editButtonColumn.HeaderText = "Chỉnh sửa";
-            //editButtonColumn.Text = "Chỉnh sửa";
-            //editButtonColumn.UseColumnTextForButtonValue = true;
-            //accountDataG.Columns.Add(editButtonColumn);
-
-
-
-            //DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
-            //deleteButtonColumn.Name = "Delete";
-            //deleteButtonColumn.HeaderText = "Xóa";
-            //deleteButtonColumn.Text = "Xóa";
-            //deleteButtonColumn.UseColumnTextForButtonValue = true;
-            //accountDataG.Columns.Add(deleteButtonColumn);
-
             accountDataG.DataSource = accounts;
+        }
+
+        private AccountDTO CreateAccount()
+        {
+            AccountDTO accountDTO = new AccountDTO();
+            accountDTO.UserName = txtUsername.Text != "" ?
+                txtUsername.Text : throw new Exception("Tài khoản không được bỏ trống");
+            accountDTO.Password = txtPassword.Text != "" ?
+                txtPassword.Text : throw new Exception("Mật khẩu không được bỏ trống");
+            accountDTO.DisplayName = txtDisplayname.Text != "" ?
+                txtDisplayname.Text : throw new Exception("Tên hiển thị không được bỏ trống");
+            accountDTO.TypeId = TypeID;
+            return accountDTO;
+        }
+
+        private AccountDTO UpdateAccount()
+        {
+            AccountDTO accountDTO = new AccountDTO();
+            accountDTO = bus.getAccount(txtUsername.Text);
+            accountDTO.Password = txtPassword.Text != "" ?
+                txtPassword.Text : accountDTO.Password;
+            accountDTO.DisplayName = txtDisplayname.Text != "" ?
+                txtDisplayname.Text : accountDTO.DisplayName;
+            accountDTO.TypeId = TypeID;
+            return accountDTO;
         }
 
 
@@ -76,14 +89,7 @@ namespace Assignment
                     {
                         try
                         {
-                            AccountDTO accountDTO = new AccountDTO();
-                            accountDTO.UserName = txtUsername.Text != "" ?
-                                txtUsername.Text : throw new Exception("Tài khoản không được bỏ trống");
-                            accountDTO.Password = txtPassword.Text != "" ?
-                                txtPassword.Text : throw new Exception("Mật khẩu không được bỏ trống");
-                            accountDTO.DisplayName = txtDisplayname.Text != "" ?
-                                txtDisplayname.Text : throw new Exception("Tên hiển thị không được bỏ trống");
-                            accountDTO.TypeId = TypeID;
+                            var accountDTO = CreateAccount();
                             bus.createAccount(accountDTO);
                             this.loadListAccount();
                             MessageBox.Show("Thêm mới thành công");
@@ -108,13 +114,7 @@ namespace Assignment
 
                         try
                         {
-                            AccountDTO accountDTO = new AccountDTO();
-                            accountDTO = bus.getAccount(txtUsername.Text);
-                            accountDTO.Password = txtPassword.Text != "" ?
-                                txtPassword.Text : accountDTO.Password;
-                            accountDTO.DisplayName = txtDisplayname.Text != "" ?
-                                txtDisplayname.Text : accountDTO.DisplayName;
-                            accountDTO.TypeId = TypeID;
+                            var accountDTO = UpdateAccount();
                             bus.updateAccount(accountDTO); this.loadListAccount();
                             MessageBox.Show("Cập nhập thành công");
                         }
@@ -140,6 +140,8 @@ namespace Assignment
             txtUsername.Text = "";
             txtDisplayname.Text = "";
             txtPassword.Text = "";
+            lbCRUD.Text = "Thêm mới";
+            txtUsername.Enabled = true;
 
         }
 
@@ -195,6 +197,7 @@ namespace Assignment
             txtDisplayname.Text = "";
             txtPassword.Text = "";
             lbCRUD.Text = "Thêm mới";
+            txtUsername.Enabled = true;
         }
     }
 }

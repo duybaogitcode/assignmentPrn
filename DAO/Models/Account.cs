@@ -11,6 +11,7 @@ namespace DAO.Models
         public string DisplayName { get; set; }
         public string Password { get; set; }
         public string TypeId { get; set; }
+        public string Avatar { get; set; }
 
         public virtual AccountType Type { get; set; }
     }

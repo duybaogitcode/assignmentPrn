@@ -37,6 +37,8 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
+            panel7 = new Panel();
+            pictureBox1 = new PictureBox();
             lbCRUD = new Label();
             ibtnReload = new FontAwesome.Sharp.IconButton();
             ibtnCancel = new FontAwesome.Sharp.IconButton();
@@ -53,6 +55,8 @@
             ((System.ComponentModel.ISupportInitialize)accountDataG).BeginInit();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel6.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
@@ -101,7 +105,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Black;
+            panel1.BackColor = Color.FromArgb(34, 37, 45);
             panel1.Location = new Point(323, 50);
             panel1.Name = "panel1";
             panel1.Size = new Size(10, 550);
@@ -117,6 +121,7 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(panel7);
             panel3.Controls.Add(lbCRUD);
             panel3.Controls.Add(ibtnReload);
             panel3.Controls.Add(ibtnCancel);
@@ -128,6 +133,23 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(279, 625);
             panel3.TabIndex = 3;
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(pictureBox1);
+            panel7.Location = new Point(13, 44);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(252, 191);
+            panel7.TabIndex = 9;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.FromArgb(34, 37, 45);
+            pictureBox1.Location = new Point(6, 9);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(242, 171);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // lbCRUD
             // 
@@ -148,7 +170,7 @@
             ibtnReload.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnReload.IconSize = 30;
             ibtnReload.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnReload.Location = new Point(234, 3);
+            ibtnReload.Location = new Point(232, 3);
             ibtnReload.Name = "ibtnReload";
             ibtnReload.Size = new Size(38, 34);
             ibtnReload.TabIndex = 1;
@@ -163,7 +185,7 @@
             ibtnCancel.IconChar = FontAwesome.Sharp.IconChar.None;
             ibtnCancel.IconColor = Color.Black;
             ibtnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnCancel.Location = new Point(169, 417);
+            ibtnCancel.Location = new Point(167, 537);
             ibtnCancel.Name = "ibtnCancel";
             ibtnCancel.Size = new Size(103, 44);
             ibtnCancel.TabIndex = 7;
@@ -177,7 +199,7 @@
             ibtnConfirm.IconChar = FontAwesome.Sharp.IconChar.None;
             ibtnConfirm.IconColor = Color.Black;
             ibtnConfirm.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnConfirm.Location = new Point(60, 417);
+            ibtnConfirm.Location = new Point(58, 537);
             ibtnConfirm.Name = "ibtnConfirm";
             ibtnConfirm.Size = new Size(103, 44);
             ibtnConfirm.TabIndex = 6;
@@ -189,7 +211,7 @@
             // 
             panel6.Controls.Add(label2);
             panel6.Controls.Add(txtDisplayname);
-            panel6.Location = new Point(4, 151);
+            panel6.Location = new Point(8, 356);
             panel6.Name = "panel6";
             panel6.Size = new Size(272, 45);
             panel6.TabIndex = 5;
@@ -217,7 +239,7 @@
             // 
             panel5.Controls.Add(label1);
             panel5.Controls.Add(txtPassword);
-            panel5.Location = new Point(3, 252);
+            panel5.Location = new Point(4, 450);
             panel5.Name = "panel5";
             panel5.Size = new Size(272, 45);
             panel5.TabIndex = 5;
@@ -245,7 +267,7 @@
             // 
             panel4.Controls.Add(lbUsername);
             panel4.Controls.Add(txtUsername);
-            panel4.Location = new Point(3, 54);
+            panel4.Location = new Point(7, 259);
             panel4.Name = "panel4";
             panel4.Size = new Size(272, 45);
             panel4.TabIndex = 4;
@@ -286,6 +308,8 @@
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel5.ResumeLayout(false);
@@ -319,5 +343,7 @@
         private DataGridViewTextBoxColumn Type;
         private DataGridViewButtonColumn Edit;
         private DataGridViewButtonColumn Delete;
+        private Panel panel7;
+        private PictureBox pictureBox1;
     }
 }

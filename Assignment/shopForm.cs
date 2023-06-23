@@ -54,7 +54,7 @@ namespace Assignment
 
             PictureBox tablePictureBox = new PictureBox();
             tablePictureBox.Name = "picTable" + tableNumber;
-            tablePictureBox.ImageLocation = "https://firebasestorage.googleapis.com/v0/b/fxchangesapmle.appspot.com/o/c%23%2F7113274.png?alt=media&token=f293568b-19f3-4907-88a6-c9083c0b27cf";
+            tablePictureBox.ImageLocation = "C:\\Users\\duyba\\OneDrive\\Desktop\\video\\7113274.png";
             tablePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             tableLayoutPanel.Controls.Add(tablePictureBox, 0, 0);
 

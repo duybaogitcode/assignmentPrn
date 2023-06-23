@@ -13,6 +13,8 @@ namespace DTO
         public string Name { get; set; }
         public string CategoryId { get; set; }
         public int Price { get; set; }
+        public bool? Status { get; set; }
+        public string Avatar { get; set; }
 
         public virtual CategoryFoodDTO Category { get; set; }
         public virtual ICollection<BillInfoDTO> BillInfos { get; set; }
