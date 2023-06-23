@@ -33,7 +33,7 @@ namespace Assignment
             var listTable = this.Tables();
             foreach (TableCoffeeDTO item in listTable )
             {
-                Panel tablePanel = CreateTablePanel(item.Id);
+                Panel tablePanel = CreateTablePanel(item.Name, item.Id , item.Status);
                 flowLayoutPanel.Controls.Add(tablePanel);
             }
 
@@ -44,13 +44,23 @@ namespace Assignment
             return coffeeTableBUS.getAll().ToList();
         }
 
+        private void TablePictureBox_Click(object sender, EventArgs e)
+        {
+            PictureBox clickedPictureBox = (PictureBox)sender;
+            string tableId = clickedPictureBox.Name;
+            MessageBox.Show(tableId);
+        }
 
-        private Panel CreateTablePanel(string tableId)
+
+        private Panel CreateTablePanel(string tableName, string tableId, bool status)
         {
             Panel tablePanel = new Panel();
             tablePanel.Name = "panelTable" + tableId;
             tablePanel.BorderStyle = BorderStyle.FixedSingle;
-            //tablePanel.BackColor = Color.LimeGreen;
+            if(!status)
+            {
+                tablePanel.BackColor = Color.LightSkyBlue;
+            }
             tablePanel.Size = new Size(120, 100);
 
             TableLayoutPanel tableLayoutPanel = new TableLayoutPanel();
@@ -62,18 +72,18 @@ namespace Assignment
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
 
             PictureBox tablePictureBox = new PictureBox();
-            tablePictureBox.Name = "picTable" + tableId;
+            tablePictureBox.Name = tableId;
             tablePictureBox.ImageLocation = "C:\\Users\\duyba\\OneDrive\\Desktop\\video\\7113274.png";
             tablePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            tablePictureBox.Click += TablePictureBox_Click;
             tableLayoutPanel.Controls.Add(tablePictureBox, 0, 0);
 
             TextBox textBox = new TextBox();
             textBox.Name = "txtTable" + tableId;
-            textBox.Text = "Bàn " + tableId;
+            textBox.Text = tableName;
             textBox.Enabled = false;
             textBox.Dock = DockStyle.Fill;
             tableLayoutPanel.Controls.Add(textBox, 0, 1);
-
             tablePanel.Controls.Add(tableLayoutPanel);
 
             return tablePanel;
