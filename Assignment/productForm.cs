@@ -164,53 +164,60 @@ namespace Assignment
 
         private void dataFood_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string id = dataFood.Rows[e.RowIndex].Cells["Id"].Value.ToString();
-            if (e.ColumnIndex == dataFood.Columns["Edit"].Index)
+            try
             {
-                lbCRUD.Text = "Chỉnh sửa";
-                FoodDTO foodDTO = foodBUS.getFood(id);
-                if (foodDTO != null)
+                string id = dataFood.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+                if (e.ColumnIndex == dataFood.Columns["Edit"].Index)
                 {
-                    txtName.Text = foodDTO.Name;
-                    txtPrice.Text = foodDTO.Price.ToString();
-                    cbCategory.SelectedValue = foodDTO.CategoryId;
-                    lbID.Text = id;
-                }
-                else
-                {
-                    MessageBox.Show("Yêu cầu không hợp lệ");
-                }
-            }
-            if (e.ColumnIndex == dataFood.Columns["Delete"].Index)
-            {
-                this.reset();
-                FoodDTO foodDTO = foodBUS.getFood(id);
-                if (foodDTO != null)
-                {
-
-                    DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa " + foodDTO.Name
-                        + " ?", "Xác nhận xóa", MessageBoxButtons.YesNo);
-
-
-                    if (result == DialogResult.Yes)
+                    lbCRUD.Text = "Chỉnh sửa";
+                    FoodDTO foodDTO = foodBUS.getFood(id);
+                    if (foodDTO != null)
                     {
-                        foodDTO.Status = false;
-                        try
-                        {
-                            foodBUS.update(foodDTO);
-                            MessageBox.Show("Xóa thành công");
-                            this.loadListFood();
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Xóa thất bại");
-                        }
+                        txtName.Text = foodDTO.Name;
+                        txtPrice.Text = foodDTO.Price.ToString();
+                        cbCategory.SelectedValue = foodDTO.CategoryId;
+                        lbID.Text = id;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Yêu cầu không hợp lệ");
                     }
                 }
-                else
+                if (e.ColumnIndex == dataFood.Columns["Delete"].Index)
                 {
-                    MessageBox.Show("Yêu cầu không hợp lệ");
+                    this.reset();
+                    FoodDTO foodDTO = foodBUS.getFood(id);
+                    if (foodDTO != null)
+                    {
+
+                        DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa " + foodDTO.Name
+                            + " ?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+
+
+                        if (result == DialogResult.Yes)
+                        {
+                            foodDTO.Status = false;
+                            try
+                            {
+                                foodBUS.update(foodDTO);
+                                MessageBox.Show("Xóa thành công");
+                                this.loadListFood();
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Xóa thất bại");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Yêu cầu không hợp lệ");
+                    }
                 }
+            }
+            catch
+            {
+                MessageBox.Show("Sản phẩm không tồn tại");
             }
         }
 

@@ -158,41 +158,48 @@ namespace Assignment
         private void accountDataG_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            string userName = accountDataG.Rows[e.RowIndex].Cells["UserName"].Value.ToString();
-
-            var accountDTO = bus.getAccount(userName);
-            if (e.ColumnIndex == accountDataG.Columns["Edit"].Index)
+            try
             {
+                string userName = accountDataG.Rows[e.RowIndex].Cells["UserName"].Value.ToString();
 
-                txtUsername.Text = accountDTO.UserName;
-                txtUsername.Enabled = false;
-                txtDisplayname.Text = accountDTO.DisplayName;
-                txtPassword.Text = accountDTO.Password;
-                lbCRUD.Text = "Chỉnh sửa";
-            }
-            if (e.ColumnIndex == accountDataG.Columns["Delete"].Index)
-            {
-                this.reset();
-                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa " + userName + " ?", "Xác nhận xóa", MessageBoxButtons.YesNo);
-
-
-                if (result == DialogResult.Yes)
+                var accountDTO = bus.getAccount(userName);
+                if (e.ColumnIndex == accountDataG.Columns["Edit"].Index)
                 {
-                    bool isDelete = bus.deleteAccount(accountDTO);
-                    if (isDelete)
+
+                    txtUsername.Text = accountDTO.UserName;
+                    txtUsername.Enabled = false;
+                    txtDisplayname.Text = accountDTO.DisplayName;
+                    txtPassword.Text = accountDTO.Password;
+                    lbCRUD.Text = "Chỉnh sửa";
+                }
+                if (e.ColumnIndex == accountDataG.Columns["Delete"].Index)
+                {
+                    this.reset();
+                    DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa " + userName + " ?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+
+
+                    if (result == DialogResult.Yes)
                     {
-                        MessageBox.Show("Xóa thành công");
-                        this.loadListAccount();
+                        bool isDelete = bus.deleteAccount(accountDTO);
+                        if (isDelete)
+                        {
+                            MessageBox.Show("Xóa thành công");
+                            this.loadListAccount();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa thất bại");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Xóa thất bại");
+                        MessageBox.Show("Đã hủy lựa chọn");
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Đã hủy lựa chọn");
-                }
+            }
+            catch
+            {
+                MessageBox.Show("Tài khoản không tồn tại");
             }
         }
 

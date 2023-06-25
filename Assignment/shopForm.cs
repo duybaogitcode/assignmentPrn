@@ -22,6 +22,8 @@ namespace Assignment
         private CategoryFoodBUS cateBUS;
         private FoodBUS foodBUS;
         private Panel selectedPanel;
+        private BillBUS billBUS;
+        private FoodDTO foodDTO;
         public shopForm(IMapper mapper)
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace Assignment
             coffeeTableBUS = new TableCoffeeBUS(_mapper);
             this.cateBUS = new CategoryFoodBUS(_mapper);
             this.foodBUS = new FoodBUS(_mapper);
+            this.billBUS = new BillBUS(_mapper);
             this.loadListFood();
             this.CreatePanels();
 
@@ -143,8 +146,23 @@ namespace Assignment
             return tablePanel;
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dataFood_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string id = dataFood.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+            var food = foodBUS.getFood(id);
+            foodDTO = food;
+            lbFood.Text = foodDTO.Name;
+            lbFoodPrice.Text = foodDTO.Price.ToString() + " VND";
+        }
+
+        private void ibtnAdd_Click(object sender, EventArgs e)
+        {
+            if(foodDTO == null)
+            {
+                MessageBox.Show("Vui lòng chọn đồ uống trước");
+                return;
+            }
 
         }
     }

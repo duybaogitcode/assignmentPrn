@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 
+
 namespace Assignment
 {
     public partial class dashboardForm : Form
@@ -26,6 +27,12 @@ namespace Assignment
 
             // Tạo biểu đồ dạng hình tròn
             CreatePieChart();
+
+            // Thiết lập ngôn ngữ tiếng Việt cho DateTimePicker
+            dateTimePickerFrom.Format = DateTimePickerFormat.Custom;
+            dateTimePickerFrom.CustomFormat = "dd/MM/yyyy";
+            dateTimePickerTo.Format = DateTimePickerFormat.Custom;
+            dateTimePickerTo.CustomFormat = "dd/MM/yyyy";
         }
 
         private void CreateColumnChart()

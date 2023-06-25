@@ -257,6 +257,7 @@
             dataFood.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataFood.Columns.AddRange(new DataGridViewColumn[] { FoodName, Id, Category, Price, Edit, Delete });
             dataFood.Location = new Point(0, 36);
+            dataFood.MultiSelect = false;
             dataFood.Name = "dataFood";
             dataFood.RowTemplate.Height = 25;
             dataFood.Size = new Size(703, 521);

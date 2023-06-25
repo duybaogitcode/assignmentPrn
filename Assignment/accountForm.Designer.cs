@@ -68,6 +68,7 @@
             accountDataG.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             accountDataG.Columns.AddRange(new DataGridViewColumn[] { UserName, DisplayName, Type, Edit, Delete });
             accountDataG.Location = new Point(39, 57);
+            accountDataG.MultiSelect = false;
             accountDataG.Name = "accountDataG";
             accountDataG.RowTemplate.Height = 25;
             accountDataG.Size = new Size(703, 521);
