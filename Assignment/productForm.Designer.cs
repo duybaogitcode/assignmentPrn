@@ -32,7 +32,7 @@
             panel7 = new Panel();
             pictureBox1 = new PictureBox();
             lbCRUD = new Label();
-            ibtnReload = new FontAwesome.Sharp.IconButton();
+            ibtnImage = new FontAwesome.Sharp.IconButton();
             panel6 = new Panel();
             cbCategory = new ComboBox();
             label2 = new Label();
@@ -53,6 +53,7 @@
             Price = new DataGridViewTextBoxColumn();
             Edit = new DataGridViewButtonColumn();
             Delete = new DataGridViewButtonColumn();
+            lbID = new Label();
             panel3.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -67,7 +68,7 @@
             // 
             panel3.Controls.Add(panel7);
             panel3.Controls.Add(lbCRUD);
-            panel3.Controls.Add(ibtnReload);
+            panel3.Controls.Add(ibtnImage);
             panel3.Controls.Add(panel6);
             panel3.Controls.Add(ibtnCancel);
             panel3.Controls.Add(ibtnConfirm);
@@ -75,15 +76,15 @@
             panel3.Controls.Add(panel4);
             panel3.Location = new Point(12, 30);
             panel3.Name = "panel3";
-            panel3.Size = new Size(306, 625);
+            panel3.Size = new Size(335, 625);
             panel3.TabIndex = 4;
             // 
             // panel7
             // 
             panel7.Controls.Add(pictureBox1);
-            panel7.Location = new Point(21, 138);
+            panel7.Location = new Point(19, 51);
             panel7.Name = "panel7";
-            panel7.Size = new Size(266, 187);
+            panel7.Size = new Size(284, 187);
             panel7.TabIndex = 10;
             // 
             // pictureBox1
@@ -91,7 +92,7 @@
             pictureBox1.BackColor = Color.FromArgb(34, 37, 45);
             pictureBox1.Location = new Point(0, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(263, 181);
+            pictureBox1.Size = new Size(284, 181);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -106,22 +107,20 @@
             lbCRUD.TabIndex = 9;
             lbCRUD.Text = "Thêm mới";
             // 
-            // ibtnReload
+            // ibtnImage
             // 
-            ibtnReload.BackColor = Color.FromArgb(182, 205, 84);
-            ibtnReload.IconChar = FontAwesome.Sharp.IconChar.Rotate;
-            ibtnReload.IconColor = Color.Black;
-            ibtnReload.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnReload.IconSize = 30;
-            ibtnReload.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnReload.Location = new Point(265, 3);
-            ibtnReload.Name = "ibtnReload";
-            ibtnReload.Size = new Size(38, 34);
-            ibtnReload.TabIndex = 8;
-            ibtnReload.TextAlign = ContentAlignment.MiddleRight;
-            ibtnReload.TextImageRelation = TextImageRelation.ImageBeforeText;
-            ibtnReload.UseVisualStyleBackColor = false;
-            ibtnReload.Click += ibtnReload_Click;
+            ibtnImage.BackColor = Color.FromArgb(182, 205, 84);
+            ibtnImage.IconChar = FontAwesome.Sharp.IconChar.Images;
+            ibtnImage.IconColor = Color.Black;
+            ibtnImage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ibtnImage.IconSize = 30;
+            ibtnImage.Location = new Point(285, 18);
+            ibtnImage.Name = "ibtnImage";
+            ibtnImage.Size = new Size(47, 30);
+            ibtnImage.TabIndex = 8;
+            ibtnImage.TextAlign = ContentAlignment.MiddleRight;
+            ibtnImage.TextImageRelation = TextImageRelation.ImageBeforeText;
+            ibtnImage.UseVisualStyleBackColor = false;
             // 
             // panel6
             // 
@@ -155,23 +154,26 @@
             // ibtnCancel
             // 
             ibtnCancel.BackColor = Color.FromArgb(225, 0, 125);
+            ibtnCancel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             ibtnCancel.IconChar = FontAwesome.Sharp.IconChar.None;
             ibtnCancel.IconColor = Color.Black;
             ibtnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnCancel.Location = new Point(199, 522);
+            ibtnCancel.Location = new Point(231, 528);
             ibtnCancel.Name = "ibtnCancel";
             ibtnCancel.Size = new Size(103, 44);
             ibtnCancel.TabIndex = 7;
             ibtnCancel.Text = "Hủy bỏ";
             ibtnCancel.UseVisualStyleBackColor = false;
+            ibtnCancel.Click += ibtnCancel_Click;
             // 
             // ibtnConfirm
             // 
             ibtnConfirm.BackColor = Color.FromArgb(5, 201, 204);
+            ibtnConfirm.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             ibtnConfirm.IconChar = FontAwesome.Sharp.IconChar.None;
             ibtnConfirm.IconColor = Color.Black;
             ibtnConfirm.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnConfirm.Location = new Point(94, 522);
+            ibtnConfirm.Location = new Point(126, 528);
             ibtnConfirm.Name = "ibtnConfirm";
             ibtnConfirm.Size = new Size(103, 44);
             ibtnConfirm.TabIndex = 6;
@@ -210,7 +212,7 @@
             // 
             panel4.Controls.Add(lbUsername);
             panel4.Controls.Add(txtName);
-            panel4.Location = new Point(3, 54);
+            panel4.Location = new Point(1, 271);
             panel4.Name = "panel4";
             panel4.Size = new Size(302, 45);
             panel4.TabIndex = 4;
@@ -236,9 +238,9 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(34, 37, 45);
-            panel1.Location = new Point(353, 64);
+            panel1.Location = new Point(353, 41);
             panel1.Name = "panel1";
-            panel1.Size = new Size(10, 519);
+            panel1.Size = new Size(10, 570);
             panel1.TabIndex = 8;
             // 
             // panel2
@@ -295,12 +297,22 @@
             Delete.HeaderText = "Xóa";
             Delete.Name = "Delete";
             // 
+            // lbID
+            // 
+            lbID.AutoSize = true;
+            lbID.Location = new Point(31, 10);
+            lbID.Name = "lbID";
+            lbID.Size = new Size(0, 15);
+            lbID.TabIndex = 10;
+            lbID.Visible = false;
+            // 
             // productForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1125, 667);
+            Controls.Add(lbID);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(panel3);
@@ -321,6 +333,7 @@
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataFood).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -339,7 +352,7 @@
         private Panel panel6;
         private ComboBox cbCategory;
         private Label label2;
-        private FontAwesome.Sharp.IconButton ibtnReload;
+        private FontAwesome.Sharp.IconButton ibtnImage;
         private Label lbCRUD;
         private DataGridView dataFood;
         private Panel panel7;
@@ -350,5 +363,6 @@
         private DataGridViewTextBoxColumn Price;
         private DataGridViewButtonColumn Edit;
         private DataGridViewButtonColumn Delete;
+        private Label lbID;
     }
 }

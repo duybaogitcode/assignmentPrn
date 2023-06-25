@@ -18,25 +18,35 @@ namespace Assignment
 
 
         private readonly IMapper _mapper;
-        private CoffeeTableBUS coffeeTableBUS;
+        private TableCoffeeBUS coffeeTableBUS;
+        private CategoryFoodBUS cateBUS;
+        private FoodBUS foodBUS;
+        private Panel selectedPanel;
         public shopForm(IMapper mapper)
         {
             InitializeComponent();
             this._mapper = mapper;
-            coffeeTableBUS = new CoffeeTableBUS(_mapper);
+            coffeeTableBUS = new TableCoffeeBUS(_mapper);
+            this.cateBUS = new CategoryFoodBUS(_mapper);
+            this.foodBUS = new FoodBUS(_mapper);
+            this.loadListFood();
+            this.CreatePanels();
+
+        }
+
+        private void CreatePanels()
+        {
             FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
             flowLayoutPanel.Dock = DockStyle.Fill;
             flowLayoutPanel.AutoScroll = true;
             flowLayoutPanel.Padding = new Padding(10);
-
             pnlHome.Controls.Add(flowLayoutPanel);
             var listTable = this.Tables();
-            foreach (TableCoffeeDTO item in listTable )
+            foreach (TableCoffeeDTO item in listTable)
             {
-                Panel tablePanel = CreateTablePanel(item.Name, item.Id , item.Status);
+                Panel tablePanel = CreateTablePanel(item);
                 flowLayoutPanel.Controls.Add(tablePanel);
             }
-
         }
 
         private List<TableCoffeeDTO> Tables()
@@ -44,20 +54,63 @@ namespace Assignment
             return coffeeTableBUS.getAll().ToList();
         }
 
+        private void loadListFood()
+        {
+            var listCate = cateBUS.getAll();
+            var allCategory = new CategoryFoodDTO { Id = "all", Name = "All" };
+
+            // Thêm lựa chọn "All" vào danh sách danh mục
+            listCate.Insert(0, allCategory);
+
+            cbCategory.DisplayMember = "Name";
+            cbCategory.ValueMember = "Id";
+            cbCategory.DataSource = listCate;
+
+
+            var foods = foodBUS.getAll().Where(p => p.Status == true).Select(p => new
+            {
+                p.Id,
+                p.Name,
+                p.Price,
+                Category = p.Category.Name,
+            }).ToList();
+            dataFood.Columns["Id"].DataPropertyName = "Id";
+            dataFood.Columns["Id"].Visible = false;
+            dataFood.Columns["FoodName"].DataPropertyName = "Name";
+            dataFood.Columns["Category"].DataPropertyName = "Category";
+            dataFood.Columns["Price"].DataPropertyName = "Price";
+            dataFood.DataSource = foods;
+
+        }
+
         private void TablePictureBox_Click(object sender, EventArgs e)
         {
-            PictureBox clickedPictureBox = (PictureBox)sender;
-            string tableId = clickedPictureBox.Name;
-            MessageBox.Show(tableId);
+            if (sender != null)
+            {
+                PictureBox clickedPictureBox = (PictureBox)sender;
+                string tableId = clickedPictureBox.Tag.ToString();
+                Panel tablePanel = (Panel)clickedPictureBox.Parent;
+
+                if (selectedPanel != null)
+                {
+                    selectedPanel.BackColor = Color.White;
+                }
+
+                tablePanel.BackColor = Color.LightSkyBlue;
+                selectedPanel = tablePanel;
+
+                label2.Text = clickedPictureBox.Name;
+                lbId.Text = tableId;
+            }
         }
 
 
-        private Panel CreateTablePanel(string tableName, string tableId, bool status)
+        private Panel CreateTablePanel(TableCoffeeDTO table)
         {
             Panel tablePanel = new Panel();
-            tablePanel.Name = "panelTable" + tableId;
+            tablePanel.Name = "panelTable" + table.Id;
             tablePanel.BorderStyle = BorderStyle.FixedSingle;
-            if(!status)
+            if (!table.Status)
             {
                 tablePanel.BackColor = Color.LightSkyBlue;
             }
@@ -72,15 +125,16 @@ namespace Assignment
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
 
             PictureBox tablePictureBox = new PictureBox();
-            tablePictureBox.Name = tableId;
+            tablePictureBox.Name = table.Name;
+            tablePictureBox.Tag = table.Id;
             tablePictureBox.ImageLocation = "C:\\Users\\duyba\\OneDrive\\Desktop\\video\\7113274.png";
             tablePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             tablePictureBox.Click += TablePictureBox_Click;
             tableLayoutPanel.Controls.Add(tablePictureBox, 0, 0);
 
             TextBox textBox = new TextBox();
-            textBox.Name = "txtTable" + tableId;
-            textBox.Text = tableName;
+            textBox.Name = "txtTable" + table.Id;
+            textBox.Text = table.Name;
             textBox.Enabled = false;
             textBox.Dock = DockStyle.Fill;
             tableLayoutPanel.Controls.Add(textBox, 0, 1);
@@ -89,6 +143,10 @@ namespace Assignment
             return tablePanel;
         }
 
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
 }

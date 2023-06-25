@@ -33,9 +33,25 @@ namespace BUS
         public List<FoodDTO> getAll()
         {
             foodServices = new FoodServices();
-            var foods = foodServices.GetAll().Include(p=>p.Category).ToList();
+            var foods = foodServices.GetAll().Include(p => p.Category).ToList();
             var foodDTOs = mapper.Map<List<FoodDTO>>(foods);
             return foodDTOs;
+        }
+
+        public FoodDTO getFood(string id)
+        {
+            foodServices = new FoodServices();
+            var food = foodServices.GetAll().Where(p => p.Id.Equals(id)).FirstOrDefault();
+            var foodDTO = mapper.Map<FoodDTO>(food);
+            return foodDTO;
+        }
+
+        public Food update(FoodDTO foodDTO)
+        {
+            food = mapper.Map<Food>(foodDTO);
+            foodServices = new FoodServices();
+            foodServices.Update(food);
+            return food;
         }
     }
 }

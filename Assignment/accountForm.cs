@@ -137,12 +137,17 @@ namespace Assignment
 
         private void ibtnCancel_Click(object sender, EventArgs e)
         {
-            txtUsername.Text = "";
-            txtDisplayname.Text = "";
-            txtPassword.Text = "";
+            this.reset();
             lbCRUD.Text = "Thêm mới";
             txtUsername.Enabled = true;
 
+        }
+
+        private void reset()
+        {
+            txtUsername.Text = "";
+            txtDisplayname.Text = "";
+            txtPassword.Text = "";
         }
 
         private void accountForm_Load(object sender, EventArgs e)
@@ -167,7 +172,7 @@ namespace Assignment
             }
             if (e.ColumnIndex == accountDataG.Columns["Delete"].Index)
             {
-
+                this.reset();
                 DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa " + userName + " ?", "Xác nhận xóa", MessageBoxButtons.YesNo);
 
 
@@ -191,13 +196,5 @@ namespace Assignment
             }
         }
 
-        private void ibtnReload_Click(object sender, EventArgs e)
-        {
-            txtUsername.Text = "";
-            txtDisplayname.Text = "";
-            txtPassword.Text = "";
-            lbCRUD.Text = "Thêm mới";
-            txtUsername.Enabled = true;
-        }
     }
 }
