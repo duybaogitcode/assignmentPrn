@@ -2,6 +2,7 @@
 using DAO.Models;
 using DAO.Services;
 using DTO;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,11 @@ namespace BUS
             this.mapper = mapper;
         }
 
-        public List<BillInfoDTO> getAll()
+        public List<BillInfoDTO> getAllByBillId(string billId)
         {
             billInfoServices = new BillInfoServices();
-            var billInfo = billInfoServices.GetAll().ToList();
+            var billInfo = billInfoServices.GetAll().Include(p=>p.Food)
+                .Where(p=>p.BillId.Equals(billId)).ToList();
             var billInfoDTOs = mapper.Map<List<BillInfoDTO>>(billInfo);
             return billInfoDTOs;
         }

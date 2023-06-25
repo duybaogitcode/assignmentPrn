@@ -33,7 +33,7 @@ namespace Assignment
             this.cateBUS = new CategoryFoodBUS(_mapper);
             this.foodBUS = new FoodBUS(_mapper);
             this.billBUS = new BillBUS(_mapper);
-            this.billInfoBUS = new BillInfoBUS(_mapper);    
+            this.billInfoBUS = new BillInfoBUS(_mapper);
             this.loadListFood();
             this.CreatePanels();
 
@@ -103,19 +103,49 @@ namespace Assignment
             {
                 tablePanel.BackColor = Color.LightSkyBlue;
                 selectedPanel = tablePanel;
+                dataBillInfo.Columns["BillInfoFoodName"].DataPropertyName = "";
+                dataBillInfo.Columns["BillInfoQuantity"].DataPropertyName = "";
+                dataBillInfo.Columns["BillInfoPrice"].DataPropertyName = "";
+                dataBillInfo.Columns["BillInfoId"].DataPropertyName = "";
+                dataBillInfo.Columns["BillInfoDelete"].DataPropertyName = "";
             }
 
             if (tablePanel.BackColor == Color.DarkGray)
             {
-                var billDTO = billBUS.getBillDTO(clickedPictureBox.Tag.ToString());
-                MessageBox.Show(billDTO.Id);
-                var billInfoDTOs = billInfoBUS.getAllByBillId(billDTO.Id);
-                dataBillInfo.DataSource = billInfoDTOs;
+                this.getListBillInfo(clickedPictureBox.Tag.ToString());
+
             }
 
             label2.Text = clickedPictureBox.Name;
             lbId.Text = tableId;
 
+        }
+
+        private void getListBillInfo(string TableId)
+        {
+            var billDTO = billBUS.getBillDTO(TableId);
+            if (billDTO != null)
+            {
+                var billInfoDTOs = billInfoBUS.getAllByBillId(billDTO.Id).
+                    Select(p => new
+                    {
+                        p.Id,
+                        FoodName = p.Food.Name,
+                        FoodPrice = p.Food.Price,
+                        p.Amount,
+                        Delete = "Xóa",
+                    }).ToList();
+                dataBillInfo.Columns["BillInfoFoodName"].DataPropertyName = "FoodName";
+                dataBillInfo.Columns["BillInfoQuantity"].DataPropertyName = "Amount";
+                dataBillInfo.Columns["BillInfoPrice"].DataPropertyName = "FoodPrice";
+                dataBillInfo.Columns["BillInfoId"].DataPropertyName = "Id";
+                dataBillInfo.Columns["BillInfoDelete"].DataPropertyName = "Delete";
+                dataBillInfo.DataSource = billInfoDTOs;
+            }
+            else
+            {
+                MessageBox.Show("Yêu cầu không hợp lệ");
+            }
         }
 
 
@@ -192,16 +222,18 @@ namespace Assignment
                     BillDTO billDTO = this.creatBillDTO(table.Id);
                     BillInfoDTO billInfoDTO = this.createBillInfoDTO(billDTO.Id, lbFoodID.Text, 1);
                     billBUS.create(billDTO, billInfoDTO);
+                    table.Status = false;
+                    coffeeTableBUS.updateStatus(table);
+                    MessageBox.Show("Thêm món thành công");
                 }
-                table.Status = false;
-                coffeeTableBUS.updateStatus(table);
-                MessageBox.Show("Thêm món thành công");
+                if (table.Status == false)
+                {
+                    var billDTO = billBUS.getBillDTO(table.Id);
+                    MessageBox.Show(billDTO.Id);
+                }
             }
             catch (Exception ex)
             {
-                TableCoffeeDTO table = coffeeTableBUS.getTable(lbId.Text);
-                table.Status = true;
-                coffeeTableBUS.updateStatus(table);
                 MessageBox.Show(ex.Message);
             }
 

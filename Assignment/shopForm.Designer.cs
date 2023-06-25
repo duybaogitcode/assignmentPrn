@@ -57,6 +57,7 @@
             BillInfoQuantity = new DataGridViewTextBoxColumn();
             BillInfoPrice = new DataGridViewTextBoxColumn();
             BillInfoId = new DataGridViewTextBoxColumn();
+            BillInfoDelete = new DataGridViewButtonColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -289,7 +290,7 @@
             // 
             dataBillInfo.BackgroundColor = Color.White;
             dataBillInfo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataBillInfo.Columns.AddRange(new DataGridViewColumn[] { BillInfoFoodName, BillInfoQuantity, BillInfoPrice, BillInfoId });
+            dataBillInfo.Columns.AddRange(new DataGridViewColumn[] { BillInfoFoodName, BillInfoQuantity, BillInfoPrice, BillInfoId, BillInfoDelete });
             dataBillInfo.Location = new Point(0, 3);
             dataBillInfo.Name = "dataBillInfo";
             dataBillInfo.RowTemplate.Height = 25;
@@ -346,8 +347,18 @@
             // 
             // BillInfoId
             // 
+            BillInfoId.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             BillInfoId.HeaderText = "Id";
             BillInfoId.Name = "BillInfoId";
+            BillInfoId.Visible = false;
+            // 
+            // BillInfoDelete
+            // 
+            BillInfoDelete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            BillInfoDelete.HeaderText = "Xóa";
+            BillInfoDelete.Name = "BillInfoDelete";
+            BillInfoDelete.Resizable = DataGridViewTriState.True;
+            BillInfoDelete.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // shopForm
             // 
@@ -408,5 +419,6 @@
         private DataGridViewTextBoxColumn BillInfoQuantity;
         private DataGridViewTextBoxColumn BillInfoPrice;
         private DataGridViewTextBoxColumn BillInfoId;
+        private DataGridViewButtonColumn BillInfoDelete;
     }
 }

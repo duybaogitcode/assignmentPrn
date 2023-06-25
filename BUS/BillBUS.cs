@@ -2,6 +2,7 @@
 using DAO.Models;
 using DAO.Services;
 using DTO;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,15 @@ namespace BUS
             return billDTOs;
         }
 
-        public Bill create(BillDTO billDTO, BillInfoDTO billInfoDTO)
+        public BillDTO getBillDTO(string tableId)
+        {
+            billServices = new BillServices();
+            var bill = billServices.GetAll().Where(p => p.TableId.Equals(tableId) && p.CheckOut == null).FirstOrDefault();
+            var billDTO = mapper.Map<BillDTO>(bill);
+            return billDTO;
+        }
+
+        public void create(BillDTO billDTO, BillInfoDTO billInfoDTO)
         {
             using (var context = new CoffeeManagementContext())
             {
@@ -48,7 +57,6 @@ namespace BUS
 
                         transaction.Commit();
 
-                        return bill;
                     }
                     catch (Exception ex)
                     {
