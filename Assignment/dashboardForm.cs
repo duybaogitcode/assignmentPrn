@@ -52,8 +52,8 @@ namespace Assignment
             Series series = new Series("ColumnSeries");
             series.ChartType = SeriesChartType.Column;
             series.Color = RGBColors.color;
- 
-       
+
+
 
             // Đặt màu nền cho trục X và trục Y
             chartArea.AxisX.LineColor = backgroundColor;
@@ -77,7 +77,7 @@ namespace Assignment
         }
         private void CreatePieChart()
         {
-            
+
             // Tạo một Chart control mới
             Chart pieChart = new Chart();
             pieChart.Size = new System.Drawing.Size(400, 300);

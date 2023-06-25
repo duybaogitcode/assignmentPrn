@@ -30,10 +30,12 @@
         {
             pnlHome = new Panel();
             panel1 = new Panel();
+            lbFoodID = new Label();
             textBox1 = new TextBox();
             cbCategory = new ComboBox();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             panel2 = new Panel();
+            lbFoodPrice = new Label();
             lbFood = new Label();
             ibtnCancel = new FontAwesome.Sharp.IconButton();
             ibtnAdd = new FontAwesome.Sharp.IconButton();
@@ -47,20 +49,20 @@
             ibtnUpdate = new FontAwesome.Sharp.IconButton();
             lbTotal = new Label();
             lbBill = new Label();
-            dataGridView2 = new DataGridView();
-            BillInfoFoodName = new DataGridViewTextBoxColumn();
-            BillInfoQuantity = new DataGridViewTextBoxColumn();
-            BillInfoPrice = new DataGridViewTextBoxColumn();
+            dataBillInfo = new DataGridView();
             IbtnCheckout = new FontAwesome.Sharp.IconButton();
             panel4 = new Panel();
             lbId = new Label();
-            lbFoodPrice = new Label();
+            BillInfoFoodName = new DataGridViewTextBoxColumn();
+            BillInfoQuantity = new DataGridViewTextBoxColumn();
+            BillInfoPrice = new DataGridViewTextBoxColumn();
+            BillInfoId = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataFood).BeginInit();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataBillInfo).BeginInit();
             panel4.SuspendLayout();
             SuspendLayout();
             // 
@@ -75,6 +77,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(lbFoodID);
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(cbCategory);
             panel1.Controls.Add(iconPictureBox1);
@@ -82,6 +85,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(360, 76);
             panel1.TabIndex = 3;
+            // 
+            // lbFoodID
+            // 
+            lbFoodID.AutoSize = true;
+            lbFoodID.Location = new Point(18, 7);
+            lbFoodID.Name = "lbFoodID";
+            lbFoodID.Size = new Size(38, 15);
+            lbFoodID.TabIndex = 3;
+            lbFoodID.Text = "label1";
             // 
             // textBox1
             // 
@@ -125,6 +137,16 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(380, 647);
             panel2.TabIndex = 5;
+            // 
+            // lbFoodPrice
+            // 
+            lbFoodPrice.AutoSize = true;
+            lbFoodPrice.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lbFoodPrice.Location = new Point(20, 615);
+            lbFoodPrice.Name = "lbFoodPrice";
+            lbFoodPrice.Size = new Size(13, 19);
+            lbFoodPrice.TabIndex = 11;
+            lbFoodPrice.Text = ".";
             // 
             // lbFood
             // 
@@ -221,7 +243,7 @@
             panel3.Controls.Add(ibtnUpdate);
             panel3.Controls.Add(lbTotal);
             panel3.Controls.Add(lbBill);
-            panel3.Controls.Add(dataGridView2);
+            panel3.Controls.Add(dataBillInfo);
             panel3.Controls.Add(IbtnCheckout);
             panel3.Location = new Point(12, 380);
             panel3.Name = "panel3";
@@ -263,34 +285,16 @@
             lbBill.TabIndex = 13;
             lbBill.Text = "Hóa đơn";
             // 
-            // dataGridView2
+            // dataBillInfo
             // 
-            dataGridView2.BackgroundColor = Color.White;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { BillInfoFoodName, BillInfoQuantity, BillInfoPrice });
-            dataGridView2.Location = new Point(0, 3);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(448, 207);
-            dataGridView2.TabIndex = 12;
-            // 
-            // BillInfoFoodName
-            // 
-            BillInfoFoodName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            BillInfoFoodName.HeaderText = "Tên đồ uống";
-            BillInfoFoodName.Name = "BillInfoFoodName";
-            // 
-            // BillInfoQuantity
-            // 
-            BillInfoQuantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            BillInfoQuantity.HeaderText = "Số lượng";
-            BillInfoQuantity.Name = "BillInfoQuantity";
-            // 
-            // BillInfoPrice
-            // 
-            BillInfoPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            BillInfoPrice.HeaderText = "Giá";
-            BillInfoPrice.Name = "BillInfoPrice";
+            dataBillInfo.BackgroundColor = Color.White;
+            dataBillInfo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataBillInfo.Columns.AddRange(new DataGridViewColumn[] { BillInfoFoodName, BillInfoQuantity, BillInfoPrice, BillInfoId });
+            dataBillInfo.Location = new Point(0, 3);
+            dataBillInfo.Name = "dataBillInfo";
+            dataBillInfo.RowTemplate.Height = 25;
+            dataBillInfo.Size = new Size(448, 207);
+            dataBillInfo.TabIndex = 12;
             // 
             // IbtnCheckout
             // 
@@ -322,15 +326,28 @@
             lbId.Size = new Size(0, 15);
             lbId.TabIndex = 9;
             // 
-            // lbFoodPrice
+            // BillInfoFoodName
             // 
-            lbFoodPrice.AutoSize = true;
-            lbFoodPrice.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lbFoodPrice.Location = new Point(20, 615);
-            lbFoodPrice.Name = "lbFoodPrice";
-            lbFoodPrice.Size = new Size(13, 19);
-            lbFoodPrice.TabIndex = 11;
-            lbFoodPrice.Text = ".";
+            BillInfoFoodName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            BillInfoFoodName.HeaderText = "Tên đồ uống";
+            BillInfoFoodName.Name = "BillInfoFoodName";
+            // 
+            // BillInfoQuantity
+            // 
+            BillInfoQuantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            BillInfoQuantity.HeaderText = "Số lượng";
+            BillInfoQuantity.Name = "BillInfoQuantity";
+            // 
+            // BillInfoPrice
+            // 
+            BillInfoPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            BillInfoPrice.HeaderText = "Giá";
+            BillInfoPrice.Name = "BillInfoPrice";
+            // 
+            // BillInfoId
+            // 
+            BillInfoId.HeaderText = "Id";
+            BillInfoId.Name = "BillInfoId";
             // 
             // shopForm
             // 
@@ -354,7 +371,7 @@
             ((System.ComponentModel.ISupportInitialize)dataFood).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataBillInfo).EndInit();
             panel4.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -375,7 +392,7 @@
         private FontAwesome.Sharp.IconButton ibtnCancel;
         private FontAwesome.Sharp.IconButton ibtnAdd;
         private FontAwesome.Sharp.IconButton IbtnCheckout;
-        private DataGridView dataGridView2;
+        private DataGridView dataBillInfo;
         private DataGridViewTextBoxColumn FoodName;
         private DataGridViewTextBoxColumn Category;
         private DataGridViewTextBoxColumn Price;
@@ -383,11 +400,13 @@
         private Label lbId;
         private Label lbTotal;
         private Label lbBill;
-        private DataGridViewTextBoxColumn BillInfoFoodName;
-        private DataGridViewTextBoxColumn BillInfoQuantity;
-        private DataGridViewTextBoxColumn BillInfoPrice;
         private FontAwesome.Sharp.IconButton ibtnUpdate;
         private Label lbFood;
         private Label lbFoodPrice;
+        private Label lbFoodID;
+        private DataGridViewTextBoxColumn BillInfoFoodName;
+        private DataGridViewTextBoxColumn BillInfoQuantity;
+        private DataGridViewTextBoxColumn BillInfoPrice;
+        private DataGridViewTextBoxColumn BillInfoId;
     }
 }

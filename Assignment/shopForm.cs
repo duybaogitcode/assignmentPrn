@@ -23,6 +23,7 @@ namespace Assignment
         private FoodBUS foodBUS;
         private Panel selectedPanel;
         private BillBUS billBUS;
+        private BillInfoBUS billInfoBUS;
         private FoodDTO foodDTO;
         public shopForm(IMapper mapper)
         {
@@ -32,6 +33,7 @@ namespace Assignment
             this.cateBUS = new CategoryFoodBUS(_mapper);
             this.foodBUS = new FoodBUS(_mapper);
             this.billBUS = new BillBUS(_mapper);
+            this.billInfoBUS = new BillInfoBUS(_mapper);    
             this.loadListFood();
             this.CreatePanels();
 
@@ -62,7 +64,6 @@ namespace Assignment
             var listCate = cateBUS.getAll();
             var allCategory = new CategoryFoodDTO { Id = "all", Name = "All" };
 
-            // Thêm lựa chọn "All" vào danh sách danh mục
             listCate.Insert(0, allCategory);
 
             cbCategory.DisplayMember = "Name";
@@ -88,23 +89,33 @@ namespace Assignment
 
         private void TablePictureBox_Click(object sender, EventArgs e)
         {
-            if (sender != null)
+
+            PictureBox clickedPictureBox = (PictureBox)sender;
+            string tableId = clickedPictureBox.Tag.ToString();
+            Panel tablePanel = (Panel)clickedPictureBox.Parent;
+
+            if (selectedPanel != null && selectedPanel.BackColor != Color.DarkGray)
             {
-                PictureBox clickedPictureBox = (PictureBox)sender;
-                string tableId = clickedPictureBox.Tag.ToString();
-                Panel tablePanel = (Panel)clickedPictureBox.Parent;
+                selectedPanel.BackColor = Color.White;
+            }
 
-                if (selectedPanel != null)
-                {
-                    selectedPanel.BackColor = Color.White;
-                }
-
+            if (tablePanel.BackColor != Color.DarkGray)
+            {
                 tablePanel.BackColor = Color.LightSkyBlue;
                 selectedPanel = tablePanel;
-
-                label2.Text = clickedPictureBox.Name;
-                lbId.Text = tableId;
             }
+
+            if (tablePanel.BackColor == Color.DarkGray)
+            {
+                var billDTO = billBUS.getBillDTO(clickedPictureBox.Tag.ToString());
+                MessageBox.Show(billDTO.Id);
+                var billInfoDTOs = billInfoBUS.getAllByBillId(billDTO.Id);
+                dataBillInfo.DataSource = billInfoDTOs;
+            }
+
+            label2.Text = clickedPictureBox.Name;
+            lbId.Text = tableId;
+
         }
 
 
@@ -115,7 +126,7 @@ namespace Assignment
             tablePanel.BorderStyle = BorderStyle.FixedSingle;
             if (!table.Status)
             {
-                tablePanel.BackColor = Color.LightSkyBlue;
+                tablePanel.BackColor = Color.DarkGray;
             }
             tablePanel.Size = new Size(120, 100);
 
@@ -149,22 +160,74 @@ namespace Assignment
 
         private void dataFood_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string id = dataFood.Rows[e.RowIndex].Cells["Id"].Value.ToString();
-            var food = foodBUS.getFood(id);
-            foodDTO = food;
-            lbFood.Text = foodDTO.Name;
-            lbFoodPrice.Text = foodDTO.Price.ToString() + " VND";
+            try
+            {
+                string id = dataFood.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+                var food = foodBUS.getFood(id);
+                foodDTO = food;
+                lbFood.Text = foodDTO.Name;
+                lbFoodPrice.Text = foodDTO.Price.ToString() + " VND";
+                lbFoodID.Text = food.Id;
+            }
+            catch
+            {
+                MessageBox.Show("Vui lòng click chuột vào trong bảng");
+            }
         }
 
         private void ibtnAdd_Click(object sender, EventArgs e)
         {
-            if(foodDTO == null)
+            try
             {
-                MessageBox.Show("Vui lòng chọn đồ uống trước");
-                return;
+                if (foodDTO == null) throw new Exception("Vui lòng chọn món trước");
+                if (selectedPanel == null) throw new Exception("Vui lòng chọn bàn trước");
+                TableCoffeeDTO table = coffeeTableBUS.getTable(lbId.Text);
+                if (table != null)
+                {
+                    selectedPanel.BackColor = Color.DarkGray;
+                }
+
+                if (table.Status == true)
+                {
+                    BillDTO billDTO = this.creatBillDTO(table.Id);
+                    BillInfoDTO billInfoDTO = this.createBillInfoDTO(billDTO.Id, lbFoodID.Text, 1);
+                    billBUS.create(billDTO, billInfoDTO);
+                }
+                table.Status = false;
+                coffeeTableBUS.updateStatus(table);
+                MessageBox.Show("Thêm món thành công");
+            }
+            catch (Exception ex)
+            {
+                TableCoffeeDTO table = coffeeTableBUS.getTable(lbId.Text);
+                table.Status = true;
+                coffeeTableBUS.updateStatus(table);
+                MessageBox.Show(ex.Message);
             }
 
         }
+
+        private BillDTO creatBillDTO(string tableId)
+        {
+            BillDTO billDTO = new BillDTO();
+            billDTO.Id = Guid.NewGuid().ToString();
+            billDTO.TableId = tableId;
+            billDTO.CheckIn = DateTime.Now;
+            billDTO.Discount = 1;
+            billDTO.Status = 0;
+            return billDTO;
+        }
+
+        private BillInfoDTO createBillInfoDTO(string billId, string foodID, int amount)
+        {
+            BillInfoDTO billInfoDTO = new BillInfoDTO();
+            billInfoDTO.Id = Guid.NewGuid().ToString();
+            billInfoDTO.FoodId = foodID;
+            billInfoDTO.BillId = billId;
+            billInfoDTO.Amount = amount;
+            return billInfoDTO;
+        }
+
     }
 
 }
