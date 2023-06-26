@@ -16,6 +16,7 @@ namespace BUS
         private IMapper mapper;
         private BillServices billServices;
         private BillInfoServices billInfoServices;
+        private TableCoffeeServices tableCoffeeServices;
         public BillBUS(IMapper mapper)
         {
             this.mapper = mapper;
@@ -37,7 +38,7 @@ namespace BUS
             return billDTO;
         }
 
-        public void create(BillDTO billDTO, BillInfoDTO billInfoDTO)
+        public void create(BillDTO billDTO, BillInfoDTO billInfoDTO, TableCoffeeDTO tableCoffeeDTO)
         {
             using (var context = new CoffeeManagementContext())
             {
@@ -47,6 +48,10 @@ namespace BUS
                     {
                         billServices = new BillServices();
                         billInfoServices = new BillInfoServices();
+                        tableCoffeeServices = new TableCoffeeServices();
+
+                        var tableCoffee = mapper.Map<TableCoffee>(tableCoffeeDTO);
+                        tableCoffeeServices.Update(tableCoffee);
 
                         var bill = mapper.Map<Bill>(billDTO);
                         billServices.Create(bill);
@@ -54,6 +59,36 @@ namespace BUS
                         var billInfo = mapper.Map<BillInfo>(billInfoDTO);
                         billInfo.BillId = bill.Id;
                         billInfoServices.Create(billInfo);
+
+                        transaction.Commit();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
+
+        public void update(BillDTO billDTO, TableCoffeeDTO tableCoffeeDTO)
+        {
+            using (var context = new CoffeeManagementContext())
+            {
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        billServices = new BillServices();
+                        tableCoffeeServices = new TableCoffeeServices();
+
+                        var tableCoffee = mapper.Map<TableCoffee>(tableCoffeeDTO);
+                        tableCoffeeServices.Update(tableCoffee);
+
+                        var bill = mapper.Map<Bill>(billDTO);
+                        billServices.Update(bill);
+
 
                         transaction.Commit();
 

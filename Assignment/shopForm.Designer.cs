@@ -46,17 +46,19 @@
             Id = new DataGridViewTextBoxColumn();
             label2 = new Label();
             panel3 = new Panel();
-            ibtnUpdate = new FontAwesome.Sharp.IconButton();
-            lbTotal = new Label();
-            lbBill = new Label();
             dataBillInfo = new DataGridView();
+            lbBillInfoFood = new Label();
+            lbBillInfoCheckin = new Label();
+            lbTotal = new Label();
             IbtnCheckout = new FontAwesome.Sharp.IconButton();
             panel4 = new Panel();
             lbId = new Label();
-            BillInfoFoodName = new DataGridViewTextBoxColumn();
-            BillInfoQuantity = new DataGridViewTextBoxColumn();
-            BillInfoPrice = new DataGridViewTextBoxColumn();
             BillInfoId = new DataGridViewTextBoxColumn();
+            BillInfoFoodName = new DataGridViewTextBoxColumn();
+            BillInfoPrice = new DataGridViewTextBoxColumn();
+            BillInfoUp = new DataGridViewButtonColumn();
+            BillInfoQuantity = new DataGridViewTextBoxColumn();
+            BillInfoDown = new DataGridViewButtonColumn();
             BillInfoDelete = new DataGridViewButtonColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
@@ -143,7 +145,7 @@
             // 
             lbFoodPrice.AutoSize = true;
             lbFoodPrice.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lbFoodPrice.Location = new Point(20, 615);
+            lbFoodPrice.Location = new Point(17, 587);
             lbFoodPrice.Name = "lbFoodPrice";
             lbFoodPrice.Size = new Size(13, 19);
             lbFoodPrice.TabIndex = 11;
@@ -153,7 +155,7 @@
             // 
             lbFood.AutoSize = true;
             lbFood.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lbFood.Location = new Point(20, 583);
+            lbFood.Location = new Point(17, 559);
             lbFood.Name = "lbFood";
             lbFood.Size = new Size(13, 19);
             lbFood.TabIndex = 10;
@@ -198,7 +200,7 @@
             dataFood.Name = "dataFood";
             dataFood.RowTemplate.Height = 25;
             dataFood.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataFood.Size = new Size(360, 495);
+            dataFood.Size = new Size(360, 460);
             dataFood.TabIndex = 2;
             dataFood.CellContentClick += dataFood_CellContentClick;
             // 
@@ -241,61 +243,54 @@
             // panel3
             // 
             panel3.BackColor = Color.White;
-            panel3.Controls.Add(ibtnUpdate);
-            panel3.Controls.Add(lbTotal);
-            panel3.Controls.Add(lbBill);
             panel3.Controls.Add(dataBillInfo);
+            panel3.Controls.Add(lbBillInfoFood);
+            panel3.Controls.Add(lbBillInfoCheckin);
+            panel3.Controls.Add(lbTotal);
             panel3.Controls.Add(IbtnCheckout);
             panel3.Location = new Point(12, 380);
             panel3.Name = "panel3";
-            panel3.Size = new Size(689, 262);
+            panel3.Size = new Size(686, 262);
             panel3.TabIndex = 7;
-            // 
-            // ibtnUpdate
-            // 
-            ibtnUpdate.BackColor = Color.FromArgb(5, 201, 204);
-            ibtnUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            ibtnUpdate.IconChar = FontAwesome.Sharp.IconChar.None;
-            ibtnUpdate.IconColor = Color.Black;
-            ibtnUpdate.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnUpdate.Location = new Point(371, 215);
-            ibtnUpdate.Name = "ibtnUpdate";
-            ibtnUpdate.Size = new Size(77, 25);
-            ibtnUpdate.TabIndex = 10;
-            ibtnUpdate.Text = "Cập nhập";
-            ibtnUpdate.UseVisualStyleBackColor = false;
-            // 
-            // lbTotal
-            // 
-            lbTotal.AutoSize = true;
-            lbTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lbTotal.Location = new Point(454, 189);
-            lbTotal.Name = "lbTotal";
-            lbTotal.Size = new Size(91, 21);
-            lbTotal.TabIndex = 14;
-            lbTotal.Text = "Tổng tiền: ";
-            // 
-            // lbBill
-            // 
-            lbBill.AutoSize = true;
-            lbBill.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lbBill.ForeColor = Color.Black;
-            lbBill.Location = new Point(454, 3);
-            lbBill.Name = "lbBill";
-            lbBill.Size = new Size(75, 21);
-            lbBill.TabIndex = 13;
-            lbBill.Text = "Hóa đơn";
             // 
             // dataBillInfo
             // 
             dataBillInfo.BackgroundColor = Color.White;
             dataBillInfo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataBillInfo.Columns.AddRange(new DataGridViewColumn[] { BillInfoFoodName, BillInfoQuantity, BillInfoPrice, BillInfoId, BillInfoDelete });
+            dataBillInfo.Columns.AddRange(new DataGridViewColumn[] { BillInfoId, BillInfoFoodName, BillInfoPrice, BillInfoUp, BillInfoQuantity, BillInfoDown, BillInfoDelete });
             dataBillInfo.Location = new Point(0, 3);
             dataBillInfo.Name = "dataBillInfo";
             dataBillInfo.RowTemplate.Height = 25;
-            dataBillInfo.Size = new Size(448, 207);
+            dataBillInfo.Size = new Size(683, 207);
             dataBillInfo.TabIndex = 12;
+            dataBillInfo.CellContentClick += dataBillInfo_CellContentClick;
+            // 
+            // lbBillInfoFood
+            // 
+            lbBillInfoFood.AutoSize = true;
+            lbBillInfoFood.Location = new Point(442, 67);
+            lbBillInfoFood.Name = "lbBillInfoFood";
+            lbBillInfoFood.Size = new Size(0, 15);
+            lbBillInfoFood.TabIndex = 17;
+            // 
+            // lbBillInfoCheckin
+            // 
+            lbBillInfoCheckin.AutoSize = true;
+            lbBillInfoCheckin.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lbBillInfoCheckin.Location = new Point(442, 36);
+            lbBillInfoCheckin.Name = "lbBillInfoCheckin";
+            lbBillInfoCheckin.Size = new Size(0, 19);
+            lbBillInfoCheckin.TabIndex = 16;
+            // 
+            // lbTotal
+            // 
+            lbTotal.AutoSize = true;
+            lbTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbTotal.Location = new Point(3, 225);
+            lbTotal.Name = "lbTotal";
+            lbTotal.Size = new Size(91, 21);
+            lbTotal.TabIndex = 14;
+            lbTotal.Text = "Tổng tiền: ";
             // 
             // IbtnCheckout
             // 
@@ -304,12 +299,13 @@
             IbtnCheckout.IconChar = FontAwesome.Sharp.IconChar.None;
             IbtnCheckout.IconColor = Color.Black;
             IbtnCheckout.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            IbtnCheckout.Location = new Point(583, 219);
+            IbtnCheckout.Location = new Point(580, 217);
             IbtnCheckout.Name = "IbtnCheckout";
             IbtnCheckout.Size = new Size(103, 40);
             IbtnCheckout.TabIndex = 10;
             IbtnCheckout.Text = "Thanh toán";
             IbtnCheckout.UseVisualStyleBackColor = false;
+            IbtnCheckout.Click += IbtnCheckout_Click;
             // 
             // panel4
             // 
@@ -327,38 +323,65 @@
             lbId.Size = new Size(0, 15);
             lbId.TabIndex = 9;
             // 
-            // BillInfoFoodName
-            // 
-            BillInfoFoodName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            BillInfoFoodName.HeaderText = "Tên đồ uống";
-            BillInfoFoodName.Name = "BillInfoFoodName";
-            // 
-            // BillInfoQuantity
-            // 
-            BillInfoQuantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            BillInfoQuantity.HeaderText = "Số lượng";
-            BillInfoQuantity.Name = "BillInfoQuantity";
-            // 
-            // BillInfoPrice
-            // 
-            BillInfoPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            BillInfoPrice.HeaderText = "Giá";
-            BillInfoPrice.Name = "BillInfoPrice";
-            // 
             // BillInfoId
             // 
             BillInfoId.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             BillInfoId.HeaderText = "Id";
             BillInfoId.Name = "BillInfoId";
+            BillInfoId.ReadOnly = true;
             BillInfoId.Visible = false;
+            // 
+            // BillInfoFoodName
+            // 
+            BillInfoFoodName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            BillInfoFoodName.FillWeight = 101.725891F;
+            BillInfoFoodName.HeaderText = "Tên đồ uống";
+            BillInfoFoodName.Name = "BillInfoFoodName";
+            BillInfoFoodName.ReadOnly = true;
+            BillInfoFoodName.Resizable = DataGridViewTriState.False;
+            // 
+            // BillInfoPrice
+            // 
+            BillInfoPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            BillInfoPrice.FillWeight = 101.725891F;
+            BillInfoPrice.HeaderText = "Giá";
+            BillInfoPrice.Name = "BillInfoPrice";
+            BillInfoPrice.ReadOnly = true;
+            // 
+            // BillInfoUp
+            // 
+            BillInfoUp.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            BillInfoUp.HeaderText = "▲";
+            BillInfoUp.Name = "BillInfoUp";
+            BillInfoUp.Width = 23;
+            // 
+            // BillInfoQuantity
+            // 
+            BillInfoQuantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            BillInfoQuantity.FillWeight = 101.725891F;
+            BillInfoQuantity.HeaderText = "Số lượng";
+            BillInfoQuantity.Name = "BillInfoQuantity";
+            BillInfoQuantity.ReadOnly = true;
+            BillInfoQuantity.Resizable = DataGridViewTriState.True;
+            // 
+            // BillInfoDown
+            // 
+            BillInfoDown.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            BillInfoDown.FillWeight = 101.725891F;
+            BillInfoDown.HeaderText = "▼";
+            BillInfoDown.Name = "BillInfoDown";
+            BillInfoDown.Width = 23;
             // 
             // BillInfoDelete
             // 
-            BillInfoDelete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            BillInfoDelete.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            BillInfoDelete.FillWeight = 101.725891F;
             BillInfoDelete.HeaderText = "Xóa";
             BillInfoDelete.Name = "BillInfoDelete";
+            BillInfoDelete.ReadOnly = true;
             BillInfoDelete.Resizable = DataGridViewTriState.True;
             BillInfoDelete.SortMode = DataGridViewColumnSortMode.Automatic;
+            BillInfoDelete.Width = 52;
             // 
             // shopForm
             // 
@@ -410,15 +433,17 @@
         private DataGridViewTextBoxColumn Id;
         private Label lbId;
         private Label lbTotal;
-        private Label lbBill;
-        private FontAwesome.Sharp.IconButton ibtnUpdate;
         private Label lbFood;
         private Label lbFoodPrice;
         private Label lbFoodID;
-        private DataGridViewTextBoxColumn BillInfoFoodName;
-        private DataGridViewTextBoxColumn BillInfoQuantity;
-        private DataGridViewTextBoxColumn BillInfoPrice;
+        private Label lbBillInfoCheckin;
+        private Label lbBillInfoFood;
         private DataGridViewTextBoxColumn BillInfoId;
+        private DataGridViewTextBoxColumn BillInfoFoodName;
+        private DataGridViewTextBoxColumn BillInfoPrice;
+        private DataGridViewButtonColumn BillInfoUp;
+        private DataGridViewTextBoxColumn BillInfoQuantity;
+        private DataGridViewButtonColumn BillInfoDown;
         private DataGridViewButtonColumn BillInfoDelete;
     }
 }

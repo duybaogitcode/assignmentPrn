@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.Configuration.Conventions;
 using BUS;
 using DTO;
 using System;
@@ -90,36 +91,48 @@ namespace Assignment
         private void TablePictureBox_Click(object sender, EventArgs e)
         {
 
-            PictureBox clickedPictureBox = (PictureBox)sender;
-            string tableId = clickedPictureBox.Tag.ToString();
-            Panel tablePanel = (Panel)clickedPictureBox.Parent;
-
-            if (selectedPanel != null && selectedPanel.BackColor != Color.DarkGray)
+            try
             {
-                selectedPanel.BackColor = Color.White;
-            }
+                PictureBox clickedPictureBox = (PictureBox)sender;
+                string tableId = clickedPictureBox.Tag.ToString();
+                Panel tablePanel = (Panel)clickedPictureBox.Parent;
 
-            if (tablePanel.BackColor != Color.DarkGray)
+                if (selectedPanel != null && selectedPanel.BackColor != Color.DarkGray)
+                {
+                    selectedPanel.BackColor = Color.White;
+                    lbTotal.Text = "Tổng tiền";
+                }
+
+                if (tablePanel.BackColor != Color.DarkGray)
+                {
+                    tablePanel.BackColor = Color.LightSkyBlue;
+                    selectedPanel = tablePanel;
+                    activeColumns(false);
+                    lbTotal.Text = "Tổng tiền";
+                }
+
+                if (tablePanel.BackColor == Color.DarkGray)
+                {
+                    getListBillInfo(tableId);
+                    selectedPanel = tablePanel;
+                    var billDTO = billBUS.getBillDTO(tableId);
+                    if (billDTO != null)
+                    {
+                        int total = billInfoBUS.totalPrice(billDTO.Id);
+                        lbTotal.Text = "Tổng tiền: " + total.ToString();
+                    }
+                }
+
+                label2.Text = clickedPictureBox.Name;
+                lbId.Text = tableId;
+            }
+            catch (Exception ex)
             {
-                tablePanel.BackColor = Color.LightSkyBlue;
-                selectedPanel = tablePanel;
-                dataBillInfo.Columns["BillInfoFoodName"].DataPropertyName = "";
-                dataBillInfo.Columns["BillInfoQuantity"].DataPropertyName = "";
-                dataBillInfo.Columns["BillInfoPrice"].DataPropertyName = "";
-                dataBillInfo.Columns["BillInfoId"].DataPropertyName = "";
-                dataBillInfo.Columns["BillInfoDelete"].DataPropertyName = "";
+                MessageBox.Show("Yêu cầu không hợp lệ");
             }
-
-            if (tablePanel.BackColor == Color.DarkGray)
-            {
-                this.getListBillInfo(clickedPictureBox.Tag.ToString());
-
-            }
-
-            label2.Text = clickedPictureBox.Name;
-            lbId.Text = tableId;
 
         }
+
 
         private void getListBillInfo(string TableId)
         {
@@ -133,19 +146,32 @@ namespace Assignment
                         FoodName = p.Food.Name,
                         FoodPrice = p.Food.Price,
                         p.Amount,
+                        Up = "▲",
+                        Down = "▼",
                         Delete = "Xóa",
                     }).ToList();
-                dataBillInfo.Columns["BillInfoFoodName"].DataPropertyName = "FoodName";
-                dataBillInfo.Columns["BillInfoQuantity"].DataPropertyName = "Amount";
-                dataBillInfo.Columns["BillInfoPrice"].DataPropertyName = "FoodPrice";
                 dataBillInfo.Columns["BillInfoId"].DataPropertyName = "Id";
+                dataBillInfo.Columns["BillInfoFoodName"].DataPropertyName = "FoodName";
+                dataBillInfo.Columns["BillInfoUp"].DataPropertyName = "Up";
+                dataBillInfo.Columns["BillInfoQuantity"].DataPropertyName = "Amount";
+                dataBillInfo.Columns["BillInfoDown"].DataPropertyName = "Down";
+                dataBillInfo.Columns["BillInfoPrice"].DataPropertyName = "FoodPrice";
                 dataBillInfo.Columns["BillInfoDelete"].DataPropertyName = "Delete";
+                activeColumns(true);
                 dataBillInfo.DataSource = billInfoDTOs;
+
             }
-            else
-            {
-                MessageBox.Show("Yêu cầu không hợp lệ");
-            }
+        }
+
+        public void activeColumns(bool boolean)
+        {
+            dataBillInfo.Columns["BillInfoFoodName"].Visible = boolean;
+            dataBillInfo.Columns["BillInfoQuantity"].Visible = boolean;
+            dataBillInfo.Columns["BillInfoUp"].Visible = boolean;
+            dataBillInfo.Columns["BillInfoPrice"].Visible = boolean;
+            dataBillInfo.Columns["BillInfoId"].Visible = false;
+            dataBillInfo.Columns["BillInfoDown"].Visible = boolean;
+            dataBillInfo.Columns["BillInfoDelete"].Visible = boolean;
         }
 
 
@@ -209,28 +235,7 @@ namespace Assignment
         {
             try
             {
-                if (foodDTO == null) throw new Exception("Vui lòng chọn món trước");
-                if (selectedPanel == null) throw new Exception("Vui lòng chọn bàn trước");
-                TableCoffeeDTO table = coffeeTableBUS.getTable(lbId.Text);
-                if (table != null)
-                {
-                    selectedPanel.BackColor = Color.DarkGray;
-                }
-
-                if (table.Status == true)
-                {
-                    BillDTO billDTO = this.creatBillDTO(table.Id);
-                    BillInfoDTO billInfoDTO = this.createBillInfoDTO(billDTO.Id, lbFoodID.Text, 1);
-                    billBUS.create(billDTO, billInfoDTO);
-                    table.Status = false;
-                    coffeeTableBUS.updateStatus(table);
-                    MessageBox.Show("Thêm món thành công");
-                }
-                if (table.Status == false)
-                {
-                    var billDTO = billBUS.getBillDTO(table.Id);
-                    MessageBox.Show(billDTO.Id);
-                }
+                this.CreateAndUpdateBill();
             }
             catch (Exception ex)
             {
@@ -239,12 +244,58 @@ namespace Assignment
 
         }
 
+        private void CreateAndUpdateBill()
+        {
+            if (foodDTO == null) throw new Exception("Vui lòng chọn món trước");
+            if (selectedPanel == null) throw new Exception("Vui lòng chọn bàn trước");
+            TableCoffeeDTO table = coffeeTableBUS.getTable(lbId.Text);
+            if (table != null)
+            {
+                selectedPanel.BackColor = Color.DarkGray;
+            }
+
+            if (table.Status == true)
+            {
+                BillDTO billDTO = this.creatBillDTO(table.Id);
+                BillInfoDTO billInfoDTO = this.createBillInfoDTO(billDTO.Id, lbFoodID.Text, 1);
+                table.Status = false;
+                billBUS.create(billDTO, billInfoDTO, table);
+                MessageBox.Show("Thêm món thành công");
+                lbTotal.Text = "Tổng tiền: " + billInfoBUS.totalPrice(billDTO.Id).ToString();
+                getListBillInfo(table.Id);
+                return;
+            }
+            if (table.Status == false)
+            {
+                var billDTO = billBUS.getBillDTO(table.Id);
+                if (billDTO == null) throw new Exception("Yêu cầu không hợp lệ");
+                var billInfoDTO = billInfoBUS.getByBillIdAndFoodId(billDTO.Id, lbFoodID.Text);
+                if (billInfoDTO == null)
+                {
+                    billInfoDTO = this.createBillInfoDTO(billDTO.Id, lbFoodID.Text, 1);
+                    billInfoBUS.create(billInfoDTO);
+                    MessageBox.Show("Thêm món thành công");
+                    getListBillInfo(table.Id);
+                    lbTotal.Text = "Tổng tiền: " + billInfoBUS.totalPrice(billDTO.Id).ToString();
+                    return;
+                }
+                if (billInfoDTO != null)
+                {
+                    billInfoDTO.Amount = 1 + billInfoDTO.Amount;
+                    billInfoBUS.update(billInfoDTO);
+                    MessageBox.Show("Cập nhập số lượng món thành công");
+                    getListBillInfo(table.Id);
+                    lbTotal.Text = "Tổng tiền: " + billInfoBUS.totalPrice(billDTO.Id).ToString();
+                    return;
+                }
+            }
+        }
+
         private BillDTO creatBillDTO(string tableId)
         {
             BillDTO billDTO = new BillDTO();
             billDTO.Id = Guid.NewGuid().ToString();
             billDTO.TableId = tableId;
-            billDTO.CheckIn = DateTime.Now;
             billDTO.Discount = 1;
             billDTO.Status = 0;
             return billDTO;
@@ -260,6 +311,74 @@ namespace Assignment
             return billInfoDTO;
         }
 
+        private void IbtnCheckout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (selectedPanel == null) throw new Exception("Vui lòng chọn bàn trước");
+                TableCoffeeDTO table = coffeeTableBUS.getTable(lbId.Text);
+                if (table != null)
+                {
+                    selectedPanel.BackColor = Color.White;
+                }
+                table.Status = true;
+                var billDTO = billBUS.getBillDTO(table.Id);
+                if (billDTO == null) throw new Exception("Yêu cầu không hợp lệ");
+                billDTO.CheckOut = DateTime.UtcNow;
+                billDTO.TotalPrice = billInfoBUS.totalPrice(billDTO.Id);
+                billBUS.update(billDTO, table);
+                this.activeColumns(false);
+                lbTotal.Text = "Tổng tiền";
+                MessageBox.Show("Thanh toán thành công");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dataBillInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dataBillInfo.Rows[e.RowIndex].Cells["BillInfoQuantity"].Value == null)
+                {
+                    throw new Exception("Yêu cầu không hợp lệ");
+                }
+                if (e.ColumnIndex == dataBillInfo.Columns["BillInfoUp"].Index)
+                {
+                    int quantity = int.Parse(
+                        dataBillInfo.Rows[e.RowIndex].Cells["BillInfoQuantity"].Value.ToString());
+                    int newQuantity = quantity + 1;
+                    string id = dataBillInfo.Rows[e.RowIndex].Cells["BillInfoId"].Value.ToString();
+                    var billInfoDTO = billInfoBUS.getById(id);
+                    if (billInfoDTO == null) throw new Exception("Không thể cập nhập số lượng trong lúc này");
+                    billInfoDTO.Amount = newQuantity;
+                    billInfoBUS.update(billInfoDTO);
+                    int newTotal = billInfoBUS.totalPrice(billInfoDTO.BillId);
+                    lbTotal.Text = "Hóa đơn: " + newTotal.ToString();
+                    this.getListBillInfo(lbId.Text);
+                }
+                if (e.ColumnIndex == dataBillInfo.Columns["BillInfoDown"].Index)
+                {
+                    int quantity = int.Parse(
+                        dataBillInfo.Rows[e.RowIndex].Cells["BillInfoQuantity"].Value.ToString());
+                    int newQuantity = quantity - 1;
+                    string id = dataBillInfo.Rows[e.RowIndex].Cells["BillInfoId"].Value.ToString();
+                    var billInfoDTO = billInfoBUS.getById(id);
+                    if (billInfoDTO == null) throw new Exception("Không thể cập nhập số lượng trong lúc này");
+                    billInfoDTO.Amount = newQuantity;
+                    billInfoBUS.update(billInfoDTO);
+                    int newTotal = billInfoBUS.totalPrice(billInfoDTO.BillId);
+                    lbTotal.Text = "Hóa đơn: " + newTotal.ToString();
+                    this.getListBillInfo(lbId.Text);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 
 }
