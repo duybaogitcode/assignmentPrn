@@ -41,6 +41,7 @@
             iconButton1 = new FontAwesome.Sharp.IconButton();
             iconButton2 = new FontAwesome.Sharp.IconButton();
             pnlMain = new Panel();
+            lbMenu = new Label();
             pnlMenu.SuspendLayout();
             pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
@@ -180,6 +181,7 @@
             // panelTitleBar
             // 
             panelTitleBar.BackColor = Color.FromArgb(32, 35, 43);
+            panelTitleBar.Controls.Add(lbMenu);
             panelTitleBar.Controls.Add(panel1);
             panelTitleBar.Dock = DockStyle.Top;
             panelTitleBar.Location = new Point(222, 0);
@@ -244,6 +246,17 @@
             pnlMain.Size = new Size(1140, 614);
             pnlMain.TabIndex = 2;
             // 
+            // lbMenu
+            // 
+            lbMenu.AutoSize = true;
+            lbMenu.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            lbMenu.ForeColor = Color.White;
+            lbMenu.Location = new Point(15, 11);
+            lbMenu.Name = "lbMenu";
+            lbMenu.Size = new Size(115, 28);
+            lbMenu.TabIndex = 1;
+            lbMenu.Text = "Đăng nhập";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -262,6 +275,7 @@
             pnlLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
             panelTitleBar.ResumeLayout(false);
+            panelTitleBar.PerformLayout();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -283,5 +297,6 @@
         private Panel panel1;
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconButton2;
+        private Label lbMenu;
     }
 }

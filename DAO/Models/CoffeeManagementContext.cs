@@ -30,18 +30,16 @@ namespace DAO.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(GetConnectionString());
+                optionsBuilder.UseSqlServer(this.GetConnectionString());
             }
         }
 
-        private string GetConnectionString()
-        {
-            IConfiguration config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsetting.json", true, true)
-                .Build();
-            var strConn = config["ConnectionStrings:CoffeeManagementDB"];
-            return strConn;
+        private string GetConnectionString() {
+            IConfiguration config = new ConfigurationBuilder().
+                SetBasePath(Directory.GetCurrentDirectory()).
+                AddJsonFile("appsetting.json", true, true).Build(); 
+            var strConn = config["ConnectionStrings:CoffeeManagementDB"]; 
+            return strConn; 
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -57,6 +55,10 @@ namespace DAO.Models
 
                 entity.Property(e => e.UserName)
                     .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Avatar)
+                    .HasMaxLength(255)
                     .IsUnicode(false);
 
                 entity.Property(e => e.DisplayName)
@@ -127,7 +129,9 @@ namespace DAO.Models
             {
                 entity.ToTable("BillInfo");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Id)
+                    .HasMaxLength(50)
+                    .HasColumnName("ID");
 
                 entity.Property(e => e.BillId)
                     .IsRequired()
@@ -143,13 +147,13 @@ namespace DAO.Models
                     .WithMany(p => p.BillInfos)
                     .HasForeignKey(d => d.BillId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__BillInfo__Amount__3E52440B");
+                    .HasConstraintName("FK__BillInfo__BillID__5DCAEF64");
 
                 entity.HasOne(d => d.Food)
                     .WithMany(p => p.BillInfos)
                     .HasForeignKey(d => d.FoodId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__BillInfo__FoodID__3F466844");
+                    .HasConstraintName("FK__BillInfo__FoodID__5EBF139D");
             });
 
             modelBuilder.Entity<CategoryFood>(entity =>
@@ -173,6 +177,10 @@ namespace DAO.Models
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasColumnName("ID");
+
+                entity.Property(e => e.Avatar)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.CategoryId)
                     .IsRequired()

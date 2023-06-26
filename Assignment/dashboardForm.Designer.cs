@@ -116,17 +116,17 @@
             // pnlColunnChart
             // 
             pnlColunnChart.BackColor = Color.WhiteSmoke;
-            pnlColunnChart.Location = new Point(2, 90);
+            pnlColunnChart.Location = new Point(12, 152);
             pnlColunnChart.Name = "pnlColunnChart";
-            pnlColunnChart.Size = new Size(663, 450);
+            pnlColunnChart.Size = new Size(599, 450);
             pnlColunnChart.TabIndex = 9;
             // 
             // pnlPieChart
             // 
             pnlPieChart.BackColor = Color.WhiteSmoke;
-            pnlPieChart.Location = new Point(723, 90);
+            pnlPieChart.Location = new Point(669, 283);
             pnlPieChart.Name = "pnlPieChart";
-            pnlPieChart.Size = new Size(385, 446);
+            pnlPieChart.Size = new Size(446, 319);
             pnlPieChart.TabIndex = 10;
             // 
             // panel1

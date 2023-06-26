@@ -30,6 +30,7 @@ namespace Assignment
             this.FormBorderStyle = FormBorderStyle.None;
             _mapper = mapper;
 
+
         }
 
 
@@ -89,12 +90,14 @@ namespace Assignment
         {
             this.AcctiveBtn(sender, RGBColors.color);
             this.openChildForm(new shopForm(_mapper));
+            lbMenu.Text = ibtnHome.Text;
         }
 
         private void ibtnEmp_Click(object sender, EventArgs e)
         {
             this.AcctiveBtn(sender, RGBColors.color);
             this.openChildForm(new accountForm(_mapper));
+            lbMenu.Text = ibtnEmp.Text;
 
         }
 
@@ -102,6 +105,7 @@ namespace Assignment
         {
             this.AcctiveBtn(sender, RGBColors.color);
             this.openChildForm(new productForm(_mapper));
+            lbMenu.Text= ibtnProducts.Text;
         }
 
 
@@ -151,6 +155,7 @@ namespace Assignment
         {
             this.AcctiveBtn(sender, RGBColors.color);
             this.openChildForm(new dashboardForm(_mapper));
+            lbMenu.Text = ibtnDashboard.Text;
         }
 
 

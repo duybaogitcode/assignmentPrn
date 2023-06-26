@@ -21,6 +21,8 @@ namespace BUS
             CreateMap<Bill, BillDTO>();
             CreateMap<BillInfoDTO, BillInfo>();
             CreateMap<BillInfo, BillInfoDTO>();
+            CreateMap<FoodDTO, Food>();
+            CreateMap<Food, FoodDTO>();
             CreateMap<CategoryFoodDTO, CategoryFood>();
             CreateMap<CategoryFood, CategoryFoodDTO>();
             CreateMap<TableCoffeeDTO, TableCoffee>();

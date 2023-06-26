@@ -27,5 +27,13 @@ namespace BUS
             categoryFoodServices.Create(categoryFood);
             return categoryFood;
         }
+
+        public List<CategoryFoodDTO> getAll()
+        {
+            categoryFoodServices = new CategoryFoodServices();
+            var categories = categoryFoodServices.GetAll().ToList();
+            var categoryFoodDTOs = mapper.Map<List<CategoryFoodDTO>>(categories);
+            return categoryFoodDTOs;
+        }
     }
 }

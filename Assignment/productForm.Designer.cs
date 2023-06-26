@@ -29,88 +29,116 @@
         private void InitializeComponent()
         {
             panel3 = new Panel();
+            panel7 = new Panel();
+            pictureBox1 = new PictureBox();
             lbCRUD = new Label();
-            ibtnReload = new FontAwesome.Sharp.IconButton();
+            ibtnImage = new FontAwesome.Sharp.IconButton();
             panel6 = new Panel();
-            comboBox1 = new ComboBox();
+            cbCategory = new ComboBox();
             label2 = new Label();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            ibtnCancel = new FontAwesome.Sharp.IconButton();
+            ibtnConfirm = new FontAwesome.Sharp.IconButton();
             panel5 = new Panel();
             label1 = new Label();
-            textBox2 = new TextBox();
+            txtPrice = new TextBox();
             panel4 = new Panel();
             lbUsername = new Label();
-            textBox1 = new TextBox();
+            txtName = new TextBox();
             panel1 = new Panel();
             panel2 = new Panel();
-            dataGridView1 = new DataGridView();
+            dataFood = new DataGridView();
+            FoodName = new DataGridViewTextBoxColumn();
+            Id = new DataGridViewTextBoxColumn();
+            Category = new DataGridViewTextBoxColumn();
+            Price = new DataGridViewTextBoxColumn();
+            Edit = new DataGridViewButtonColumn();
+            Delete = new DataGridViewButtonColumn();
+            lbID = new Label();
             panel3.SuspendLayout();
+            panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel6.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataFood).BeginInit();
             SuspendLayout();
             // 
             // panel3
             // 
+            panel3.Controls.Add(panel7);
             panel3.Controls.Add(lbCRUD);
-            panel3.Controls.Add(ibtnReload);
+            panel3.Controls.Add(ibtnImage);
             panel3.Controls.Add(panel6);
-            panel3.Controls.Add(iconButton2);
-            panel3.Controls.Add(iconButton1);
+            panel3.Controls.Add(ibtnCancel);
+            panel3.Controls.Add(ibtnConfirm);
             panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel4);
             panel3.Location = new Point(12, 30);
             panel3.Name = "panel3";
-            panel3.Size = new Size(306, 625);
+            panel3.Size = new Size(335, 625);
             panel3.TabIndex = 4;
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(pictureBox1);
+            panel7.Location = new Point(19, 51);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(284, 187);
+            panel7.TabIndex = 10;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.FromArgb(34, 37, 45);
+            pictureBox1.Location = new Point(0, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(284, 181);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // lbCRUD
             // 
             lbCRUD.AutoSize = true;
             lbCRUD.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
             lbCRUD.ForeColor = Color.Black;
-            lbCRUD.Location = new Point(0, 7);
+            lbCRUD.Location = new Point(0, 0);
             lbCRUD.Name = "lbCRUD";
             lbCRUD.Size = new Size(92, 25);
             lbCRUD.TabIndex = 9;
             lbCRUD.Text = "Thêm mới";
             // 
-            // ibtnReload
+            // ibtnImage
             // 
-            ibtnReload.BackColor = Color.FromArgb(182, 205, 84);
-            ibtnReload.IconChar = FontAwesome.Sharp.IconChar.Rotate;
-            ibtnReload.IconColor = Color.Black;
-            ibtnReload.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnReload.IconSize = 30;
-            ibtnReload.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnReload.Location = new Point(249, 3);
-            ibtnReload.Name = "ibtnReload";
-            ibtnReload.Size = new Size(38, 34);
-            ibtnReload.TabIndex = 8;
-            ibtnReload.TextAlign = ContentAlignment.MiddleRight;
-            ibtnReload.TextImageRelation = TextImageRelation.ImageBeforeText;
-            ibtnReload.UseVisualStyleBackColor = false;
-            ibtnReload.Click += ibtnReload_Click;
+            ibtnImage.BackColor = Color.FromArgb(182, 205, 84);
+            ibtnImage.IconChar = FontAwesome.Sharp.IconChar.Images;
+            ibtnImage.IconColor = Color.Black;
+            ibtnImage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ibtnImage.IconSize = 30;
+            ibtnImage.Location = new Point(285, 18);
+            ibtnImage.Name = "ibtnImage";
+            ibtnImage.Size = new Size(47, 30);
+            ibtnImage.TabIndex = 8;
+            ibtnImage.TextAlign = ContentAlignment.MiddleRight;
+            ibtnImage.TextImageRelation = TextImageRelation.ImageBeforeText;
+            ibtnImage.UseVisualStyleBackColor = false;
             // 
             // panel6
             // 
-            panel6.Controls.Add(comboBox1);
+            panel6.Controls.Add(cbCategory);
             panel6.Controls.Add(label2);
-            panel6.Location = new Point(3, 134);
+            panel6.Location = new Point(3, 353);
             panel6.Name = "panel6";
             panel6.Size = new Size(284, 45);
             panel6.TabIndex = 6;
             // 
-            // comboBox1
+            // cbCategory
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(123, 11);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(135, 23);
-            comboBox1.TabIndex = 2;
+            cbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbCategory.FormattingEnabled = true;
+            cbCategory.Location = new Point(123, 11);
+            cbCategory.Name = "cbCategory";
+            cbCategory.Size = new Size(135, 23);
+            cbCategory.TabIndex = 2;
             // 
             // label2
             // 
@@ -123,37 +151,41 @@
             label2.TabIndex = 1;
             label2.Text = "Loại sản phẩm";
             // 
-            // iconButton2
+            // ibtnCancel
             // 
-            iconButton2.BackColor = Color.FromArgb(225, 0, 125);
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton2.IconColor = Color.Black;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.Location = new Point(199, 349);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(103, 44);
-            iconButton2.TabIndex = 7;
-            iconButton2.Text = "Hủy bỏ";
-            iconButton2.UseVisualStyleBackColor = false;
+            ibtnCancel.BackColor = Color.FromArgb(225, 0, 125);
+            ibtnCancel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            ibtnCancel.IconChar = FontAwesome.Sharp.IconChar.None;
+            ibtnCancel.IconColor = Color.Black;
+            ibtnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ibtnCancel.Location = new Point(231, 528);
+            ibtnCancel.Name = "ibtnCancel";
+            ibtnCancel.Size = new Size(103, 44);
+            ibtnCancel.TabIndex = 7;
+            ibtnCancel.Text = "Hủy bỏ";
+            ibtnCancel.UseVisualStyleBackColor = false;
+            ibtnCancel.Click += ibtnCancel_Click;
             // 
-            // iconButton1
+            // ibtnConfirm
             // 
-            iconButton1.BackColor = Color.FromArgb(5, 201, 204);
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.Location = new Point(94, 349);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(103, 44);
-            iconButton1.TabIndex = 6;
-            iconButton1.Text = "Xác nhận";
-            iconButton1.UseVisualStyleBackColor = false;
+            ibtnConfirm.BackColor = Color.FromArgb(5, 201, 204);
+            ibtnConfirm.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            ibtnConfirm.IconChar = FontAwesome.Sharp.IconChar.None;
+            ibtnConfirm.IconColor = Color.Black;
+            ibtnConfirm.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ibtnConfirm.Location = new Point(126, 528);
+            ibtnConfirm.Name = "ibtnConfirm";
+            ibtnConfirm.Size = new Size(103, 44);
+            ibtnConfirm.TabIndex = 6;
+            ibtnConfirm.Text = "Xác nhận";
+            ibtnConfirm.UseVisualStyleBackColor = false;
+            ibtnConfirm.Click += ibtnConfirm_Click;
             // 
             // panel5
             // 
             panel5.Controls.Add(label1);
-            panel5.Controls.Add(textBox2);
-            panel5.Location = new Point(3, 222);
+            panel5.Controls.Add(txtPrice);
+            panel5.Location = new Point(3, 430);
             panel5.Name = "panel5";
             panel5.Size = new Size(172, 45);
             panel5.TabIndex = 5;
@@ -169,18 +201,18 @@
             label1.TabIndex = 1;
             label1.Text = "Giá";
             // 
-            // textBox2
+            // txtPrice
             // 
-            textBox2.Location = new Point(47, 13);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(97, 23);
-            textBox2.TabIndex = 0;
+            txtPrice.Location = new Point(47, 13);
+            txtPrice.Name = "txtPrice";
+            txtPrice.Size = new Size(97, 23);
+            txtPrice.TabIndex = 0;
             // 
             // panel4
             // 
             panel4.Controls.Add(lbUsername);
-            panel4.Controls.Add(textBox1);
-            panel4.Location = new Point(3, 54);
+            panel4.Controls.Add(txtName);
+            panel4.Location = new Point(1, 271);
             panel4.Name = "panel4";
             panel4.Size = new Size(302, 45);
             panel4.TabIndex = 4;
@@ -196,38 +228,84 @@
             lbUsername.TabIndex = 1;
             lbUsername.Text = "Tên sản phẩm";
             // 
-            // textBox1
+            // txtName
             // 
-            textBox1.Location = new Point(119, 11);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(180, 23);
-            textBox1.TabIndex = 0;
+            txtName.Location = new Point(119, 11);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(180, 23);
+            txtName.TabIndex = 0;
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(32, 35, 43);
-            panel1.Location = new Point(353, 30);
+            panel1.BackColor = Color.FromArgb(34, 37, 45);
+            panel1.Location = new Point(353, 41);
             panel1.Name = "panel1";
-            panel1.Size = new Size(10, 591);
+            panel1.Size = new Size(10, 570);
             panel1.TabIndex = 8;
             // 
             // panel2
             // 
-            panel2.Controls.Add(dataGridView1);
+            panel2.Controls.Add(dataFood);
             panel2.Location = new Point(412, 30);
             panel2.Name = "panel2";
             panel2.Size = new Size(703, 593);
             panel2.TabIndex = 9;
             // 
-            // dataGridView1
+            // dataFood
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(25, 54);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(659, 521);
-            dataGridView1.TabIndex = 0;
+            dataFood.BackgroundColor = Color.White;
+            dataFood.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataFood.Columns.AddRange(new DataGridViewColumn[] { FoodName, Id, Category, Price, Edit, Delete });
+            dataFood.Location = new Point(0, 36);
+            dataFood.MultiSelect = false;
+            dataFood.Name = "dataFood";
+            dataFood.RowTemplate.Height = 25;
+            dataFood.Size = new Size(703, 521);
+            dataFood.TabIndex = 1;
+            dataFood.CellContentClick += dataFood_CellContentClick;
+            // 
+            // FoodName
+            // 
+            FoodName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            FoodName.HeaderText = "Tên sản phẩm";
+            FoodName.Name = "FoodName";
+            // 
+            // Id
+            // 
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            // 
+            // Category
+            // 
+            Category.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Category.HeaderText = "Loại sản phẩm";
+            Category.Name = "Category";
+            // 
+            // Price
+            // 
+            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Price.HeaderText = "Giá";
+            Price.Name = "Price";
+            // 
+            // Edit
+            // 
+            Edit.HeaderText = "Chỉnh sửa";
+            Edit.Name = "Edit";
+            Edit.Resizable = DataGridViewTriState.True;
+            // 
+            // Delete
+            // 
+            Delete.HeaderText = "Xóa";
+            Delete.Name = "Delete";
+            // 
+            // lbID
+            // 
+            lbID.AutoSize = true;
+            lbID.Location = new Point(31, 10);
+            lbID.Name = "lbID";
+            lbID.Size = new Size(0, 15);
+            lbID.TabIndex = 10;
+            lbID.Visible = false;
             // 
             // productForm
             // 
@@ -235,6 +313,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1125, 667);
+            Controls.Add(lbID);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(panel3);
@@ -244,6 +323,8 @@
             Load += productForm_Load;
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel5.ResumeLayout(false);
@@ -251,28 +332,38 @@
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataFood).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Panel panel3;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton ibtnCancel;
+        private FontAwesome.Sharp.IconButton ibtnConfirm;
         private Panel panel5;
         private Label label1;
-        private TextBox textBox2;
+        private TextBox txtPrice;
         private Panel panel4;
         private Label lbUsername;
-        private TextBox textBox1;
+        private TextBox txtName;
         private Panel panel1;
         private Panel panel2;
-        private DataGridView dataGridView1;
         private Panel panel6;
-        private ComboBox comboBox1;
+        private ComboBox cbCategory;
         private Label label2;
-        private FontAwesome.Sharp.IconButton ibtnReload;
+        private FontAwesome.Sharp.IconButton ibtnImage;
         private Label lbCRUD;
+        private DataGridView dataFood;
+        private Panel panel7;
+        private PictureBox pictureBox1;
+        private DataGridViewTextBoxColumn FoodName;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn Category;
+        private DataGridViewTextBoxColumn Price;
+        private DataGridViewButtonColumn Edit;
+        private DataGridViewButtonColumn Delete;
+        private Label lbID;
     }
 }

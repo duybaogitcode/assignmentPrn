@@ -37,8 +37,10 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
+            ibtnImage = new FontAwesome.Sharp.IconButton();
+            panel7 = new Panel();
+            pictureBox1 = new PictureBox();
             lbCRUD = new Label();
-            ibtnReload = new FontAwesome.Sharp.IconButton();
             ibtnCancel = new FontAwesome.Sharp.IconButton();
             ibtnConfirm = new FontAwesome.Sharp.IconButton();
             panel6 = new Panel();
@@ -53,6 +55,8 @@
             ((System.ComponentModel.ISupportInitialize)accountDataG).BeginInit();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel6.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
@@ -64,6 +68,7 @@
             accountDataG.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             accountDataG.Columns.AddRange(new DataGridViewColumn[] { UserName, DisplayName, Type, Edit, Delete });
             accountDataG.Location = new Point(39, 57);
+            accountDataG.MultiSelect = false;
             accountDataG.Name = "accountDataG";
             accountDataG.RowTemplate.Height = 25;
             accountDataG.Size = new Size(703, 521);
@@ -101,10 +106,10 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Black;
+            panel1.BackColor = Color.FromArgb(34, 37, 45);
             panel1.Location = new Point(323, 50);
             panel1.Name = "panel1";
-            panel1.Size = new Size(10, 550);
+            panel1.Size = new Size(10, 567);
             panel1.TabIndex = 1;
             // 
             // panel2
@@ -117,8 +122,9 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(ibtnImage);
+            panel3.Controls.Add(panel7);
             panel3.Controls.Add(lbCRUD);
-            panel3.Controls.Add(ibtnReload);
             panel3.Controls.Add(ibtnCancel);
             panel3.Controls.Add(ibtnConfirm);
             panel3.Controls.Add(panel6);
@@ -126,8 +132,40 @@
             panel3.Controls.Add(panel4);
             panel3.Location = new Point(12, 22);
             panel3.Name = "panel3";
-            panel3.Size = new Size(279, 625);
+            panel3.Size = new Size(294, 625);
             panel3.TabIndex = 3;
+            // 
+            // ibtnImage
+            // 
+            ibtnImage.BackColor = Color.FromArgb(182, 205, 84);
+            ibtnImage.IconChar = FontAwesome.Sharp.IconChar.Images;
+            ibtnImage.IconColor = Color.Black;
+            ibtnImage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ibtnImage.IconSize = 30;
+            ibtnImage.Location = new Point(247, 17);
+            ibtnImage.Name = "ibtnImage";
+            ibtnImage.Size = new Size(47, 30);
+            ibtnImage.TabIndex = 9;
+            ibtnImage.TextAlign = ContentAlignment.MiddleRight;
+            ibtnImage.TextImageRelation = TextImageRelation.ImageBeforeText;
+            ibtnImage.UseVisualStyleBackColor = false;
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(pictureBox1);
+            panel7.Location = new Point(13, 44);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(267, 191);
+            panel7.TabIndex = 9;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.FromArgb(34, 37, 45);
+            pictureBox1.Location = new Point(6, 9);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(251, 171);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // lbCRUD
             // 
@@ -140,30 +178,14 @@
             lbCRUD.TabIndex = 8;
             lbCRUD.Text = "Thêm mới";
             // 
-            // ibtnReload
-            // 
-            ibtnReload.BackColor = Color.FromArgb(182, 205, 84);
-            ibtnReload.IconChar = FontAwesome.Sharp.IconChar.Rotate;
-            ibtnReload.IconColor = Color.Black;
-            ibtnReload.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnReload.IconSize = 30;
-            ibtnReload.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnReload.Location = new Point(234, 3);
-            ibtnReload.Name = "ibtnReload";
-            ibtnReload.Size = new Size(38, 34);
-            ibtnReload.TabIndex = 1;
-            ibtnReload.TextAlign = ContentAlignment.MiddleRight;
-            ibtnReload.TextImageRelation = TextImageRelation.ImageBeforeText;
-            ibtnReload.UseVisualStyleBackColor = false;
-            ibtnReload.Click += ibtnReload_Click;
-            // 
             // ibtnCancel
             // 
             ibtnCancel.BackColor = Color.FromArgb(225, 0, 125);
+            ibtnCancel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             ibtnCancel.IconChar = FontAwesome.Sharp.IconChar.None;
             ibtnCancel.IconColor = Color.Black;
             ibtnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnCancel.Location = new Point(169, 417);
+            ibtnCancel.Location = new Point(188, 545);
             ibtnCancel.Name = "ibtnCancel";
             ibtnCancel.Size = new Size(103, 44);
             ibtnCancel.TabIndex = 7;
@@ -174,10 +196,11 @@
             // ibtnConfirm
             // 
             ibtnConfirm.BackColor = Color.FromArgb(5, 201, 204);
+            ibtnConfirm.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             ibtnConfirm.IconChar = FontAwesome.Sharp.IconChar.None;
             ibtnConfirm.IconColor = Color.Black;
             ibtnConfirm.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnConfirm.Location = new Point(60, 417);
+            ibtnConfirm.Location = new Point(79, 545);
             ibtnConfirm.Name = "ibtnConfirm";
             ibtnConfirm.Size = new Size(103, 44);
             ibtnConfirm.TabIndex = 6;
@@ -189,7 +212,7 @@
             // 
             panel6.Controls.Add(label2);
             panel6.Controls.Add(txtDisplayname);
-            panel6.Location = new Point(4, 151);
+            panel6.Location = new Point(8, 356);
             panel6.Name = "panel6";
             panel6.Size = new Size(272, 45);
             panel6.TabIndex = 5;
@@ -217,7 +240,7 @@
             // 
             panel5.Controls.Add(label1);
             panel5.Controls.Add(txtPassword);
-            panel5.Location = new Point(3, 252);
+            panel5.Location = new Point(4, 450);
             panel5.Name = "panel5";
             panel5.Size = new Size(272, 45);
             panel5.TabIndex = 5;
@@ -245,7 +268,7 @@
             // 
             panel4.Controls.Add(lbUsername);
             panel4.Controls.Add(txtUsername);
-            panel4.Location = new Point(3, 54);
+            panel4.Location = new Point(7, 259);
             panel4.Name = "panel4";
             panel4.Size = new Size(272, 45);
             panel4.TabIndex = 4;
@@ -286,6 +309,8 @@
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel5.ResumeLayout(false);
@@ -312,12 +337,14 @@
         private Panel panel4;
         private Label lbUsername;
         private FontAwesome.Sharp.IconButton ibtnCancel;
-        private FontAwesome.Sharp.IconButton ibtnReload;
         private Label lbCRUD;
         private DataGridViewTextBoxColumn UserName;
         private DataGridViewTextBoxColumn DisplayName;
         private DataGridViewTextBoxColumn Type;
         private DataGridViewButtonColumn Edit;
         private DataGridViewButtonColumn Delete;
+        private Panel panel7;
+        private PictureBox pictureBox1;
+        private FontAwesome.Sharp.IconButton ibtnImage;
     }
 }

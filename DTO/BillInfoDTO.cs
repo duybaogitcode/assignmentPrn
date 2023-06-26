@@ -8,7 +8,7 @@ namespace DTO
 {
     public class BillInfoDTO
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string BillId { get; set; }
         public string FoodId { get; set; }
         public int Amount { get; set; }
