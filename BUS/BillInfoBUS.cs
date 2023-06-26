@@ -64,6 +64,14 @@ namespace BUS
 
         }
 
+        public bool delete(BillInfoDTO billInfoDTO)
+        {
+            billInfoServices = new BillInfoServices();
+            var billInfo = mapper.Map<BillInfo>(billInfoDTO);
+            bool isDelete = billInfoServices.Delete(billInfo);
+            return isDelete;
+        }
+
         public int totalPrice(string billId)
         {
             var billInfos = getAllByBillId(billId);

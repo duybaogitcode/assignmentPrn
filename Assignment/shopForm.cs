@@ -317,7 +317,7 @@ namespace Assignment
             {
                 if (selectedPanel == null) throw new Exception("Vui lòng chọn bàn trước");
                 TableCoffeeDTO table = coffeeTableBUS.getTable(lbId.Text);
-                if (table != null)
+                if (table != null && selectedPanel.BackColor == Color.DarkGray)
                 {
                     selectedPanel.BackColor = Color.White;
                 }
@@ -333,6 +333,7 @@ namespace Assignment
             }
             catch (Exception ex)
             {
+                selectedPanel.BackColor = Color.DarkGray;
                 MessageBox.Show(ex.Message);
             }
         }
@@ -356,28 +357,87 @@ namespace Assignment
                     billInfoDTO.Amount = newQuantity;
                     billInfoBUS.update(billInfoDTO);
                     int newTotal = billInfoBUS.totalPrice(billInfoDTO.BillId);
-                    lbTotal.Text = "Hóa đơn: " + newTotal.ToString();
+                    lbTotal.Text = "Tổng tiền: " + newTotal.ToString();
                     this.getListBillInfo(lbId.Text);
                 }
                 if (e.ColumnIndex == dataBillInfo.Columns["BillInfoDown"].Index)
                 {
                     int quantity = int.Parse(
                         dataBillInfo.Rows[e.RowIndex].Cells["BillInfoQuantity"].Value.ToString());
-                    int newQuantity = quantity - 1;
-                    string id = dataBillInfo.Rows[e.RowIndex].Cells["BillInfoId"].Value.ToString();
-                    var billInfoDTO = billInfoBUS.getById(id);
-                    if (billInfoDTO == null) throw new Exception("Không thể cập nhập số lượng trong lúc này");
-                    billInfoDTO.Amount = newQuantity;
-                    billInfoBUS.update(billInfoDTO);
-                    int newTotal = billInfoBUS.totalPrice(billInfoDTO.BillId);
-                    lbTotal.Text = "Hóa đơn: " + newTotal.ToString();
+                    if(quantity > 1) {
+                        int newQuantity = quantity - 1;
+                        string id = dataBillInfo.Rows[e.RowIndex].Cells["BillInfoId"].Value.ToString();
+                        var billInfoDTO = billInfoBUS.getById(id);
+                        if (billInfoDTO == null) throw new Exception("Không thể cập nhập số lượng trong lúc này");
+                        billInfoDTO.Amount = newQuantity;
+                        billInfoBUS.update(billInfoDTO);
+                        int newTotal = billInfoBUS.totalPrice(billInfoDTO.BillId);
+                        lbTotal.Text = "Tổng tiền: " + newTotal.ToString();
+                    }
+                    if(quantity == 1)
+                    {
+                        string id = dataBillInfo.Rows[e.RowIndex].Cells["BillInfoId"].Value.ToString();
+                        var billInfoDTO = billInfoBUS.getById(id);
+                        bool isDelete = billInfoBUS.delete(billInfoDTO);
+                        if (!isDelete)
+                        {
+                            throw new Exception("Không thể cập nhập số lượng trong lúc này");
+                        }
+                        int newTotal = billInfoBUS.totalPrice(billInfoDTO.BillId);
+                        lbTotal.Text = "Tổng tiền: " + newTotal.ToString();
+                    }
                     this.getListBillInfo(lbId.Text);
                 }
+                if (e.ColumnIndex == dataBillInfo.Columns["BillInfoDelete"].Index)
+                {
+                    string id = dataBillInfo.Rows[e.RowIndex].Cells["BillInfoId"].Value.ToString();
+                    var billInfoDTO = billInfoBUS.getById(id);
+
+                    if (!checkBillIsDeleteAll(billInfoDTO.BillId))
+                    {
+
+                        DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa toàn bộ món " +
+                             " ?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            try
+                            {
+                              
+
+                                MessageBox.Show("checked");
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Xóa thất bại");
+                            }
+                        }
+                        return;
+                    }
+
+                    int newTotal = billInfoBUS.totalPrice(billInfoDTO.BillId);
+                    lbTotal.Text = "Tổng tiền: " + newTotal.ToString();
+
+
+                    this.getListBillInfo(lbId.Text);
+                }
+
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public bool checkBillIsDeleteAll(string billId)
+        {
+            var listCheck = billInfoBUS.getAllByBillId(billId).ToList();
+            if(listCheck.Count == 1)
+            {
+                return false;
+            }
+            return true;
         }
     }
 

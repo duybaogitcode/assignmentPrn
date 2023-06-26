@@ -3,6 +3,7 @@ using DAO.Models;
 using DAO.Services;
 using DTO;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,15 @@ namespace BUS
             return billDTO;
         }
 
+        public BillDTO getById(string Id)
+        {
+            billServices = new BillServices();
+            var bill = billServices.GetAll().Where(p => p.Id.Equals(Id)).FirstOrDefault();
+            var billDTO = mapper.Map<BillDTO>(bill);
+            return billDTO;
+        }
+    
+
         public void create(BillDTO billDTO, BillInfoDTO billInfoDTO, TableCoffeeDTO tableCoffeeDTO)
         {
             using (var context = new CoffeeManagementContext())
@@ -51,14 +61,20 @@ namespace BUS
                         tableCoffeeServices = new TableCoffeeServices();
 
                         var tableCoffee = mapper.Map<TableCoffee>(tableCoffeeDTO);
-                        tableCoffeeServices.Update(tableCoffee);
 
                         var bill = mapper.Map<Bill>(billDTO);
-                        billServices.Create(bill);
 
                         var billInfo = mapper.Map<BillInfo>(billInfoDTO);
                         billInfo.BillId = bill.Id;
-                        billInfoServices.Create(billInfo);
+
+
+                        tableCoffeeServices.Update(tableCoffee);
+
+
+                        billInfoServices.Delete(billInfo);
+
+                        billServices.Delete(bill);
+
 
                         transaction.Commit();
 
@@ -88,6 +104,38 @@ namespace BUS
 
                         var bill = mapper.Map<Bill>(billDTO);
                         billServices.Update(bill);
+
+
+                        transaction.Commit();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
+
+        public void delete(BillDTO billDTO, TableCoffeeDTO tableCoffeeDTO)
+        {
+            using (var context = new CoffeeManagementContext())
+            {
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        billServices = new BillServices();
+                        tableCoffeeServices = new TableCoffeeServices();
+                        billInfoServices = new BillInfoServices();
+
+                        var tableCoffee = mapper.Map<TableCoffee>(tableCoffeeDTO);
+                        tableCoffeeServices.Update(tableCoffee);
+
+
+                        var bill = mapper.Map<Bill>(billDTO);
+                        billServices.Delete(bill);
 
 
                         transaction.Commit();
