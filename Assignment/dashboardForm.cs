@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BUS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -17,11 +19,15 @@ namespace Assignment
     public partial class dashboardForm : Form
     {
         private readonly IMapper _mapper;
+        private BillInfoBUS _billInfoBUS;
+        private CategoryFoodBUS _categoryFoodBUS;
         public dashboardForm(IMapper mapper)
         {
+
             InitializeComponent();
             this._mapper = mapper;
-
+            _billInfoBUS = new BillInfoBUS(mapper);
+            _categoryFoodBUS = new CategoryFoodBUS(mapper);
             // Tạo biểu đồ dạng cột
             CreateColumnChart();
 
@@ -77,7 +83,9 @@ namespace Assignment
         }
         private void CreatePieChart()
         {
+            var listCate = _categoryFoodBUS.getAll();
 
+            Dictionary<string, int> countByCategory = _billInfoBUS.CountByCategory();
             // Tạo một Chart control mới
             Chart pieChart = new Chart();
             pieChart.Size = new System.Drawing.Size(400, 300);
@@ -88,16 +96,16 @@ namespace Assignment
             ChartArea chartArea = new ChartArea("PieChartArea");
             pieChart.ChartAreas.Add(chartArea);
 
-
             // Tạo một Series mới cho biểu đồ hình tròn
             Series series = new Series("PieSeries");
             series.ChartType = SeriesChartType.Pie;
 
-            // Thêm các điểm dữ liệu cho biểu đồ hình tròn
-            series.Points.AddXY("Category1", 10);
-            series.Points.AddXY("Category2", 20);
-            series.Points.AddXY("Category3", 15);
-            series.Points.AddXY("Category4", 30);
+            // Thêm dữ liệu category và số lượng vào Series
+            foreach (var kvp in countByCategory)
+            {
+                var cate = listCate.Where(c => c.Id.Equals(kvp.Key)).FirstOrDefault();
+                series.Points.AddXY(cate.Name, kvp.Value);
+            }
 
             // Thêm Series vào Chart
             pieChart.Series.Add(series);
@@ -108,6 +116,9 @@ namespace Assignment
             // Hiển thị biểu đồ hình tròn trên form
             pnlPieChart.Controls.Add(pieChart);
             pnlPieChart.BorderStyle = BorderStyle.FixedSingle;
+
+
+
         }
 
         private struct RGBColors

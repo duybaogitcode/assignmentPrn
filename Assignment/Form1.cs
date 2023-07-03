@@ -1,4 +1,5 @@
 using AutoMapper;
+using DTO;
 using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -12,7 +13,7 @@ namespace Assignment
         private Panel leftBorderBtn;
         private Form currentChildForm;
         private readonly IMapper _mapper;
-
+        private AccountDTO AccountDTO;
 
         public Form1(IMapper mapper)
         {
@@ -29,7 +30,8 @@ namespace Assignment
             this.MaximumSize = this.Size;
             this.FormBorderStyle = FormBorderStyle.None;
             _mapper = mapper;
-
+            ibtnLogout.Visible = false;
+            openChildForm(new LoginForm());
 
         }
 
@@ -105,7 +107,7 @@ namespace Assignment
         {
             this.AcctiveBtn(sender, RGBColors.color);
             this.openChildForm(new productForm(_mapper));
-            lbMenu.Text= ibtnProducts.Text;
+            lbMenu.Text = ibtnProducts.Text;
         }
 
 

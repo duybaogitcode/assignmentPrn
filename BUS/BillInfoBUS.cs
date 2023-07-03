@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace BUS
 {
@@ -19,6 +20,14 @@ namespace BUS
         public BillInfoBUS(IMapper mapper)
         {
             this.mapper = mapper;
+        }
+
+        public List<BillInfoDTO> getAll()
+        {
+            billInfoServices = new BillInfoServices();
+            var billInfo = billInfoServices.GetAll().Include(p => p.Food).ToList();
+            var billInfoDTOs = mapper.Map<List<BillInfoDTO>>(billInfo);
+            return billInfoDTOs;
         }
 
         public List<BillInfoDTO> getAllByBillId(string billId)
@@ -86,6 +95,18 @@ namespace BUS
             }
 
             return totalPrice;
+        }
+
+        public Dictionary<string, int> CountByCategory()
+        {
+            billInfoServices = new BillInfoServices();
+            var billInfos = billInfoServices.GetAll().Include(p => p.Food).ToList();
+
+            var countByCategory = billInfos
+                .GroupBy(p => p.Food.CategoryId)
+                .ToDictionary(g => g.Key, g => g.Sum(p => p.Amount));
+
+            return countByCategory;
         }
     }
 }

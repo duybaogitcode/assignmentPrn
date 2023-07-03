@@ -37,11 +37,13 @@
             pnlLogo = new Panel();
             picLogo = new PictureBox();
             panelTitleBar = new Panel();
+            lbDisplayName = new Label();
+            lbMenu = new Label();
             panel1 = new Panel();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             iconButton2 = new FontAwesome.Sharp.IconButton();
             pnlMain = new Panel();
-            lbMenu = new Label();
+            ibtnLogout = new FontAwesome.Sharp.IconButton();
             pnlMenu.SuspendLayout();
             pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
@@ -181,6 +183,8 @@
             // panelTitleBar
             // 
             panelTitleBar.BackColor = Color.FromArgb(32, 35, 43);
+            panelTitleBar.Controls.Add(ibtnLogout);
+            panelTitleBar.Controls.Add(lbDisplayName);
             panelTitleBar.Controls.Add(lbMenu);
             panelTitleBar.Controls.Add(panel1);
             panelTitleBar.Dock = DockStyle.Top;
@@ -189,6 +193,27 @@
             panelTitleBar.Size = new Size(1140, 79);
             panelTitleBar.TabIndex = 1;
             panelTitleBar.MouseDown += panelTitleBar_MouseDown;
+            // 
+            // lbDisplayName
+            // 
+            lbDisplayName.AutoSize = true;
+            lbDisplayName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbDisplayName.ForeColor = Color.White;
+            lbDisplayName.Location = new Point(15, 55);
+            lbDisplayName.Name = "lbDisplayName";
+            lbDisplayName.Size = new Size(0, 21);
+            lbDisplayName.TabIndex = 2;
+            // 
+            // lbMenu
+            // 
+            lbMenu.AutoSize = true;
+            lbMenu.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            lbMenu.ForeColor = Color.White;
+            lbMenu.Location = new Point(15, 11);
+            lbMenu.Name = "lbMenu";
+            lbMenu.Size = new Size(115, 28);
+            lbMenu.TabIndex = 1;
+            lbMenu.Text = "Đăng nhập";
             // 
             // panel1
             // 
@@ -246,16 +271,22 @@
             pnlMain.Size = new Size(1140, 614);
             pnlMain.TabIndex = 2;
             // 
-            // lbMenu
+            // ibtnLogout
             // 
-            lbMenu.AutoSize = true;
-            lbMenu.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            lbMenu.ForeColor = Color.White;
-            lbMenu.Location = new Point(15, 11);
-            lbMenu.Name = "lbMenu";
-            lbMenu.Size = new Size(115, 28);
-            lbMenu.TabIndex = 1;
-            lbMenu.Text = "Đăng nhập";
+            ibtnLogout.BackColor = Color.FromArgb(225, 0, 125);
+            ibtnLogout.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            ibtnLogout.ForeColor = Color.Black;
+            ibtnLogout.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleRight;
+            ibtnLogout.IconColor = Color.Black;
+            ibtnLogout.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ibtnLogout.IconSize = 25;
+            ibtnLogout.Location = new Point(1032, 47);
+            ibtnLogout.Name = "ibtnLogout";
+            ibtnLogout.Size = new Size(105, 32);
+            ibtnLogout.TabIndex = 3;
+            ibtnLogout.Text = "Đăng xuất";
+            ibtnLogout.TextImageRelation = TextImageRelation.ImageBeforeText;
+            ibtnLogout.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -298,5 +329,7 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconButton2;
         private Label lbMenu;
+        private Label lbDisplayName;
+        private FontAwesome.Sharp.IconButton ibtnLogout;
     }
 }
