@@ -36,14 +36,14 @@
             pnlColunnChart = new Panel();
             pnlPieChart = new Panel();
             panel1 = new Panel();
-            label3 = new Label();
+            iconButton4 = new FontAwesome.Sharp.IconButton();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
             panel2 = new Panel();
+            label3 = new Label();
             panel3 = new Panel();
             panel4 = new Panel();
             panel5 = new Panel();
             panel6 = new Panel();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
-            iconButton4 = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -105,9 +105,9 @@
             // pnlPieChart
             // 
             pnlPieChart.BackColor = Color.WhiteSmoke;
-            pnlPieChart.Location = new Point(655, 254);
+            pnlPieChart.Location = new Point(655, 212);
             pnlPieChart.Name = "pnlPieChart";
-            pnlPieChart.Size = new Size(446, 319);
+            pnlPieChart.Size = new Size(473, 390);
             pnlPieChart.TabIndex = 10;
             // 
             // panel1
@@ -123,6 +123,37 @@
             panel1.Size = new Size(1140, 64);
             panel1.TabIndex = 7;
             // 
+            // iconButton4
+            // 
+            iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconButton4.IconColor = Color.Black;
+            iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton4.Location = new Point(1019, 12);
+            iconButton4.Name = "iconButton4";
+            iconButton4.Size = new Size(84, 36);
+            iconButton4.TabIndex = 13;
+            iconButton4.Text = "Năm";
+            iconButton4.UseVisualStyleBackColor = true;
+            // 
+            // iconButton1
+            // 
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconButton1.IconColor = Color.Black;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton1.Location = new Point(774, 12);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Size = new Size(84, 36);
+            iconButton1.TabIndex = 12;
+            iconButton1.Text = "Tuần";
+            iconButton1.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            panel2.Location = new Point(15, 70);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(200, 100);
+            panel2.TabIndex = 11;
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -133,13 +164,6 @@
             label3.Size = new Size(104, 28);
             label3.TabIndex = 0;
             label3.Text = "Doanh thu";
-            // 
-            // panel2
-            // 
-            panel2.Location = new Point(15, 70);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(200, 100);
-            panel2.TabIndex = 11;
             // 
             // panel3
             // 
@@ -167,35 +191,11 @@
             // 
             // panel6
             // 
-            panel6.BackColor = Color.FromArgb(34, 37, 45);
+            panel6.BackColor = Color.FromArgb(154, 205, 229);
             panel6.Location = new Point(928, 85);
             panel6.Name = "panel6";
             panel6.Size = new Size(200, 100);
             panel6.TabIndex = 14;
-            // 
-            // iconButton1
-            // 
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.Location = new Point(774, 12);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(84, 36);
-            iconButton1.TabIndex = 12;
-            iconButton1.Text = "Tuần";
-            iconButton1.UseVisualStyleBackColor = true;
-            // 
-            // iconButton4
-            // 
-            iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton4.IconColor = Color.Black;
-            iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton4.Location = new Point(1019, 12);
-            iconButton4.Name = "iconButton4";
-            iconButton4.Size = new Size(84, 36);
-            iconButton4.TabIndex = 13;
-            iconButton4.Text = "Năm";
-            iconButton4.UseVisualStyleBackColor = true;
             // 
             // dashboardForm
             // 

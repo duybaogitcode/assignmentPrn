@@ -99,12 +99,16 @@ namespace Assignment
             // Tạo một Series mới cho biểu đồ hình tròn
             Series series = new Series("PieSeries");
             series.ChartType = SeriesChartType.Pie;
+            int totalAmount = countByCategory.Sum(kvp => kvp.Value);
+
 
             // Thêm dữ liệu category và số lượng vào Series
             foreach (var kvp in countByCategory)
             {
                 var cate = listCate.Where(c => c.Id.Equals(kvp.Key)).FirstOrDefault();
-                series.Points.AddXY(cate.Name, kvp.Value);
+                double percentage = Math.Round((double)kvp.Value / totalAmount * 100, 2);
+                series.Points.AddXY(percentage.ToString(), kvp.Value);
+                series.Points.Last().LegendText = $"{cate.Name}";
             }
 
             // Thêm Series vào Chart
@@ -113,10 +117,18 @@ namespace Assignment
             // Gán khu vực biểu đồ cho Series
             series.ChartArea = "PieChartArea";
 
+
+            // Tạo Legend và đặt vị trí bên cạnh biểu đồ tròn
+            Legend legend = new Legend("PieLegend");
+            legend.DockedToChartArea = "PieChartArea";
+            legend.Font = new Font("Arial", 8);// Đặt font chữ và kích thước cho Legend
+            legend.Docking = Docking.Right;
+            legend.Alignment = StringAlignment.Far;
+            pieChart.Legends.Add(legend);
+
             // Hiển thị biểu đồ hình tròn trên form
             pnlPieChart.Controls.Add(pieChart);
             pnlPieChart.BorderStyle = BorderStyle.FixedSingle;
-
 
 
         }

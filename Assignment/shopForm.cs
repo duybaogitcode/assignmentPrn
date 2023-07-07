@@ -333,7 +333,10 @@ namespace Assignment
             }
             catch (Exception ex)
             {
-                selectedPanel.BackColor = Color.DarkGray;
+                if(selectedPanel != null)
+                {
+                    selectedPanel.BackColor = Color.DarkGray;
+                }
                 MessageBox.Show(ex.Message);
             }
         }
