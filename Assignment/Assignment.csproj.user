@@ -16,6 +16,9 @@
     <Compile Update="productForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="progressBarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="shopForm.cs">
       <SubType>Form</SubType>
     </Compile>

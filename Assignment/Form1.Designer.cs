@@ -37,18 +37,22 @@
             pnlLogo = new Panel();
             picLogo = new PictureBox();
             panelTitleBar = new Panel();
+            lbHello = new Label();
+            ibtnLogout = new FontAwesome.Sharp.IconButton();
             lbDisplayName = new Label();
             lbMenu = new Label();
             panel1 = new Panel();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             iconButton2 = new FontAwesome.Sharp.IconButton();
             pnlMain = new Panel();
-            ibtnLogout = new FontAwesome.Sharp.IconButton();
+            loginPicture = new PictureBox();
             pnlMenu.SuspendLayout();
             pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             panelTitleBar.SuspendLayout();
             panel1.SuspendLayout();
+            pnlMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)loginPicture).BeginInit();
             SuspendLayout();
             // 
             // pnlMenu
@@ -183,6 +187,7 @@
             // panelTitleBar
             // 
             panelTitleBar.BackColor = Color.FromArgb(32, 35, 43);
+            panelTitleBar.Controls.Add(lbHello);
             panelTitleBar.Controls.Add(ibtnLogout);
             panelTitleBar.Controls.Add(lbDisplayName);
             panelTitleBar.Controls.Add(lbMenu);
@@ -193,6 +198,35 @@
             panelTitleBar.Size = new Size(1140, 79);
             panelTitleBar.TabIndex = 1;
             panelTitleBar.MouseDown += panelTitleBar_MouseDown;
+            // 
+            // lbHello
+            // 
+            lbHello.AutoSize = true;
+            lbHello.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lbHello.ForeColor = Color.White;
+            lbHello.Location = new Point(21, 50);
+            lbHello.Name = "lbHello";
+            lbHello.Size = new Size(12, 20);
+            lbHello.TabIndex = 4;
+            lbHello.Text = ".";
+            // 
+            // ibtnLogout
+            // 
+            ibtnLogout.BackColor = Color.FromArgb(225, 0, 125);
+            ibtnLogout.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            ibtnLogout.ForeColor = Color.Black;
+            ibtnLogout.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleRight;
+            ibtnLogout.IconColor = Color.Black;
+            ibtnLogout.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ibtnLogout.IconSize = 25;
+            ibtnLogout.Location = new Point(1032, 47);
+            ibtnLogout.Name = "ibtnLogout";
+            ibtnLogout.Size = new Size(105, 32);
+            ibtnLogout.TabIndex = 3;
+            ibtnLogout.Text = "Đăng xuất";
+            ibtnLogout.TextImageRelation = TextImageRelation.ImageBeforeText;
+            ibtnLogout.UseVisualStyleBackColor = false;
+            ibtnLogout.Click += ibtnLogout_Click;
             // 
             // lbDisplayName
             // 
@@ -265,28 +299,22 @@
             // 
             pnlMain.BackColor = Color.FromArgb(34, 37, 45);
             pnlMain.BorderStyle = BorderStyle.FixedSingle;
+            pnlMain.Controls.Add(loginPicture);
             pnlMain.Dock = DockStyle.Fill;
             pnlMain.Location = new Point(222, 79);
             pnlMain.Name = "pnlMain";
             pnlMain.Size = new Size(1140, 614);
             pnlMain.TabIndex = 2;
             // 
-            // ibtnLogout
+            // loginPicture
             // 
-            ibtnLogout.BackColor = Color.FromArgb(225, 0, 125);
-            ibtnLogout.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            ibtnLogout.ForeColor = Color.Black;
-            ibtnLogout.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleRight;
-            ibtnLogout.IconColor = Color.Black;
-            ibtnLogout.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnLogout.IconSize = 25;
-            ibtnLogout.Location = new Point(1032, 47);
-            ibtnLogout.Name = "ibtnLogout";
-            ibtnLogout.Size = new Size(105, 32);
-            ibtnLogout.TabIndex = 3;
-            ibtnLogout.Text = "Đăng xuất";
-            ibtnLogout.TextImageRelation = TextImageRelation.ImageBeforeText;
-            ibtnLogout.UseVisualStyleBackColor = false;
+            loginPicture.Dock = DockStyle.Fill;
+            loginPicture.ImageLocation = "";
+            loginPicture.Location = new Point(0, 0);
+            loginPicture.Name = "loginPicture";
+            loginPicture.Size = new Size(1138, 612);
+            loginPicture.TabIndex = 0;
+            loginPicture.TabStop = false;
             // 
             // Form1
             // 
@@ -308,6 +336,8 @@
             panelTitleBar.ResumeLayout(false);
             panelTitleBar.PerformLayout();
             panel1.ResumeLayout(false);
+            pnlMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)loginPicture).EndInit();
             ResumeLayout(false);
         }
 
@@ -331,5 +361,7 @@
         private Label lbMenu;
         private Label lbDisplayName;
         private FontAwesome.Sharp.IconButton ibtnLogout;
+        private Label lbHello;
+        private PictureBox loginPicture;
     }
 }

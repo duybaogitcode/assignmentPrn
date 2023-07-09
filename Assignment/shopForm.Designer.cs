@@ -47,12 +47,6 @@
             label2 = new Label();
             panel3 = new Panel();
             dataBillInfo = new DataGridView();
-            lbBillInfoFood = new Label();
-            lbBillInfoCheckin = new Label();
-            lbTotal = new Label();
-            IbtnCheckout = new FontAwesome.Sharp.IconButton();
-            panel4 = new Panel();
-            lbId = new Label();
             BillInfoId = new DataGridViewTextBoxColumn();
             BillInfoFoodName = new DataGridViewTextBoxColumn();
             BillInfoPrice = new DataGridViewTextBoxColumn();
@@ -60,6 +54,12 @@
             BillInfoQuantity = new DataGridViewTextBoxColumn();
             BillInfoDown = new DataGridViewButtonColumn();
             BillInfoDelete = new DataGridViewButtonColumn();
+            lbBillInfoFood = new Label();
+            lbBillInfoCheckin = new Label();
+            lbTotal = new Label();
+            IbtnCheckout = new FontAwesome.Sharp.IconButton();
+            panel4 = new Panel();
+            lbId = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -265,64 +265,6 @@
             dataBillInfo.TabIndex = 12;
             dataBillInfo.CellContentClick += dataBillInfo_CellContentClick;
             // 
-            // lbBillInfoFood
-            // 
-            lbBillInfoFood.AutoSize = true;
-            lbBillInfoFood.Location = new Point(442, 67);
-            lbBillInfoFood.Name = "lbBillInfoFood";
-            lbBillInfoFood.Size = new Size(0, 15);
-            lbBillInfoFood.TabIndex = 17;
-            // 
-            // lbBillInfoCheckin
-            // 
-            lbBillInfoCheckin.AutoSize = true;
-            lbBillInfoCheckin.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lbBillInfoCheckin.Location = new Point(442, 36);
-            lbBillInfoCheckin.Name = "lbBillInfoCheckin";
-            lbBillInfoCheckin.Size = new Size(0, 19);
-            lbBillInfoCheckin.TabIndex = 16;
-            // 
-            // lbTotal
-            // 
-            lbTotal.AutoSize = true;
-            lbTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lbTotal.Location = new Point(3, 225);
-            lbTotal.Name = "lbTotal";
-            lbTotal.Size = new Size(91, 21);
-            lbTotal.TabIndex = 14;
-            lbTotal.Text = "Tổng tiền: ";
-            // 
-            // IbtnCheckout
-            // 
-            IbtnCheckout.BackColor = Color.FromArgb(182, 205, 84);
-            IbtnCheckout.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            IbtnCheckout.IconChar = FontAwesome.Sharp.IconChar.None;
-            IbtnCheckout.IconColor = Color.Black;
-            IbtnCheckout.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            IbtnCheckout.Location = new Point(580, 217);
-            IbtnCheckout.Name = "IbtnCheckout";
-            IbtnCheckout.Size = new Size(103, 40);
-            IbtnCheckout.TabIndex = 10;
-            IbtnCheckout.Text = "Thanh toán";
-            IbtnCheckout.UseVisualStyleBackColor = false;
-            IbtnCheckout.Click += IbtnCheckout_Click;
-            // 
-            // panel4
-            // 
-            panel4.Controls.Add(pnlHome);
-            panel4.Location = new Point(12, 30);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(689, 344);
-            panel4.TabIndex = 8;
-            // 
-            // lbId
-            // 
-            lbId.AutoSize = true;
-            lbId.Location = new Point(96, 5);
-            lbId.Name = "lbId";
-            lbId.Size = new Size(0, 15);
-            lbId.TabIndex = 9;
-            // 
             // BillInfoId
             // 
             BillInfoId.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -382,6 +324,64 @@
             BillInfoDelete.Resizable = DataGridViewTriState.True;
             BillInfoDelete.SortMode = DataGridViewColumnSortMode.Automatic;
             BillInfoDelete.Width = 52;
+            // 
+            // lbBillInfoFood
+            // 
+            lbBillInfoFood.AutoSize = true;
+            lbBillInfoFood.Location = new Point(442, 67);
+            lbBillInfoFood.Name = "lbBillInfoFood";
+            lbBillInfoFood.Size = new Size(0, 15);
+            lbBillInfoFood.TabIndex = 17;
+            // 
+            // lbBillInfoCheckin
+            // 
+            lbBillInfoCheckin.AutoSize = true;
+            lbBillInfoCheckin.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lbBillInfoCheckin.Location = new Point(442, 36);
+            lbBillInfoCheckin.Name = "lbBillInfoCheckin";
+            lbBillInfoCheckin.Size = new Size(0, 19);
+            lbBillInfoCheckin.TabIndex = 16;
+            // 
+            // lbTotal
+            // 
+            lbTotal.AutoSize = true;
+            lbTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbTotal.Location = new Point(3, 225);
+            lbTotal.Name = "lbTotal";
+            lbTotal.Size = new Size(91, 21);
+            lbTotal.TabIndex = 14;
+            lbTotal.Text = "Tổng tiền: ";
+            // 
+            // IbtnCheckout
+            // 
+            IbtnCheckout.BackColor = Color.FromArgb(182, 205, 84);
+            IbtnCheckout.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            IbtnCheckout.IconChar = FontAwesome.Sharp.IconChar.None;
+            IbtnCheckout.IconColor = Color.Black;
+            IbtnCheckout.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            IbtnCheckout.Location = new Point(580, 217);
+            IbtnCheckout.Name = "IbtnCheckout";
+            IbtnCheckout.Size = new Size(103, 40);
+            IbtnCheckout.TabIndex = 10;
+            IbtnCheckout.Text = "Thanh toán";
+            IbtnCheckout.UseVisualStyleBackColor = false;
+            IbtnCheckout.Click += IbtnCheckout_Click;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(pnlHome);
+            panel4.Location = new Point(12, 30);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(689, 344);
+            panel4.TabIndex = 8;
+            // 
+            // lbId
+            // 
+            lbId.AutoSize = true;
+            lbId.Location = new Point(96, 5);
+            lbId.Name = "lbId";
+            lbId.Size = new Size(0, 15);
+            lbId.TabIndex = 9;
             // 
             // shopForm
             // 

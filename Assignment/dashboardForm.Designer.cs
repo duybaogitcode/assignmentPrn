@@ -230,7 +230,8 @@
         private DateTimePicker dateTimePickerTo;
         private Label label2;
         private FontAwesome.Sharp.IconButton iconButton2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart 
+          chart1;
         private Panel pnlColunnChart;
         private Panel pnlPieChart;
         private Panel panel1;

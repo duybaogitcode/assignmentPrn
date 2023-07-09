@@ -1,4 +1,4 @@
-using AutoMapper;
+﻿using AutoMapper;
 using DTO;
 using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
@@ -14,7 +14,7 @@ namespace Assignment
         private Form currentChildForm;
         private readonly IMapper _mapper;
         private AccountDTO AccountDTO;
-
+        LoginForm login;
         public Form1(IMapper mapper)
         {
 
@@ -31,13 +31,16 @@ namespace Assignment
             this.FormBorderStyle = FormBorderStyle.None;
             _mapper = mapper;
             ibtnLogout.Visible = false;
-            openChildForm(new LoginForm());
+            login = new LoginForm(_mapper);
+            openChildForm(login);
+            loginPicture.ImageLocation = "C:\\Users\\duyba\\OneDrive\\Desktop\\video\\66bf70495aaf1bd998f73ac92ca931bb4dbe132a6e926435a4bbcf7f72161689.jpg";
+            loginPicture.SizeMode = PictureBoxSizeMode.StretchImage;
 
         }
 
-
         private void openChildForm(Form childForm)
         {
+
             if (currentChildForm != null)
             {
                 currentChildForm.Close();
@@ -73,6 +76,8 @@ namespace Assignment
                 leftBorderBtn.Visible = true;
                 leftBorderBtn.BringToFront();
             }
+            ibtnLogout.Visible = true;
+            lbHello.Text = "Xin chào " + login.DisplayName;
         }
 
         private void DisableBtn()
@@ -90,6 +95,11 @@ namespace Assignment
 
         private void ibtnHome_Click(object sender, EventArgs e)
         {
+            if (!login.isLogin || login.isLogin == false)
+            {
+                MessageBox.Show("Bạn cần phải đăng nhập trước");
+                return;
+            }
             this.AcctiveBtn(sender, RGBColors.color);
             this.openChildForm(new shopForm(_mapper));
             lbMenu.Text = ibtnHome.Text;
@@ -97,6 +107,11 @@ namespace Assignment
 
         private void ibtnEmp_Click(object sender, EventArgs e)
         {
+            if (!login.isLogin || login.isLogin == false)
+            {
+                MessageBox.Show("Bạn cần phải đăng nhập trước");
+                return;
+            }
             this.AcctiveBtn(sender, RGBColors.color);
             this.openChildForm(new accountForm(_mapper));
             lbMenu.Text = ibtnEmp.Text;
@@ -105,6 +120,11 @@ namespace Assignment
 
         private void ibtnProducts_Click(object sender, EventArgs e)
         {
+            if (!login.isLogin || login.isLogin == false)
+            {
+                MessageBox.Show("Bạn cần phải đăng nhập trước");
+                return;
+            }
             this.AcctiveBtn(sender, RGBColors.color);
             this.openChildForm(new productForm(_mapper));
             lbMenu.Text = ibtnProducts.Text;
@@ -155,11 +175,20 @@ namespace Assignment
 
         private void ibtnDashboard_Click(object sender, EventArgs e)
         {
+            if (!login.isLogin || login.isLogin == false)
+            {
+                MessageBox.Show("Bạn cần phải đăng nhập trước");
+                return;
+            }
             this.AcctiveBtn(sender, RGBColors.color);
             this.openChildForm(new dashboardForm(_mapper));
             lbMenu.Text = ibtnDashboard.Text;
         }
 
+        private void ibtnLogout_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
 
         private struct RGBColors
         {

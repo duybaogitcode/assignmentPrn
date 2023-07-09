@@ -72,3 +72,4 @@ C:\Users\duyba\OneDrive\Desktop\c#\Assignment\Assignment\obj\Debug\net6.0-window
 C:\Users\duyba\OneDrive\Desktop\c#\Assignment\Assignment\bin\Debug\net6.0-windows\AutoMapper.dll
 C:\Users\duyba\OneDrive\Desktop\c#\Assignment\Assignment\obj\Debug\net6.0-windows\Assignment.productForm.resources
 C:\Users\duyba\OneDrive\Desktop\c#\Assignment\Assignment\obj\Debug\net6.0-windows\Assignment.LoginForm.resources
+C:\Users\duyba\OneDrive\Desktop\c#\Assignment\Assignment\obj\Debug\net6.0-windows\Assignment.progressBarForm.resources

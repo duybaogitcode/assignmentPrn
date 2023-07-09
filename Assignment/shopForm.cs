@@ -37,7 +37,8 @@ namespace Assignment
             this.billInfoBUS = new BillInfoBUS(_mapper);
             this.loadListFood();
             this.CreatePanels();
-
+            lbFoodID.Visible = false;
+            lbId.Visible = false;
         }
 
         private void CreatePanels()
@@ -197,7 +198,14 @@ namespace Assignment
             PictureBox tablePictureBox = new PictureBox();
             tablePictureBox.Name = table.Name;
             tablePictureBox.Tag = table.Id;
-            tablePictureBox.ImageLocation = "C:\\Users\\duyba\\OneDrive\\Desktop\\video\\7113274.png";
+            if(table.Id != "mangve")
+            {
+                tablePictureBox.ImageLocation = "C:\\Users\\duyba\\OneDrive\\Desktop\\video\\7113274.png";
+            }
+            if(table.Id == "mangve")
+            {
+                tablePictureBox.ImageLocation = "C:\\Users\\duyba\\OneDrive\\Desktop\\video\\download.png";
+            }
             tablePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             tablePictureBox.Click += TablePictureBox_Click;
             tableLayoutPanel.Controls.Add(tablePictureBox, 0, 0);
@@ -333,7 +341,7 @@ namespace Assignment
             }
             catch (Exception ex)
             {
-                if(selectedPanel != null)
+                if (selectedPanel != null)
                 {
                     selectedPanel.BackColor = Color.DarkGray;
                 }
@@ -416,12 +424,12 @@ namespace Assignment
                         }
                         int newTotal = billInfoBUS.totalPrice(billInfoDTO.BillId);
                         lbTotal.Text = "Tổng tiền: " + newTotal.ToString();
-                        
+
                         this.getListBillInfo(lbId.Text);
                     }
-                  
 
-                    }
+
+                }
                 if (e.ColumnIndex == dataBillInfo.Columns["BillInfoDelete"].Index)
                 {
                     string id = dataBillInfo.Rows[e.RowIndex].Cells["BillInfoId"].Value.ToString();
@@ -472,20 +480,20 @@ namespace Assignment
         }
 
         public void deleteBill(string billId, string tableId, BillInfoDTO billInfoDTO)
-        {          
-                var table = coffeeTableBUS.getTable(tableId);
-                if (table == null) throw new Exception("Bàn không hợp lệ");
-                table.Status = true;
-                var billDTO = billBUS.getById(billId);
-                if (billDTO == null) throw new Exception("Hóa đơn khônghợp lệ");
-                billBUS.delete(billDTO, billInfoDTO, table);
-            
+        {
+            var table = coffeeTableBUS.getTable(tableId);
+            if (table == null) throw new Exception("Bàn không hợp lệ");
+            table.Status = true;
+            var billDTO = billBUS.getById(billId);
+            if (billDTO == null) throw new Exception("Hóa đơn không hợp lệ");
+            billBUS.delete(billDTO, billInfoDTO, table);
+
         }
 
         public bool checkBillIsDeleteAll(string billId)
         {
             var listCheck = billInfoBUS.getAllByBillId(billId).ToList();
-            if(listCheck.Count == 1)
+            if (listCheck.Count == 1)
             {
                 return false;
             }

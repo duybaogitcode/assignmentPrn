@@ -162,7 +162,9 @@ namespace Assignment
             {
                 string userName = accountDataG.Rows[e.RowIndex].Cells["UserName"].Value.ToString();
 
-                var accountDTO = bus.getAccount(userName);
+                var accountDTO = bus.getAccount(
+                    
+                    userName);
                 if (e.ColumnIndex == accountDataG.Columns["Edit"].Index)
                 {
 
